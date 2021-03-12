@@ -5,22 +5,31 @@ using UnityEngine;
 public class DashAttack : MonoBehaviour
 {
 
-    public Animator dashAnim;
-    public Transform dashAnimPos;
+    public GameObject dashAnimObj;
+    Animator dashAnim;
+    Transform dashAnimTf;
+    SpriteRenderer playerSprite;
+    bool onCooldown = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        dashAnim = dashAnimObj.GetComponent<Animator>();
+        dashAnimTf = dashAnimObj.transform;
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("e")){
-            dashAnimPos.position.Set(-0.8f, -0.8f, 0f);
+        if(Input.GetKeyDown("e") && !onCooldown){
+            transform.Translate(new Vector3(playerSprite.flipX ? -2f : 2f, 0f, 0f));
             dashAnim.SetTrigger("Dash");
-            transform.Translate(new Vector3(2f, 2f, 0f));
+            dashAnimTf.position = transform.position + new Vector3(playerSprite.flipX ? 2f : -2f, 0f, 0f);
+            StartCoroutine("DashAttackCooldown");
         }
+    }
+
+    IEnumerator DashAttackCooldown(){
+        onCooldown = true;
+        yield return new WaitForSeconds(0.8f);
+        onCooldown = false;
     }
 }

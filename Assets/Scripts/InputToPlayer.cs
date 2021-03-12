@@ -10,16 +10,17 @@ using UnityEngine;
 public class InputToPlayer : MonoBehaviour
 {
     // Variable to keep track of
-    private Rigidbody player_rb;
+    private Rigidbody2D player_rb;
+    private SpriteRenderer player_sprite;
     public float movement_speed = 3;
     public float jump_multiplier = 200;
     private bool in_a_collision = false;
     private bool DEBUG = true;
-    // false is left, true is right
-    public bool orientation = true;
+
     void Start()
     {
-        player_rb = GetComponent<Rigidbody>();
+        player_rb = GetComponent<Rigidbody2D>();
+        player_sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -30,11 +31,11 @@ public class InputToPlayer : MonoBehaviour
         // Go over horizontal player input
         if (Input.GetKey(KeyCode.D)) {
             rb_velocity.x = movement_speed;
-            orientation = true;
+            player_sprite.flipX = false;
         }
         else if (Input.GetKey(KeyCode.A)) {
             rb_velocity.x = movement_speed * -1;
-            orientation = false;
+            player_sprite.flipX = true;
         }
         else {
             rb_velocity.x = 0;
@@ -55,20 +56,20 @@ public class InputToPlayer : MonoBehaviour
     }
 
     public bool getOrientation() {
-        return orientation;
+        return player_sprite.flipX;
     }
 
     // Later this will need to be tuned to take into account
     // what we are colliding with
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter2D(Collision2D other) {
         in_a_collision = true;
     }
 
-    void OnCollisionExit(Collision other) {
+    void OnCollisionExit2D(Collision2D other) {
         in_a_collision = false;
     }
 
-    void OnCollisionStay(Collision other) {
+    void OnCollisionStay2D(Collision2D other) {
         in_a_collision = true;
     }
 }
