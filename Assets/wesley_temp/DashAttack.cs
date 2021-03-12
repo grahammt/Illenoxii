@@ -20,9 +20,9 @@ public class DashAttack : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown("e") && !onCooldown){
-            transform.Translate(new Vector3(playerSprite.flipX ? -2f : 2f, 0f, 0f));
+            transform.Translate(new Vector3(playerSprite.flipX ? -4f : 4f, 0f, 0f));
             dashAnim.SetTrigger("Dash");
-            dashAnimTf.position = transform.position + new Vector3(playerSprite.flipX ? 2f : -2f, 0f, 0f);
+            dashAnimTf.position = transform.position + new Vector3(playerSprite.flipX ? 4f : -4f, 0f, 0f);
             StartCoroutine("DashAttackCooldown");
         }
     }
