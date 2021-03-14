@@ -49,7 +49,7 @@ public class InputToPlayer : MonoBehaviour
             player_rb.AddForce(new Vector2(0, jump_multiplier));
         }
 
-        // Give the player velocity, and set there rotation to up
+        // Give the player velocity, and set their rotation to up
         player_rb.velocity = rb_velocity;
         transform.eulerAngles = Vector3.zero;
 
