@@ -13,6 +13,8 @@ public class InputToPlayerAttacks : MonoBehaviour
     private float primary_attack_cooldown = 0;
     private float secondary_cooldown_MAX = 0.5f;
     private float secondary_cooldown = 0;
+    private Vector3 primary_attack_offset = new Vector3(1, 0, 0);
+    private GameObject primary_attack_prefab;
     // NOTE: we probably don't want multiple attack types at once, so
     // this can likely change to just can_attack
     private bool can_primary_attack = true;
@@ -33,7 +35,7 @@ public class InputToPlayerAttacks : MonoBehaviour
         } else {
             attacking = false;
             can_primary_attack = true;
-            transform.localScale = Vector3.one;
+            Destroy(primary_attack_prefab);
         }
 
         if (secondary_cooldown > 0){
@@ -62,11 +64,14 @@ public class InputToPlayerAttacks : MonoBehaviour
         primary_attack_cooldown = primary_attack_cooldown_MAX;
 
         // HERE IS ATTACK CODE
-        // WILL LOOK DIFFERENT, BUT FOR NOW JUST EXTEND SHAPE
+        // WILL LOOK DIFFERENT, PLACE PROJECTILE THERE
         bool direction = gameObject.GetComponent<InputToPlayer>().getOrientation();
-        float movement_modifier = direction ? -0.5f : 0.5f;
-        transform.localScale += scale_change;
-        transform.position = transform.position + new Vector3(movement_modifier, 0, 0);
+        primary_attack_prefab = Instantiate(prefab);
+        int temp = direction ? -1 : 1;
+        primary_attack_prefab.transform.position = transform.position + primary_attack_offset * temp;
+        primary_attack_prefab.GetComponent<BreakOnImpact>().player = gameObject;
+        primary_attack_prefab.GetComponent<BreakOnImpact>().timer = timer;
+        Physics2D.IgnoreCollision(primary_attack_prefab.GetComponent<Collider2D>(),GetComponent<Collider2D>());
     }
 
     void SecondaryAttack(){
