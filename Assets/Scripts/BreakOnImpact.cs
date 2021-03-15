@@ -17,8 +17,9 @@ public class BreakOnImpact : MonoBehaviour
     {
         
     }
+    
+    void OnTriggerEnter2D(Collider2D other){
 
-    void OnCollisionEnter2D(Collision2D other){
         if (other.gameObject.tag == "Enemy"){
             other.gameObject.GetComponent<HasHealth>().takeDamage(25);
             player.GetComponent<InputToPlayerAttacks>().SecondaryHit();

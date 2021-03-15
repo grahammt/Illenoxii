@@ -14,6 +14,14 @@ public class HasHealth : MonoBehaviour
 
     public void takeDamage(float dmg){
         currentHealth -= dmg;
+        if (gameObject.CompareTag("Enemy"))
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,300,0));
+        }
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
         Debug.Log("Took " + dmg + " dmg");
     }
 }

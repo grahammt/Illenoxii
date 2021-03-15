@@ -45,7 +45,7 @@ public class InputToPlayerAttacks : MonoBehaviour
             can_shoot = true;
         }
 
-        if(can_primary_attack && Input.GetKey(KeyCode.Mouse0)) {
+        if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) {
             PrimaryAttack();
         }
         if (can_shoot && Input.GetKeyDown(KeyCode.Mouse1)){

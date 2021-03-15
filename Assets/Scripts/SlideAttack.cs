@@ -32,7 +32,7 @@ public class SlideAttack : MonoBehaviour
             transform.localPosition = new Vector3(0.7f, -0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (Input.GetKeyDown("x") && !onCooldown && Input.GetKey("s") && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) <=0.001)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) <=0.001)
         {
 
             if (playerSprite.flipX)
@@ -58,17 +58,41 @@ public class SlideAttack : MonoBehaviour
         if (playerSprite.flipX)
         {
             int i = 100;
+            while (i > 75)
+            {
+                player.GetComponent<Rigidbody2D>().transform.position += new Vector3(-0.05f, 0, 0);
+                i--;
+                yield return null;
+            }
+            while (i > 50)
+            {
+                player.GetComponent<Rigidbody2D>().transform.position += new Vector3(-0.03f, 0, 0);
+                i--;
+                yield return null;
+            }
             while (i > 0)
             {
                 player.GetComponent<Rigidbody2D>().transform.position += new Vector3(-0.01f, 0, 0);
                 i--;
                 yield return null;
             }
-            
+
         }
         else
         {
             int i = 100;
+            while (i > 75)
+            {
+                player.GetComponent<Rigidbody2D>().transform.position += new Vector3(0.05f, 0, 0);
+                i--;
+                yield return null;
+            }
+            while (i > 50)
+            {
+                player.GetComponent<Rigidbody2D>().transform.position += new Vector3(0.03f, 0, 0);
+                i--;
+                yield return null;
+            }
             while (i > 0)
             {
                 player.GetComponent<Rigidbody2D>().transform.position += new Vector3(0.01f, 0, 0);
@@ -84,18 +108,12 @@ public class SlideAttack : MonoBehaviour
         onCooldown = false;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        in_a_collision = true;
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        in_a_collision = false;
-    }
-
-    void OnCollisionStay2D(Collision2D other)
-    {
-        in_a_collision = true;
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25);
+            
+        }
     }
 }
