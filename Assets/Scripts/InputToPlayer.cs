@@ -42,7 +42,7 @@ public class InputToPlayer : MonoBehaviour
         }
 
         // Check for player jump
-        if (Input.GetKey(KeyCode.W) && in_a_collision) {
+        if (Input.GetKeyDown(KeyCode.W) && in_a_collision) {
             if(DEBUG) {
                 Debug.Log("Player jumping");
             }
