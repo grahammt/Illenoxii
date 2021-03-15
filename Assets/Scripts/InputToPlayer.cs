@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /*  This script will be used to manage the keyboard input for the
@@ -16,7 +17,7 @@ public class InputToPlayer : MonoBehaviour
     public float jump_multiplier = 200;
     private bool in_a_collision = false;
     private bool DEBUG = true;
-
+    
     void Start()
     {
         player_rb = GetComponent<Rigidbody2D>();
@@ -25,6 +26,10 @@ public class InputToPlayer : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         // This variable will keep track of the previous velocity
         Vector2 rb_velocity = player_rb.velocity;
 
@@ -52,7 +57,7 @@ public class InputToPlayer : MonoBehaviour
         // Give the player velocity, and set their rotation to up
         player_rb.velocity = rb_velocity;
         transform.eulerAngles = Vector3.zero;
-
+        
     }
 
     public bool getOrientation() {
