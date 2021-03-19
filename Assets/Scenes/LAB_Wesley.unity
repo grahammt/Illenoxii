@@ -1183,7 +1183,7 @@ PrefabInstance:
     - target: {fileID: 1014118519721777456, guid: e8203ff8a2758b24e95c698bae4c1540,
         type: 3}
       propertyPath: m_Name
-      value: DashAnim
+      value: DashTrail
       objectReference: {fileID: 0}
     - target: {fileID: 1014118519721777467, guid: e8203ff8a2758b24e95c698bae4c1540,
         type: 3}
@@ -1468,7 +1468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c870f240677c73c43a487042f9607c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashAnimObj: {fileID: 1060565259}
+  dashDistance: 5
+  dashTrail: {fileID: 1060565259}
 --- !u!212 &1533872730
 SpriteRenderer:
   m_ObjectHideFlags: 0

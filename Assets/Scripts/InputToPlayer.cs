@@ -39,13 +39,16 @@ public class InputToPlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) {
             rb_velocity.x = movement_speed;
             player_sprite.flipX = false;
+            animator.SetBool("isRunning", true);
         }
         else if (Input.GetKey(KeyCode.A)) {
             rb_velocity.x = movement_speed * -1;
             player_sprite.flipX = true;
+            animator.SetBool("isRunning", true);
         }
         else {
-            rb_velocity.x = 0;
+            //rb_velocity.x = 0;
+            animator.SetBool("isRunning", false);
         }
 
         // Check for player jump
