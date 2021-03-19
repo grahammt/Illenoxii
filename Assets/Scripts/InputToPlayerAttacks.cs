@@ -11,14 +11,14 @@ public class InputToPlayerAttacks : MonoBehaviour
     private Camera cam;
     private float primary_attack_cooldown_MAX = 1;
     private float primary_attack_cooldown = 0;
-    private float secondary_cooldown_MAX = 0.5f;
+    private float secondary_cooldown_MAX = 1;
     private float secondary_cooldown = 0;
     private Vector3 primary_attack_offset = new Vector3(1, 0, 0);
     private GameObject primary_attack_prefab;
     // NOTE: we probably don't want multiple attack types at once, so
     // this can likely change to just can_attack
     private bool can_primary_attack = true;
-    private bool can_shoot = true;
+    private bool can_secondary = true;
     private Vector3 scale_change = Vector3.right;
     public IEnumerator timer;
     void Start()
@@ -42,13 +42,13 @@ public class InputToPlayerAttacks : MonoBehaviour
             secondary_cooldown -=Time.deltaTime;
         }
         else{
-            can_shoot = true;
+            can_secondary = true;
         }
 
         if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) {
             PrimaryAttack();
         }
-        if (can_shoot && Input.GetKeyDown(KeyCode.Mouse1)){
+        if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
             SecondaryAttack();
         }       
     }
@@ -60,7 +60,7 @@ public class InputToPlayerAttacks : MonoBehaviour
         Debug.Log("Doing primary attack");
         attacking = true;
         can_primary_attack = false;
-        can_shoot = false;
+        can_secondary = false;
         primary_attack_cooldown = primary_attack_cooldown_MAX;
 
         // HERE IS ATTACK CODE
@@ -69,17 +69,21 @@ public class InputToPlayerAttacks : MonoBehaviour
         primary_attack_prefab = Instantiate(prefab);
         int temp = direction ? -1 : 1;
         primary_attack_prefab.transform.position = transform.position + primary_attack_offset * temp;
-        primary_attack_prefab.GetComponent<BreakOnImpact>().player = gameObject;
+        primary_attack_prefab.GetComponent<BreakOnImpact>().sender = gameObject;
         primary_attack_prefab.GetComponent<BreakOnImpact>().timer = timer;
         Physics2D.IgnoreCollision(primary_attack_prefab.GetComponent<Collider2D>(),GetComponent<Collider2D>());
     }
 
     void SecondaryAttack(){
-        can_shoot = false;
+        
+    }
+
+    void FireProjectile(){
+        can_secondary = false;
         secondary_cooldown = secondary_cooldown_MAX;
         GameObject clone = Instantiate(prefab);
         clone.transform.position = transform.position;
-        clone.GetComponent<BreakOnImpact>().player = gameObject;
+        clone.GetComponent<BreakOnImpact>().sender = gameObject;
         clone.GetComponent<BreakOnImpact>().timer = timer;
         Physics2D.IgnoreCollision(clone.GetComponent<Collider2D>(),GetComponent<Collider2D>());
         Vector2 mousePos = new Vector2();

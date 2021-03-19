@@ -17,7 +17,12 @@ public class ComboTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (count == 0){
+            comboText.enabled = false;
+        }
+        else {
+            comboText.enabled = true;
+        }
     }
 
     public void SetComboText(){
