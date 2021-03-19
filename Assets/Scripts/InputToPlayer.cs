@@ -17,11 +17,13 @@ public class InputToPlayer : MonoBehaviour
     public float jump_multiplier = 200;
     private bool in_a_collision = false;
     private bool DEBUG = true;
+    private Animator animator;
     
     void Start()
     {
         player_rb = GetComponent<Rigidbody2D>();
         player_sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
