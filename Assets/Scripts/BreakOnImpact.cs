@@ -5,7 +5,7 @@ using UnityEngine;
 public class BreakOnImpact : MonoBehaviour
 {
     public GameObject sender;
-    public IEnumerator timer = null;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +20,11 @@ public class BreakOnImpact : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject != sender){
-            if (other.gameObject.tag == "Enemy"){
-                other.gameObject.GetComponent<HasHealth>().takeDamage(25);
+            if (other.gameObject.GetComponent<HasHealth>()!=null){
+                other.gameObject.GetComponent<HasHealth>().takeDamage(damage);
                 //player.GetComponent<InputToPlayerAttacks>().SecondaryHit();
             }
-            if (other.gameObject.tag != "Player"){
+            if (other.gameObject.tag != sender.tag){
                 Destroy(gameObject);
             }
         }

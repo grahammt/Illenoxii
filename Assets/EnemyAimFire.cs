@@ -39,6 +39,8 @@ public class EnemyAimFire : MonoBehaviour
         GameObject bullet = Instantiate(prefab);
         bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
         bullet.transform.position = transform.position;
+        bullet.GetComponent<BreakOnImpact>().sender = gameObject;
+        bullet.GetComponent<BreakOnImpact>().damage = 20;
         Debug.Log("Fire!");
     }
 }
