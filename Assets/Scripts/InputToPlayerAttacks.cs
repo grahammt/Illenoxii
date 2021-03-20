@@ -45,10 +45,16 @@ public class InputToPlayerAttacks : MonoBehaviour
             can_secondary = true;
         }
 
-        if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) {
+        if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) { 
+            if (GetComponent<Rigidbody2D>().velocity.y != 0){
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
+            }
             PrimaryAttack();
         }
         if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
+            if (GetComponent<Rigidbody2D>().velocity.y != 0){
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
+            }
             SecondaryAttack();
         }       
     }
@@ -70,7 +76,7 @@ public class InputToPlayerAttacks : MonoBehaviour
         int temp = direction ? -1 : 1;
         primary_attack_prefab.transform.position = transform.position + primary_attack_offset * temp;
         primary_attack_prefab.GetComponent<BreakOnImpact>().sender = gameObject;
-        primary_attack_prefab.GetComponent<BreakOnImpact>().timer = timer;
+        primary_attack_prefab.GetComponent<BreakOnImpact>().damage = 25;
         Physics2D.IgnoreCollision(primary_attack_prefab.GetComponent<Collider2D>(),GetComponent<Collider2D>());
     }
 
@@ -84,7 +90,6 @@ public class InputToPlayerAttacks : MonoBehaviour
         GameObject clone = Instantiate(prefab);
         clone.transform.position = transform.position;
         clone.GetComponent<BreakOnImpact>().sender = gameObject;
-        clone.GetComponent<BreakOnImpact>().timer = timer;
         Physics2D.IgnoreCollision(clone.GetComponent<Collider2D>(),GetComponent<Collider2D>());
         Vector2 mousePos = new Vector2();
         mousePos.x = Input.mousePosition.x;

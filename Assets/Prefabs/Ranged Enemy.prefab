@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 5428554873565125719}
   - component: {fileID: 5428554873565125718}
   - component: {fileID: 5428554873565125717}
-  - component: {fileID: 5428554873565125716}
   - component: {fileID: 5428554873565125715}
   - component: {fileID: 5428554873565125704}
-  - component: {fileID: 5428554873565125705}
+  - component: {fileID: 5428554873565125716}
   m_Layer: 0
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 0406d3014f5180a48849f8ea2bd565fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,19 +101,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &5428554873565125716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428554873565125714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64dd847fc7239864a851a609804b6d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
 --- !u!50 &5428554873565125715
 Rigidbody2D:
   serializedVersion: 4
@@ -149,9 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5202256274492070253, guid: eae4bd9863e74f54a81d55b012b9cc28, type: 3}
-  maxCooldown: 5
+  maxCooldown: 3
   detectionRadius: 10
---- !u!114 &5428554873565125705
+--- !u!114 &5428554873565125716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,4 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dd847fc7239864a851a609804b6d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 20
