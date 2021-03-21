@@ -20,11 +20,11 @@ public class InputToPlayerAttacks : MonoBehaviour
     private bool can_primary_attack = true;
     private bool can_secondary = true;
     private Vector3 scale_change = Vector3.right;
-    public IEnumerator timer;
+    //public IEnumerator timer;
     void Start()
     {
         cam = Camera.main;
-        timer = GetComponent<ComboTracker>().Timer();
+        //timer = GetComponent<ComboTracker>().Timer();
     }
 
     void Update()
@@ -101,20 +101,20 @@ public class InputToPlayerAttacks : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other){
-        if (attacking && other.gameObject.tag == "Enemy"){
+        /*if (attacking && other.gameObject.tag == "Enemy"){
             GetComponent<ComboTracker>().count++;
             GetComponent<ComboTracker>().SetComboText();
             StopCoroutine(timer);
             timer = GetComponent<ComboTracker>().Timer();
             StartCoroutine(timer);
-        }
+        }*/
     }
 
-    public void SecondaryHit(){
+    /*public void SecondaryHit(){
         GetComponent<ComboTracker>().count++;
         GetComponent<ComboTracker>().SetComboText();
         StopCoroutine(timer);
         timer = GetComponent<ComboTracker>().Timer();
         StartCoroutine(timer);
-    }
+    }*/
 }

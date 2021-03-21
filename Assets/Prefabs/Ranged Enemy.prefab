@@ -131,12 +131,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5428554873565125714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6af29f597c8464bb517a57c191d6d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b253aa1cd637f34097a93404bf6a470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5202256274492070253, guid: eae4bd9863e74f54a81d55b012b9cc28, type: 3}
+  prefab: {fileID: 0}
   maxCooldown: 3
-  detectionRadius: 10
+  detectionRadius: 5
 --- !u!114 &5428554873565125716
 MonoBehaviour:
   m_ObjectHideFlags: 0

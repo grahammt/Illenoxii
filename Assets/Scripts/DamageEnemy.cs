@@ -9,12 +9,10 @@ public class DamageEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Enemy"){
             other.gameObject.SendMessage("takeDamage", damage);
-            GameObject player = GameObject.Find("Player");
+            /*GameObject player = GameObject.Find("Player");
             if (player!= null){
-                player.GetComponent<ComboTracker>().count++;
-                player.GetComponent<ComboTracker>().SetComboText();
                 player.GetComponent<InputToPlayerAttacks>().SecondaryHit();
-            }
+            }*/
         }
     }
 }
