@@ -92,11 +92,10 @@ public class PlayerMovement : MonoBehaviour
         return playerSprite.flipX;
     }
 
-    void checkMovement(){
+    void checkMovement()
+    {
         // first check horizontal input
         {
-            //direction = Input.GetAxis("Horizontal");
-
             // Go over horizontal player input
             if (Input.GetKey(KeyCode.D)) {
                 playerSprite.flipX = false;
@@ -119,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
         // then check dash command
         if(dashCharges > 0 && Input.GetKeyDown("e")){
-            // get mouse position
+            // get mouse position, set z component to 0
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             mousePos[2] = 0f;
 
@@ -127,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             dashStart = transform.position;
             Vector3 dashVec = Vector3.ClampMagnitude(mousePos - dashStart, dashDistance);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dashVec.normalized, dashVec.magnitude, LayerMask.GetMask("Terrain"));
-            if(hit.collider != null){
+            if(hit.collider != null){ // a wall is in the way of the dash
                 dashVec = Vector3.ClampMagnitude(dashVec, hit.distance - 0.8f);
             }
             dashDest = dashStart + dashVec;
@@ -141,27 +140,22 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetTrigger("Dash");
 
             // update the dash trail
-            float angle = Vector3.SignedAngle(Vector3.right, dashVec, Vector3.forward);
-            if(angle < 0){
-                angle += 360;
-            }
-            if(!dashes[0].onCooldown){
-                dashes[0].tf.eulerAngles = new Vector3(0f, 0f, angle);
-                dashes[0].tf.position = transform.position;
-                dashes[0].anim.SetTrigger("Dash");
-                // dashes[0].onCooldown = true;
-                // --dashCharges;
-                // coroutine to handle things past the setup
-                StartCoroutine("DashAttackMain", 0);
-            }
-            else{
-                dashes[1].tf.eulerAngles = new Vector3(0f, 0f, angle);
-                dashes[1].tf.position = transform.position;
-                dashes[1].anim.SetTrigger("Dash");
-                // dashes[1].onCooldown = true;
-                // --dashCharges;
-                // coroutine to handle things past the setup
-                StartCoroutine("DashAttackMain", 1);
+            // look for an available dash charge
+            for(int i = 0; i < dashes.Length; ++i){
+                if(!dashes[i].onCooldown){
+                    float angle = Vector3.SignedAngle(Vector3.right, dashVec, Vector3.forward);
+                    if(angle < 0){
+                        angle += 360;
+                    }
+                    dashes[0].tf.eulerAngles = new Vector3(0f, 0f, angle);
+                    dashes[0].tf.position = transform.position;
+                    dashes[0].anim.SetTrigger("Dash");
+                    // dashes[0].onCooldown = true;
+                    // --dashCharges;
+                    // coroutine to handle things past the setup
+                    StartCoroutine("DashAttackMain", 0);
+                    break;
+                }
             }
         }
 
