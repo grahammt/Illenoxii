@@ -12,12 +12,15 @@ public class SlideAttack : MonoBehaviour
     bool onCooldown = false;
     SpriteRenderer hitboxSprite;
     BoxCollider2D hitbox;
+    public Animator animator;
+
 
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
         hitboxSprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<BoxCollider2D>();
+        
     }
 
     void Update()
@@ -32,19 +35,19 @@ public class SlideAttack : MonoBehaviour
             transform.localPosition = new Vector3(0.7f, -0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) <=0.001)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s"))
         {
 
             if (playerSprite.flipX)
             {
-                hitbox.enabled = true;
-                hitboxSprite.enabled = true;
+                //hitbox.enabled = true;
+                //hitboxSprite.enabled = true;
                 //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(-10000, 0, 0));
             }
             else
             {
-                hitbox.enabled = true;
-                hitboxSprite.enabled = true;
+                //hitbox.enabled = true;
+               // hitboxSprite.enabled = true;
                 //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(10000, 0, 0));
             }
             
@@ -55,6 +58,7 @@ public class SlideAttack : MonoBehaviour
     IEnumerator DashAttackCooldown()
     {
         onCooldown = true;
+        animator.SetTrigger("slide");
         if (playerSprite.flipX)
         {
             int i = 100;
@@ -102,8 +106,8 @@ public class SlideAttack : MonoBehaviour
         }
         
         
-        hitbox.enabled = false;
-        hitboxSprite.enabled = false;
+        //hitbox.enabled = false;
+        //hitboxSprite.enabled = false;
         yield return new WaitForSeconds(0.4f);
         onCooldown = false;
     }
