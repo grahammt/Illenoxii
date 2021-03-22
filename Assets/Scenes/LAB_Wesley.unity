@@ -1788,7 +1788,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5625, y: 1.0625}
+    oldSize: {x: 0.78125, y: 0.6875}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14776,7 +14776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slideAnimObj: {fileID: 2048283379}
   player: {fileID: 1533872725}
-  animator: {fileID: 0}
+  animator: {fileID: 1533872734}
 --- !u!212 &2048283384
 SpriteRenderer:
   m_ObjectHideFlags: 0
