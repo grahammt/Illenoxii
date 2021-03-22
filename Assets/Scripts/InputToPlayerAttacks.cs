@@ -46,10 +46,10 @@ public class InputToPlayerAttacks : MonoBehaviour
         }
 
         if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) { 
-            if (GetComponent<Rigidbody2D>().velocity.y != 0){
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
-            }
-            PrimaryAttack();
+            // if (GetComponent<Rigidbody2D>().velocity.y != 0){
+            //     GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
+            // }
+            // PrimaryAttack();
         }
         if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
             if (GetComponent<Rigidbody2D>().velocity.y != 0){
@@ -59,26 +59,26 @@ public class InputToPlayerAttacks : MonoBehaviour
         }       
     }
 
-    // TODO: Make this a Co-routine
-    void PrimaryAttack() {
-        //TODO: Probably publish an event here
-        // Set attack cooldown
-        Debug.Log("Doing primary attack");
-        attacking = true;
-        can_primary_attack = false;
-        can_secondary = false;
-        primary_attack_cooldown = primary_attack_cooldown_MAX;
+    // // TODO: Make this a Co-routine
+    // void PrimaryAttack() {
+    //     //TODO: Probably publish an event here
+    //     // Set attack cooldown
+    //     Debug.Log("Doing primary attack");
+    //     attacking = true;
+    //     can_primary_attack = false;
+    //     can_secondary = false;
+    //     primary_attack_cooldown = primary_attack_cooldown_MAX;
 
-        // HERE IS ATTACK CODE
-        // WILL LOOK DIFFERENT, PLACE PROJECTILE THERE
-        bool direction = gameObject.GetComponent<InputToPlayer>().getOrientation();
-        primary_attack_prefab = Instantiate(prefab);
-        int temp = direction ? -1 : 1;
-        primary_attack_prefab.transform.position = transform.position + primary_attack_offset * temp;
-        primary_attack_prefab.GetComponent<BreakOnImpact>().sender = gameObject;
-        primary_attack_prefab.GetComponent<BreakOnImpact>().damage = 25;
-        Physics2D.IgnoreCollision(primary_attack_prefab.GetComponent<Collider2D>(),GetComponent<Collider2D>());
-    }
+    //     // HERE IS ATTACK CODE
+    //     // WILL LOOK DIFFERENT, PLACE PROJECTILE THERE
+    //     bool direction = gameObject.GetComponent<InputToPlayer>().getOrientation();
+    //     primary_attack_prefab = Instantiate(prefab);
+    //     int temp = direction ? -1 : 1;
+    //     primary_attack_prefab.transform.position = transform.position + primary_attack_offset * temp;
+    //     primary_attack_prefab.GetComponent<BreakOnImpact>().sender = gameObject;
+    //     primary_attack_prefab.GetComponent<BreakOnImpact>().damage = 25;
+    //     Physics2D.IgnoreCollision(primary_attack_prefab.GetComponent<Collider2D>(),GetComponent<Collider2D>());
+    // }
 
     void SecondaryAttack(){
         
