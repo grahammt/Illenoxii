@@ -58,6 +58,7 @@ public class uppercut : MonoBehaviour
 
     IEnumerator DashAttackCooldown()
     {
+        animator.SetBool("isRunning", false);
         animator.SetTrigger("uppercut");
         onCooldown = true;
         /*if (playerSprite.flipX)
