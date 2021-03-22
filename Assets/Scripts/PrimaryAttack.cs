@@ -24,7 +24,7 @@ public class PrimaryAttack : MonoBehaviour
             transform.localPosition = new Vector3(0.5f, 0.3f, 0);
         }
         // TODO: Animate the attack
-        if(Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown){
+        if(Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && !Input.GetKey("s")){
              StartCoroutine("PrimaryAttackCooldown");
         }
     }
@@ -34,9 +34,9 @@ public class PrimaryAttack : MonoBehaviour
         playerAnim.SetBool("isRunning", false);
         playerAnim.SetTrigger("punch");
         onCooldown = true;
-        hitbox.enabled = true;
-        yield return new WaitForSeconds(0.6f);
-        hitbox.enabled = false;
+        //hitbox.enabled = true;
+        yield return new WaitForSeconds(0.4f);
+        //hitbox.enabled = false;
         onCooldown = false;
     }
 

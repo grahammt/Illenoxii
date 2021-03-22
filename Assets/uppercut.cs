@@ -118,7 +118,7 @@ public class uppercut : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25,500);
 
         }
     }

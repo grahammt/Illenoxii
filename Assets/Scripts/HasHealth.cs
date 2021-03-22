@@ -30,6 +30,27 @@ public class HasHealth : MonoBehaviour
             EventBus.Publish<IncrementCombo>(new IncrementCombo());
         }
     }
+    public void takeDamage(float dmg, float knockback)
+    {
+        currentHealth -= dmg;
+        if (gameObject.CompareTag("Enemy"))
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, knockback, 0));
+        }
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        Debug.Log("Took " + dmg + " dmg");
+        if (gameObject.tag == "Player")
+        {
+            EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
+        }
+        else if (gameObject.tag == "Enemy")
+        {
+            EventBus.Publish<IncrementCombo>(new IncrementCombo());
+        }
+    }
 }
 
 public class ResetComboEvent {

@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slideAnimObj: {fileID: 1307248269}
   player: {fileID: 970246006}
-  animator: {fileID: 0}
+  animator: {fileID: 970246009}
 --- !u!212 &1307248274
 SpriteRenderer:
   m_ObjectHideFlags: 0
