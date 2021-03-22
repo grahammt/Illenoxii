@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     // state variables
     public enum movementState{idle, running, dashing};
     movementState state = movementState.idle;
-    movementState nextstate = movementState.idle;
     float direction;
 
     // imported from DashAttack.cs
