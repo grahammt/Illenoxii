@@ -166,8 +166,8 @@ public class PlayerMovement : MonoBehaviour
 
     // check if player is currently on the ground
     bool onGround(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.left * 0.5f, Vector2.down, 1.1f, LayerMask.GetMask("Terrain"));
-        Debug.DrawRay(transform.position + Vector3.left * 0.5f, Vector3.down * 1.1f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Terrain"));
+        Debug.DrawRay(transform.position, Vector3.down * 1.1f);
         return hit.collider != null;
     }
 
