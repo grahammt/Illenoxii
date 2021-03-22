@@ -6,6 +6,7 @@ using UnityEngine;
 */
 public class InputToPlayerAttacks : MonoBehaviour
 {
+    Rigidbody2D rigidbody;
     public GameObject prefab;
     public bool attacking = false;
     private Camera cam;
@@ -24,6 +25,7 @@ public class InputToPlayerAttacks : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        rigidbody = GetComponent<Rigidbody2D>();
         //timer = GetComponent<ComboTracker>().Timer();
     }
 
@@ -50,11 +52,14 @@ public class InputToPlayerAttacks : MonoBehaviour
             //     GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
             // }
             // PrimaryAttack();
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+            rigidbody.AddForce(new Vector2(0f, 30f));
         }
         if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
-            if (GetComponent<Rigidbody2D>().velocity.y != 0){
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
-            }
+            //if (rigidbody.velocity.y != 0){
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+            rigidbody.AddForce(new Vector2(0f, 30f));
+            //}
             SecondaryAttack();
         }       
     }

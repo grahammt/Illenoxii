@@ -9,9 +9,11 @@ public class platformerPathfinding : MonoBehaviour
     public float moveSpeed = 3f;
     public float nextWaypointDistance = 2f;
     public float jumpMultiplier = 300f;
+    public bool dazed = false;
 
 
     Rigidbody2D rigidbody;
+    Animator animator;
     Path path;
     Seeker seeker;
     bool reachedEndOfPath = true;
@@ -21,11 +23,20 @@ public class platformerPathfinding : MonoBehaviour
     void Start(){
         seeker = GetComponent<Seeker>();
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         InvokeRepeating("RecalculatePath", 1f, 0.5f);
     }
 
     void RecalculatePath(){
         seeker.StartPath(transform.position, target.position, OnPathComplete);
+    }
+
+    void PathfindingSetDazed(){
+        dazed = true;
+    }
+
+    void PathfindingSetUnDazed(){
+        dazed = false;
     }
 
     void OnPathComplete (Path p) {
@@ -37,6 +48,13 @@ public class platformerPathfinding : MonoBehaviour
     }
 
     void Update(){
+        if(dazed){
+            return;
+        }
+        float distanceFromTarget = Vector3.Distance(transform.position, target.position);
+        if(distanceFromTarget < 1f){
+            animator.SetTrigger("uppercut");
+        }
         if(path == null){
             return;
         }
@@ -62,7 +80,7 @@ public class platformerPathfinding : MonoBehaviour
             }
         }
 
-        jumping = rigidbody.velocity.y > 0.2f;
+        //jumping = rigidbody.velocity.y > 0.2f;
 
         Vector3 dest = path.vectorPath[currentWaypoint];
         if(dest.x < transform.position.x){
@@ -73,11 +91,10 @@ public class platformerPathfinding : MonoBehaviour
             //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
-        if(dest.y > transform.position.y && !jumping){
+        /*if(dest.y > transform.position.y && !jumping){
             rigidbody.AddForce(new Vector2(0f, jumpMultiplier));
             jumping = true;
-        }
+        }*/
 
     }
-
 }

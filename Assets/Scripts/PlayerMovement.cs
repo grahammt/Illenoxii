@@ -193,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
 
     void EndDash(){
         state = movementState.idle;
+        playerRb.velocity = new Vector2(playerRb.velocity.x, 0f);
     }
 
 

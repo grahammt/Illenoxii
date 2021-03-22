@@ -5,24 +5,36 @@ using UnityEngine;
 public class HasHealth : MonoBehaviour
 {
     public float maxHealth;
+    public HealthBar healthBar;
     float currentHealth;
+    Rigidbody2D rigidbody;
+    Animator animator;
 
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+        if(healthBar)
+            healthBar.SetMaxHealth(maxHealth);
     }
 
     public void takeDamage(float dmg){
         currentHealth -= dmg;
+        if(healthBar)
+            healthBar.SetCurrHealth(currentHealth);
         if (gameObject.CompareTag("Enemy"))
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,300,0));
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+            rigidbody.AddForce(new Vector3(0,200,0));
+            if(animator)
+                animator.SetTrigger("Dazed");
         }
+        Debug.Log("Took " + dmg + " dmg");
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
-        Debug.Log("Took " + dmg + " dmg");
         if (gameObject.tag == "Player"){
             EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
         }
@@ -30,18 +42,24 @@ public class HasHealth : MonoBehaviour
             EventBus.Publish<IncrementCombo>(new IncrementCombo());
         }
     }
+
     public void takeDamage(float dmg, float knockback)
     {
         currentHealth -= dmg;
+        if(healthBar)
+            healthBar.SetCurrHealth(currentHealth);
         if (gameObject.CompareTag("Enemy"))
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, knockback, 0));
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+            rigidbody.AddForce(new Vector3(0,knockback,0));
+            if(animator)
+                animator.SetTrigger("Dazed");
         }
+        Debug.Log("Took " + dmg + " dmg");
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
-        Debug.Log("Took " + dmg + " dmg");
         if (gameObject.tag == "Player")
         {
             EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));

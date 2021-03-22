@@ -11,6 +11,7 @@ public class endCheck : MonoBehaviour
     public GameObject En3;
     public GameObject En4;
     public GameObject En5;
+    public GameObject gameWinText;
     private bool ending = false;
     // Update is called once per frame
     void Update()
@@ -25,7 +26,8 @@ public class endCheck : MonoBehaviour
     {
 
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ending = false;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameWinText.SetActive(true);
+        //ending = false;
     }
 }
