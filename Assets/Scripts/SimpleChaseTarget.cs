@@ -21,7 +21,7 @@ public class SimpleChaseTarget : StateMachineBehaviour
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
         pathfinder = animator.GetComponent<platformerPathfinding>();
-        path = pathfinder.path;
+        //path = pathfinder.path;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -30,10 +30,10 @@ public class SimpleChaseTarget : StateMachineBehaviour
         if(path == null){
             return;
         }
-        else if(path != pathfinder.path){
+        /**else if(path != pathfinder.path){
             path = pathfinder.path;
             currentWaypoint = 0;
-        }
+        }*/
 
         reachedEndOfPath = false;
         float distanceToWaypoint;
