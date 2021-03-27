@@ -88,7 +88,7 @@ public class platformerPathfinding : MonoBehaviour
         if(dest.x < transform.position.x){
             //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
             spriteR.flipX = true;
-            if (distanceFromTarget < 0.8f)
+            if ( transform.position.x - dest.x < 0.8f)
             {
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
             }
@@ -101,7 +101,7 @@ public class platformerPathfinding : MonoBehaviour
         else if(dest.x > transform.position.x){
             //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
             spriteR.flipX = false;
-            if (distanceFromTarget < 0.8f)
+            if (dest.x-transform.position.x < 0.8f)
             {
                 transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
             }
