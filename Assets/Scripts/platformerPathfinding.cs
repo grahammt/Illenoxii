@@ -19,12 +19,13 @@ public class platformerPathfinding : MonoBehaviour
     bool reachedEndOfPath = true;
     int currentWaypoint = 0;
     bool jumping = false;
-
+    SpriteRenderer spriteR;
     void Start(){
         seeker = GetComponent<Seeker>();
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         InvokeRepeating("RecalculatePath", 1f, 0.5f);
+        spriteR = GetComponent<SpriteRenderer>();
     }
 
     void RecalculatePath(){
@@ -52,14 +53,14 @@ public class platformerPathfinding : MonoBehaviour
             return;
         }
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
-        if(distanceFromTarget < 1f){
+        if(distanceFromTarget < 2f && distanceFromTarget >0.8f){
             animator.SetTrigger("uppercut");
             return;
         }
         if(path == null){
             return;
         }
-
+        
         reachedEndOfPath = false;
         float distanceToWaypoint;
         while (true) {
@@ -86,11 +87,29 @@ public class platformerPathfinding : MonoBehaviour
         Vector3 dest = path.vectorPath[currentWaypoint];
         if(dest.x < transform.position.x){
             //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
-            transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+            spriteR.flipX = true;
+            if (distanceFromTarget < 0.8f)
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+            }
+            
         }
         else if(dest.x > transform.position.x){
             //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            spriteR.flipX = false;
+            if (distanceFromTarget < 0.8f)
+            {
+                transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            }
+            
         }
         /*if(dest.y > transform.position.y && !jumping){
             rigidbody.AddForce(new Vector2(0f, jumpMultiplier));
