@@ -11,12 +11,14 @@ public class HasHealth : MonoBehaviour
     Animator animator;
     public bool parrying = false;
     bool parrycooldown = false;
+    SpriteRenderer sprite;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
-        if(healthBar)
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        if (healthBar)
             healthBar.SetMaxHealth(maxHealth);
     }
     private void Update()
@@ -53,8 +55,10 @@ public class HasHealth : MonoBehaviour
     {
         parrying = true;
         parrycooldown = true;
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.5f);
         yield return new WaitForSeconds(1);
         parrying = false;
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
         yield return new WaitForSeconds(3);
         parrycooldown = false;
     }
