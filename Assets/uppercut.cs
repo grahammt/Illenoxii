@@ -142,8 +142,11 @@ public class uppercut : MonoBehaviour
     IEnumerator daze()
     {
         player.GetComponent<platformerPathfinding>().dazed = true;
+        player.GetComponent<Animator>().SetTrigger("Dazed");
+        player.GetComponent<platformerPathfinding>().dazed = true;
+        yield return new WaitForSeconds(2f);
         
-        yield return new WaitForSeconds(2);
+        
         player.GetComponent<platformerPathfinding>().dazed = false;
     }
 }
