@@ -114,10 +114,10 @@ TextureImporter:
       name: P3_player_uppercut_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 77
-        width: 18
-        height: 33
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,10 +135,10 @@ TextureImporter:
       name: P3_player_uppercut_1
       rect:
         serializedVersion: 2
-        x: 89
-        y: 78
-        width: 11
-        height: 32
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: P3_player_uppercut_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 13
-        width: 16
-        height: 33
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: P3_player_uppercut_3
       rect:
         serializedVersion: 2
-        x: 86
-        y: 13
-        width: 19
-        height: 35
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

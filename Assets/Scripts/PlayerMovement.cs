@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSprite;
     private Animator playerAnim;
+    public Animator lowerBodyAnim;
+    public SpriteRenderer lowerBodySprite;
 
     // state variables
     public enum movementState{idle, running, dashing};
@@ -98,20 +100,25 @@ public class PlayerMovement : MonoBehaviour
             // Go over horizontal player input
             if (Input.GetKey(KeyCode.D)) {
                 playerSprite.flipX = false;
+                lowerBodySprite.flipX = false;
                 state = movementState.running;
                 direction = 1f;
                 playerAnim.SetBool("isRunning", true);
+                lowerBodyAnim.SetBool("isRunning", true);
             }
             else if(Input.GetKey(KeyCode.A)){
                 playerSprite.flipX = true;
+                lowerBodySprite.flipX = true;
                 state = movementState.running;
                 direction = -1f;
                 playerAnim.SetBool("isRunning", true);
+                lowerBodyAnim.SetBool("isRunning", true);
             }
             else {
                 playerRb.velocity = new Vector2(0f, playerRb.velocity.y);
                 state = movementState.idle;
                 playerAnim.SetBool("isRunning", false);
+                lowerBodyAnim.SetBool("isRunning", false);
             }
         }
 
@@ -136,7 +143,9 @@ public class PlayerMovement : MonoBehaviour
 
             // message the animator
             playerAnim.SetBool("isRunning", false);
+            lowerBodyAnim.SetBool("isRunning", false);
             playerAnim.SetTrigger("Dash");
+            lowerBodyAnim.SetBool("isMidair", true);
 
             // update the dash trail
             // look for an available dash charge
@@ -161,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
         // then check for player jump
         if (Input.GetKeyDown(KeyCode.Space) && onGround()) {
             playerRb.AddForce(new Vector2(0, jump_multiplier));
+            lowerBodyAnim.SetBool("isMidair", true);
         }
     }
 
@@ -176,6 +186,9 @@ public class PlayerMovement : MonoBehaviour
             // dashes[0].onCooldown = false;
             // dashes[1].onCooldown = false;
             // dashCharges = 2;
+            if(onGround()){
+                lowerBodyAnim.SetBool("isMidair", false);
+            }
         }
     }
 

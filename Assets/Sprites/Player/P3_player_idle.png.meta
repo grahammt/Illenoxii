@@ -108,12 +108,12 @@ TextureImporter:
       name: P3_player_idle_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 77
-        width: 18
-        height: 34
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: P3_player_idle_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 13
-        width: 18
-        height: 34
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -117,10 +117,10 @@ TextureImporter:
       name: P3_player_jab_midair_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 144
-        width: 18
-        height: 30
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,10 +138,10 @@ TextureImporter:
       name: P3_player_jab_midair_1
       rect:
         serializedVersion: 2
-        x: 88
-        y: 144
-        width: 12
-        height: 30
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: P3_player_jab_midair_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 80
-        width: 20
-        height: 30
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,10 +180,10 @@ TextureImporter:
       name: P3_player_jab_midair_3
       rect:
         serializedVersion: 2
-        x: 88
-        y: 80
-        width: 12
-        height: 30
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,10 +201,10 @@ TextureImporter:
       name: P3_player_jab_midair_4
       rect:
         serializedVersion: 2
-        x: 22
-        y: 16
-        width: 18
-        height: 30
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
