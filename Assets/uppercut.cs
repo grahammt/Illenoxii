@@ -14,13 +14,14 @@ public class uppercut : MonoBehaviour
     BoxCollider2D hitbox;
     public bool active;
     public Animator animator;
-
+    Rigidbody2D rigidbody2;
 
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
         hitboxSprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<BoxCollider2D>();
+        rigidbody2 = player.GetComponent<Rigidbody2D>();
         active = false;
     }
 
@@ -36,7 +37,7 @@ public class uppercut : MonoBehaviour
             transform.localPosition = new Vector3(0.5f, 0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s"))
         {
 
             if (playerSprite.flipX)
@@ -116,10 +117,33 @@ public class uppercut : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<HasHealth>().takeDamage(25,500);
-
+            rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
+            rigidbody2.AddForce(new Vector2(0f, 30f));
         }
+        else
+        {
+            if(player.CompareTag("Enemy") && other.gameObject.tag == "Player")
+            {
+                if (other.gameObject.GetComponent<HasHealth>().parrying)
+                {
+                    StartCoroutine("daze");
+                }
+                else
+                {
+                    other.gameObject.GetComponent<HasHealth>().takeDamage(5, 500);
+                }
+                
+            }
+        }
+    }
+    IEnumerator daze()
+    {
+        player.GetComponent<platformerPathfinding>().dazed = true;
+        
+        yield return new WaitForSeconds(2);
+        player.GetComponent<platformerPathfinding>().dazed = false;
     }
 }

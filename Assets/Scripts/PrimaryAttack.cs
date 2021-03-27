@@ -9,9 +9,10 @@ public class PrimaryAttack : MonoBehaviour
     SpriteRenderer playerSprite;
     BoxCollider2D hitbox;
     bool onCooldown = false;
-
+    Rigidbody2D rigidbody;
     void Start(){
         playerSprite = player.GetComponent<SpriteRenderer>();
+        rigidbody = player.GetComponent<Rigidbody2D>();
         hitbox = GetComponent<BoxCollider2D>();
     }
 
@@ -42,8 +43,11 @@ public class PrimaryAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(10);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(10,0);
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            rigidbody.AddForce(new Vector2(0f, 30f));
         }
+        
     }
 
 }

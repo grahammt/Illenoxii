@@ -54,6 +54,7 @@ public class platformerPathfinding : MonoBehaviour
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
         if(distanceFromTarget < 1f){
             animator.SetTrigger("uppercut");
+            return;
         }
         if(path == null){
             return;

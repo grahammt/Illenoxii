@@ -52,13 +52,13 @@ public class InputToPlayerAttacks : MonoBehaviour
             //     GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
             // }
             // PrimaryAttack();
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
-            rigidbody.AddForce(new Vector2(0f, 30f));
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+            //rigidbody.AddForce(new Vector2(0f, 30f));
         }
         if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
             //if (rigidbody.velocity.y != 0){
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
-            rigidbody.AddForce(new Vector2(0f, 30f));
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+            //rigidbody.AddForce(new Vector2(0f, 30f));
             //}
             SecondaryAttack();
         }       

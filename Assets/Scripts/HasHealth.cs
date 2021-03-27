@@ -9,7 +9,8 @@ public class HasHealth : MonoBehaviour
     float currentHealth;
     Rigidbody2D rigidbody;
     Animator animator;
-
+    public bool parrying = false;
+    bool parrycooldown = false;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -18,7 +19,13 @@ public class HasHealth : MonoBehaviour
         if(healthBar)
             healthBar.SetMaxHealth(maxHealth);
     }
-
+    private void Update()
+    {
+        if (gameObject.CompareTag("Player") && Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
+        {
+            StartCoroutine("parry");
+        }
+    }
     public void takeDamage(float dmg){
         currentHealth -= dmg;
         if(healthBar)
@@ -42,32 +49,44 @@ public class HasHealth : MonoBehaviour
             EventBus.Publish<IncrementCombo>(new IncrementCombo());
         }
     }
-
+    IEnumerator parry()
+    {
+        parrying = true;
+        parrycooldown = true;
+        yield return new WaitForSeconds(1);
+        parrying = false;
+        yield return new WaitForSeconds(3);
+        parrycooldown = false;
+    }
     public void takeDamage(float dmg, float knockback)
     {
-        currentHealth -= dmg;
-        if(healthBar)
-            healthBar.SetCurrHealth(currentHealth);
-        if (gameObject.CompareTag("Enemy"))
+        if (!parrying)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
-            rigidbody.AddForce(new Vector3(0,knockback,0));
-            if(animator)
-                animator.SetTrigger("Dazed");
+            currentHealth -= dmg;
+            if (healthBar)
+                healthBar.SetCurrHealth(currentHealth);
+            if (gameObject.CompareTag("Enemy"))
+            {
+                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+                rigidbody.AddForce(new Vector3(0, knockback, 0));
+                if (animator)
+                    animator.SetTrigger("Dazed");
+            }
+            Debug.Log("Took " + dmg + " dmg");
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Player" && !parrying)
+            {
+                EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
+            }
+            else if (gameObject.tag == "Enemy")
+            {
+                EventBus.Publish<IncrementCombo>(new IncrementCombo());
+            }
         }
-        Debug.Log("Took " + dmg + " dmg");
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-        if (gameObject.tag == "Player")
-        {
-            EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
-        }
-        else if (gameObject.tag == "Enemy")
-        {
-            EventBus.Publish<IncrementCombo>(new IncrementCombo());
-        }
+        
     }
 }
 
