@@ -37,7 +37,7 @@ public class uppercut : MonoBehaviour
             transform.localPosition = new Vector3(0.5f, 0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s"))
+        if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s"))
         {
 
             if (playerSprite.flipX)
