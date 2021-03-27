@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     Camera cam;
     Vector3 dashStart;
     Vector3 dashDest;
+    public int dashComboCost;
 
     void Start(){
         // caching components
@@ -123,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // then check dash command
-        if(dashCharges > 0 && Input.GetKeyDown("e")){
+        if(dashCharges > 0 && Input.GetKeyDown("e") && GetComponent<ComboUI>().currentCombo >= dashComboCost){
             // get mouse position, set z component to 0
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             mousePos[2] = 0f;

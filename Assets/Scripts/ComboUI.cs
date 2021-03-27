@@ -7,7 +7,7 @@ public class ComboUI : MonoBehaviour
 {
     Subscription<ResetComboEvent> combo_event_subcription;
     Subscription<IncrementCombo> increment_event_subscription;
-    int currentCombo = 0;
+    public int currentCombo = 0;
     public float duration = 3.0f;
     private Coroutine timer;
     // Start is called before the first frame update
@@ -19,7 +19,9 @@ public class ComboUI : MonoBehaviour
 
     void Update(){
         if (currentCombo == 0){
-            GetComponent<Text>().text = "";
+            if (GetComponent<Text>() != null){
+                GetComponent<Text>().text = "";
+            }
         }
     }
     void _OnResetCombo(ResetComboEvent e)
@@ -27,7 +29,9 @@ public class ComboUI : MonoBehaviour
         if (timer!= null){
             StopCoroutine(Timer());
         }
-        GetComponent<Text>().text = "Combo x" + e.new_combo +"!";
+        if (GetComponent<Text>() != null){
+            GetComponent<Text>().text = "Combo x" + e.new_combo +"!";
+        }
         currentCombo = e.new_combo;
     }
 
@@ -36,7 +40,9 @@ public class ComboUI : MonoBehaviour
             StopCoroutine(timer);
         }
         currentCombo += e.inc_amt;
-        GetComponent<Text>().text = "Combo x" + currentCombo  +"!";
+        if (GetComponent<Text>() != null){
+            GetComponent<Text>().text = "Combo x" + currentCombo  +"!";
+        }
         timer = StartCoroutine(Timer());
     }
     public IEnumerator Timer(){
@@ -50,3 +56,23 @@ public class ComboUI : MonoBehaviour
         EventBus.Unsubscribe(increment_event_subscription);
     }
 }
+
+public class ResetComboEvent {
+    public int new_combo = 0;
+    public ResetComboEvent(int _new_combo){
+        new_combo = _new_combo;
+    }
+
+    public override string ToString(){
+        return "Combo x" + new_combo + "!";
+    }
+}
+
+public class IncrementCombo{
+    public int inc_amt = 1;
+    public IncrementCombo(){}
+    public IncrementCombo(int _inc_amt){
+        inc_amt = _inc_amt;
+    }
+}
+

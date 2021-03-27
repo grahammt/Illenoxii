@@ -200,6 +200,7 @@ MonoBehaviour:
   slideAnimObj: {fileID: 8701668535620295634}
   player: {fileID: 8701668536146513565}
   animator: {fileID: 8701668536146513555}
+  comboCost: 0
 --- !u!61 &8701668535620295639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -366,6 +367,7 @@ GameObject:
   - component: {fileID: 8701668536146513555}
   - component: {fileID: 8701668536146513553}
   - component: {fileID: 8701668536146513554}
+  - component: {fileID: 5209632291105401892}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -538,8 +540,8 @@ MonoBehaviour:
   movement_speed: 5
   dashDistance: 10
   jump_multiplier: 500
-  lowerBodyAnim: {fileID: 0}
-  lowerBodySprite: {fileID: 0}
+  lowerBodyAnim: {fileID: 3591953065201243087}
+  lowerBodySprite: {fileID: 2063150388919847450}
   dashTrail1: {fileID: 0}
   dashTrail2: {fileID: 0}
 --- !u!114 &8701668536146513554
@@ -557,6 +559,20 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 8701668535733150355}
   parrying: 0
+--- !u!114 &5209632291105401892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701668536146513565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824076ddeedcc854f8eb865066fa4f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCombo: 0
+  duration: 3
 --- !u!1 &8701668536350038016
 GameObject:
   m_ObjectHideFlags: 0

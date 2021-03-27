@@ -15,6 +15,7 @@ public class uppercut : MonoBehaviour
     public bool active;
     public Animator animator;
     Rigidbody2D rigidbody2;
+    public int comboCost;
 
     void Start()
     {
@@ -37,24 +38,25 @@ public class uppercut : MonoBehaviour
             transform.localPosition = new Vector3(0.5f, 0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s"))
-        {
-
-            if (playerSprite.flipX)
+        if (GetComponentInParent<ComboUI>() != null){
+            if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
             {
-                //hitbox.enabled = true;
-                //hitboxSprite.enabled = true;
-                //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(-10000, 0, 0));
+                if (playerSprite.flipX)
+                {
+                    //hitbox.enabled = true;
+                    //hitboxSprite.enabled = true;
+                    //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(-10000, 0, 0));
+                }
+                else
+                {
+                    //hitbox.enabled = true;
+                    //hitboxSprite.enabled = true;
+                    //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(10000, 0, 0));
+                }
+                StartCoroutine("DashAttackCooldown");
             }
-            else
-            {
-                //hitbox.enabled = true;
-                //hitboxSprite.enabled = true;
-                //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(10000, 0, 0));
-            }
-
-            StartCoroutine("DashAttackCooldown");
         }
+        
     }
 
     IEnumerator DashAttackCooldown()
@@ -119,7 +121,7 @@ public class uppercut : MonoBehaviour
     {
         if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25,500);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25,250);
             rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
             rigidbody2.AddForce(new Vector2(0f, 30f));
         }
