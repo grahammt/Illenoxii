@@ -9,7 +9,10 @@ public class ComboUI : MonoBehaviour
     Subscription<IncrementCombo> increment_event_subscription;
     public int currentCombo = 0;
     public float duration = 3.0f;
+    public Image background;
+    public Image SecondBackground;
     private Coroutine timer;
+    private float progress;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,11 @@ public class ComboUI : MonoBehaviour
             if (GetComponent<Text>() != null){
                 GetComponent<Text>().text = "";
             }
+            if (background!= null){
+                SecondBackground.fillAmount = 0;
+                progress = 0;
+                background.fillAmount = 0;
+            }
         }
     }
     void _OnResetCombo(ResetComboEvent e)
@@ -30,7 +38,12 @@ public class ComboUI : MonoBehaviour
             StopCoroutine(Timer());
         }
         if (GetComponent<Text>() != null){
-            GetComponent<Text>().text = "Combo x" + e.new_combo +"!";
+            GetComponent<Text>().text = "x" + e.new_combo +"!";
+        }
+        if (background != null){
+            SecondBackground.fillAmount = 0;
+            progress = 0;
+            background.fillAmount = 0;
         }
         currentCombo = e.new_combo;
     }
@@ -41,14 +54,23 @@ public class ComboUI : MonoBehaviour
         }
         currentCombo += e.inc_amt;
         if (GetComponent<Text>() != null){
-            GetComponent<Text>().text = "Combo x" + currentCombo  +"!";
+            GetComponent<Text>().text = "x" + currentCombo  +"!";
         }
         timer = StartCoroutine(Timer());
     }
     public IEnumerator Timer(){
-        Debug.Log("Start Timer");
-        yield return new WaitForSeconds(duration);
-        EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
+        if (background != null){
+            SecondBackground.fillAmount = 1;
+            float initial_time = Time.time;
+            progress = 1 - (Time.time - initial_time)/duration;
+            while (progress>0.0f){
+                progress = 1 - (Time.time - initial_time)/duration;
+                background.fillAmount = progress;
+                yield return null;
+            }
+            background.fillAmount = 0;
+            EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
+        }
     }
 
     private void OnDestroy(){
