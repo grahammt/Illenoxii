@@ -13,6 +13,7 @@ public class SlideAttack : MonoBehaviour
     SpriteRenderer hitboxSprite;
     BoxCollider2D hitbox;
     public Animator animator;
+    public Animator lowerBodyAnim;
     public int comboCost;
 
     void Start()
@@ -59,6 +60,7 @@ public class SlideAttack : MonoBehaviour
     {
         onCooldown = true;
         animator.SetTrigger("slide");
+        lowerBodyAnim.SetTrigger("slide");
         if (playerSprite.flipX)
         {
             int i = 100;
