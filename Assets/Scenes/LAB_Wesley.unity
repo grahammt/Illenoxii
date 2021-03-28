@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCombo: 0
   duration: 3
+  background: {fileID: 0}
+  SecondBackground: {fileID: 0}
 --- !u!114 &112486926
 MonoBehaviour:
   m_ObjectHideFlags: 0
