@@ -24009,9 +24009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dd847fc7239864a851a609804b6d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20000
+  maxHealth: 200
   healthBar: {fileID: 8394884588272990595}
   parrying: 0
+  damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
+    type: 3}
 --- !u!222 &3246225547744224852
 CanvasRenderer:
   m_ObjectHideFlags: 0

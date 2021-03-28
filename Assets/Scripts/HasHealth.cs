@@ -10,6 +10,7 @@ public class HasHealth : MonoBehaviour
     Rigidbody2D rigidbody;
     Animator animator;
     public bool parrying = false;
+    public DamageText damageTextPrefab;
     bool parrycooldown = false;
     SpriteRenderer sprite;
     void Start()
@@ -38,6 +39,11 @@ public class HasHealth : MonoBehaviour
             rigidbody.AddForce(new Vector3(0,200,0));
             if(animator)
                 animator.SetTrigger("Dazed");
+            if(damageTextPrefab){
+                DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
+                dmgtxt.damage = dmg;
+                dmgtxt.transform.position = transform.position;
+            }
         }
         Debug.Log("Took " + dmg + " dmg");
         if (currentHealth <= 0)
@@ -75,6 +81,11 @@ public class HasHealth : MonoBehaviour
                 rigidbody.AddForce(new Vector3(0, knockback, 0));
                 if (animator)
                     animator.SetTrigger("Dazed");
+                if(damageTextPrefab){
+                    DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
+                    dmgtxt.damage = dmg;
+                    dmgtxt.transform.position = transform.position;
+                }
             }
             Debug.Log("Took " + dmg + " dmg");
             if (currentHealth <= 0)
