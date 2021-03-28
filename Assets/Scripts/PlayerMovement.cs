@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
             // set various state variables
             state = movementState.dashing;
             playerSprite.flipX = dashDest.x < dashStart.x;
+            lowerBodySprite.flipX = dashDest.x < dashStart.x;
 
             // message the animator
             playerAnim.SetBool("isRunning", false);
