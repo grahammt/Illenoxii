@@ -35,7 +35,7 @@ public class SlideAttack : MonoBehaviour
             transform.localPosition = new Vector3(0.7f, -0.3f, 0);
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
+        if (!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
         {
 
             if (playerSprite.flipX)

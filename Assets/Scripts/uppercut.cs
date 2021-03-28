@@ -39,7 +39,7 @@ public class uppercut : MonoBehaviour
             //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
         }
         if (GetComponentInParent<ComboUI>() != null){
-            if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
+            if (player.CompareTag("Player") && !player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
             {
                 if (playerSprite.flipX)
                 {

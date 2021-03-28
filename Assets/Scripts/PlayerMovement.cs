@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnim;
     public Animator lowerBodyAnim;
     public SpriteRenderer lowerBodySprite;
-
+    public bool stunned = false;
     // state variables
     public enum movementState{idle, running, dashing, grapple};
     movementState state = movementState.idle;
@@ -77,7 +77,25 @@ public class PlayerMovement : MonoBehaviour
             default:
                 break;
         }
-
+        if (stunned)
+        {
+            playerAnim.SetBool("isRunning", true);
+            //lowerBodyAnim.SetBool("isMidair", true);
+            playerSprite.color = new Color(1, 0.5f*playerSprite.color.g, 0.5f*playerSprite.color.b);
+            lowerBodySprite.color = new Color(1, 0.5f * playerSprite.color.g, 0.5f * playerSprite.color.b);
+        }
+        else
+        {
+            playerSprite.color = new Color(1, 1, 1);
+            lowerBodySprite.color = new Color(1, 1, 1);
+            /**if (onGround())
+            {
+                lowerBodyAnim.SetBool("isMidair", false);
+            }*/
+        }
+        {
+            
+        }
         if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -132,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // then check dash command
-        if(dashCharges > 0 && Input.GetKeyDown("e") && GetComponent<ComboUI>().currentCombo >= dashComboCost){
+        if(!stunned && dashCharges > 0 && Input.GetKeyDown("e") && GetComponent<ComboUI>().currentCombo >= dashComboCost){
             // get mouse position, set z component to 0
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             mousePos[2] = 0f;
@@ -178,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // check grapple
-        if (Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
+        if (!stunned && Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
             // set various state variables
             state = movementState.grapple;
             Vector3 grappleOffset = getOrientation() ? new Vector3(-.5f, 0, 0) : new Vector3(.5f, 0, 0);

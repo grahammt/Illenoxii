@@ -542,8 +542,11 @@ MonoBehaviour:
   jump_multiplier: 500
   lowerBodyAnim: {fileID: 3591953065201243087}
   lowerBodySprite: {fileID: 2063150388919847450}
+  stunned: 0
   dashTrail1: {fileID: 0}
   dashTrail2: {fileID: 0}
+  dashComboCost: 0
+  grappleComboCost: 0
 --- !u!114 &8701668536146513554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +562,9 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 8701668535733150355}
   parrying: 0
+  damageTextPrefab: {fileID: 0}
+  stunNeeded: 5
+  currentStun: 0
 --- !u!114 &5209632291105401892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCombo: 0
   duration: 3
+  background: {fileID: 0}
+  SecondBackground: {fileID: 0}
 --- !u!1 &8701668536350038016
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,6 +68,18 @@ public class HasHealth : MonoBehaviour
                 {
                     gameObject.GetComponent<platformerPathfinding>().dazed = false;
                 }
+          
+            }
+        }
+        if (gameObject.CompareTag("Player")){
+            if (currentStun > stunNeeded)
+            {
+                gameObject.GetComponent<PlayerMovement>().stunned = true;
+                
+            }
+            else
+            {
+                gameObject.GetComponent<PlayerMovement>().stunned = false;
             }
         }
         if (gameObject.CompareTag("Player") && Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
@@ -93,18 +105,12 @@ public class HasHealth : MonoBehaviour
                 }
             }
             Debug.Log("Took " + dmg + " dmg");
-            currentHealth -= dmg;
+            
             currentStun += dmg;
-            if (healthBar)
-                healthBar.SetCurrHealth(currentHealth);
-            if (gameObject.CompareTag("Enemy"))
+            if (gameObject.CompareTag("Player"))
             {
-                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
-                rigidbody.AddForce(new Vector3(0, 200, 0));
-                /**if (animator)
-                    animator.SetTrigger("Dazed");*/
+                currentStun += dmg;
             }
-            Debug.Log("Took " + dmg + " dmg");
             if (currentHealth <= 0)
             {
                 Destroy(gameObject);
@@ -140,6 +146,10 @@ public class HasHealth : MonoBehaviour
         if (!parrying)
         {
             currentStun += dmg;
+            if (gameObject.CompareTag("Player"))
+            {
+                currentStun += dmg;
+            }
             currentHealth -= dmg;
             if (healthBar)
                 healthBar.SetCurrHealth(currentHealth);

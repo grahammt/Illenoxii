@@ -25,7 +25,7 @@ public class PrimaryAttack : MonoBehaviour
             transform.localPosition = new Vector3(0.5f, 0.3f, 0);
         }
         // TODO: Animate the attack
-        if(Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && !Input.GetKey("s")){
+        if(!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && !Input.GetKey("s")){
              StartCoroutine("PrimaryAttackCooldown");
         }
     }

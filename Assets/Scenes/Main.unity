@@ -21286,6 +21286,11 @@ PrefabInstance:
       propertyPath: lowerBodySprite
       value: 
       objectReference: {fileID: 1564242645}
+    - target: {fileID: 8701668536146513554, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: stunNeeded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8701668536146513564, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: m_RootOrder
