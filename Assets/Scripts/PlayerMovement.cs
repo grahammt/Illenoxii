@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Variables for grapple
     public int grappleComboCost = 0;
-    private float grappleCooldown = 5f;
+    private float grappleCooldown = 3f;
     private bool onGrappleCooldown = false;
 
     void Start(){
@@ -180,18 +180,19 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
             // set various state variables
             state = movementState.grapple;
-            Vector3 grappleOffset = getOrientation() ? new Vector3(.5f, 0, 0) : new Vector3(-.5f, 0, 0);
+            Vector3 grappleOffset = getOrientation() ? new Vector3(-.5f, 0, 0) : new Vector3(.5f, 0, 0);
             // playerSprite.flipX = dashDest.x < dashStart.x;
 
             // message the animator
             playerAnim.SetBool("isRunning", false);
             lowerBodyAnim.SetBool("isRunning", false);
             // playerAnim.SetTrigger("Dash");
-            lowerBodyAnim.SetBool("isMidair", true);
+            // lowerBodyAnim.SetBool("isMidair", true);
 
             // spawn the grappler
             GameObject grapObj = Resources.Load<GameObject>("Grapple");
             GameObject grapple = Instantiate(grapObj, transform.position + grappleOffset, Quaternion.identity);
+            StartCoroutine("GrappleMain");
 
         }
 
