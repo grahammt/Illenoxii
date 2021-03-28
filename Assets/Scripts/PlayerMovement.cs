@@ -164,8 +164,9 @@ public class PlayerMovement : MonoBehaviour
                     if(angle < 0){
                         angle += 360;
                     }
+                    dashes[0].tf.localScale = new Vector3(dashVec.magnitude, 2f, 0);
                     dashes[0].tf.eulerAngles = new Vector3(0f, 0f, angle);
-                    dashes[0].tf.position = transform.position;
+                    dashes[0].tf.position = transform.position + dashVec / 2;
                     dashes[0].anim.SetTrigger("Dash");
                     // dashes[0].onCooldown = true;
                     // --dashCharges;

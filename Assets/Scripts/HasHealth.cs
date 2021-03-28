@@ -10,6 +10,7 @@ public class HasHealth : MonoBehaviour
     Rigidbody2D rigidbody;
     Animator animator;
     public bool parrying = false;
+    public DamageText damageTextPrefab;
     bool parrycooldown = false;
     SpriteRenderer sprite;
     public int stunNeeded = 25;
@@ -67,7 +68,23 @@ public class HasHealth : MonoBehaviour
         }
     }
     public void takeDamage(float dmg){
-        if (!parrying)
+        if (!parrying){
+            currentHealth -= dmg;
+        if(healthBar)
+            healthBar.SetCurrHealth(currentHealth);
+        if (gameObject.CompareTag("Enemy"))
+        {
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+            rigidbody.AddForce(new Vector3(0,200,0));
+            
+            if(damageTextPrefab){
+                DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
+                dmgtxt.damage = dmg;
+                dmgtxt.transform.position = transform.position;
+            }
+        }
+        Debug.Log("Took " + dmg + " dmg");
+        if (currentHealth <= 0)
         {
             currentHealth -= dmg;
             currentStun += dmg;
@@ -94,6 +111,8 @@ public class HasHealth : MonoBehaviour
                 EventBus.Publish<IncrementCombo>(new IncrementCombo());
             }
         }
+        }
+        
 
     }
     IEnumerator parry()
@@ -121,6 +140,12 @@ public class HasHealth : MonoBehaviour
                 rigidbody.AddForce(new Vector3(0, knockback, 0));
                 /**if (animator)
                     animator.SetTrigger("Dazed");*/
+                
+                if(damageTextPrefab){
+                    DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
+                    dmgtxt.damage = dmg;
+                    dmgtxt.transform.position = transform.position;
+                }
             }
             Debug.Log("Took " + dmg + " dmg");
             if (currentHealth <= 0)

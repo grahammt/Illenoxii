@@ -292,7 +292,8 @@ MonoBehaviour:
   maxHealth: 200
   healthBar: {fileID: 5307924800520873133}
   parrying: 0
-  stunNeeded: 20
+  damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
+    type: 3}
 --- !u!114 &6532987490210133823
 MonoBehaviour:
   m_ObjectHideFlags: 0
