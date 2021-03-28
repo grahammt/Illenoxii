@@ -173,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
             lowerBodyAnim.SetBool("isRunning", false);
             playerAnim.SetTrigger("Dash");
             lowerBodyAnim.SetBool("isMidair", true);
+            playerAnim.SetBool("inMidair", true);
 
             // update the dash trail
             // look for an available dash charge
@@ -219,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && onGround()) {
             playerRb.AddForce(new Vector2(0, jump_multiplier));
             lowerBodyAnim.SetBool("isMidair", true);
+            playerAnim.SetBool("inMidair", true);
         }
     }
 
@@ -236,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
             // dashCharges = 2;
             if(onGround()){
                 lowerBodyAnim.SetBool("isMidair", false);
+                playerAnim.SetBool("inMidair", false);
             }
         }
     }
