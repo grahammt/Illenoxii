@@ -8,7 +8,7 @@ public class ComboUI : MonoBehaviour
     Subscription<ResetComboEvent> combo_event_subcription;
     Subscription<IncrementCombo> increment_event_subscription;
     public int currentCombo = 0;
-    public float duration = 3.0f;
+    public float duration = 5.0f;
     public Image background;
     public Image SecondBackground;
     private Coroutine timer;
@@ -18,6 +18,7 @@ public class ComboUI : MonoBehaviour
     {
         combo_event_subcription = EventBus.Subscribe<ResetComboEvent>(_OnResetCombo);
         increment_event_subscription = EventBus.Subscribe<IncrementCombo>(_OnComboUpdated);
+        duration--;
     }
 
     void Update(){
@@ -35,7 +36,7 @@ public class ComboUI : MonoBehaviour
     void _OnResetCombo(ResetComboEvent e)
     {
         if (timer!= null){
-            StopCoroutine(Timer());
+            StopCoroutine(timer);
         }
         if (GetComponent<Text>() != null){
             GetComponent<Text>().text = "x" + e.new_combo +"!";
@@ -56,9 +57,18 @@ public class ComboUI : MonoBehaviour
         if (GetComponent<Text>() != null){
             GetComponent<Text>().text = "x" + currentCombo  +"!";
         }
-        timer = StartCoroutine(Timer());
+        if (background != null){
+            SecondBackground.fillAmount = 1;
+            progress = 1;
+            background.fillAmount = 1;
+        }
+        StartCoroutine(SizeChange(1.25f, 0.25f));
+
     }
     public IEnumerator Timer(){
+        if (timer != null){
+            StopCoroutine(timer);
+        }
         if (background != null){
             SecondBackground.fillAmount = 1;
             float initial_time = Time.time;
@@ -71,6 +81,59 @@ public class ComboUI : MonoBehaviour
             background.fillAmount = 0;
             EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
         }
+    }
+
+    IEnumerator SizeChange(float scale, float time){
+        Vector3 start = new Vector3(1.0f, 1.0f, 1.0f);
+        Vector3 result = new Vector3(scale, scale, 1.0f);
+        if (transform.localScale != start){
+            start = transform.localScale;
+        }
+        float init_time = Time.time;
+        float prog = (Time.time - init_time) / time;
+        while (prog < 1.0f){
+            prog = (Time.time-init_time) / time;
+            Vector3 new_scale = Vector3.Lerp(start,result,prog);
+            if (GetComponent<Text>()!=null){
+                transform.localScale = new_scale;
+            }
+            if (background != null){
+                background.transform.localScale = new_scale;
+                SecondBackground.transform.localScale = new_scale;
+            }
+            yield return null;
+        }
+        if (GetComponent<Text>() != null){
+            transform.localScale = result;
+        }
+        if (background != null){
+            background.transform.localScale = result;
+            SecondBackground.transform.localScale = result;
+        }
+        start = new Vector3(1.0f, 1.0f, 1.0f);
+        init_time = Time.time;
+        prog = (Time.time - init_time) / time;
+        while (prog < 1.0f){
+            prog = (Time.time-init_time) / time;
+            Vector3 new_scale = Vector3.Lerp(result,start,prog);
+            if (GetComponent<Text>()!=null){
+                transform.localScale = new_scale;
+            }
+            if (background != null){
+                background.transform.localScale = new_scale;
+                SecondBackground.transform.localScale = new_scale;
+            }
+            yield return null;
+        }
+        if (GetComponent<Text>() != null){
+            transform.localScale = start;
+        }
+        if (background != null){
+            background.transform.localScale = start;
+            SecondBackground.transform.localScale = start;
+        }
+        timer = StartCoroutine(Timer());
+        yield return timer;
     }
 
     private void OnDestroy(){
@@ -86,7 +149,7 @@ public class ResetComboEvent {
     }
 
     public override string ToString(){
-        return "Combo x" + new_combo + "!";
+        return "x" + new_combo + "!";
     }
 }
 
