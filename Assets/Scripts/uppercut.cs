@@ -121,7 +121,7 @@ public class uppercut : MonoBehaviour
     {
         if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25,250);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25,350);
             rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
             rigidbody2.AddForce(new Vector2(0f, 30f));
         }
@@ -143,12 +143,12 @@ public class uppercut : MonoBehaviour
     }
     IEnumerator daze()
     {
-        player.GetComponent<platformerPathfinding>().dazed = true;
+        player.GetComponent<platformerPathfinding>().pdazed = true;
         player.GetComponent<Animator>().SetTrigger("Dazed");
-        player.GetComponent<platformerPathfinding>().dazed = true;
-        yield return new WaitForSeconds(2f);
+        player.GetComponent<platformerPathfinding>().pdazed = true;
+        yield return new WaitForSeconds(1f);
         
         
-        player.GetComponent<platformerPathfinding>().dazed = false;
+        player.GetComponent<platformerPathfinding>().pdazed = false;
     }
 }

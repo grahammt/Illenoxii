@@ -12,44 +12,89 @@ public class HasHealth : MonoBehaviour
     public bool parrying = false;
     bool parrycooldown = false;
     SpriteRenderer sprite;
+    public int stunNeeded = 25;
+    public double currentStun = 0;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        StartCoroutine("stunreset");
         if (healthBar)
             healthBar.SetMaxHealth(maxHealth);
     }
+    IEnumerator stunreset()
+    {
+        while (true)
+        {
+            if (currentStun > 0)
+            {
+                if (currentStun > 10)
+                {
+                    currentStun -= currentStun*0.01f;
+                }
+                else
+                {
+                    currentStun -= 0.1f;
+                }
+                
+            }
+            yield return null;
+        }
+    }
     private void Update()
     {
+        if(gameObject.CompareTag("Enemy"))
+        {
+            if(gameObject.GetComponent<platformerPathfinding>() != null )
+            {
+                if (currentStun > stunNeeded)
+                {
+                    if (animator)
+                        animator.SetTrigger("Dazed");
+                    gameObject.GetComponent<platformerPathfinding>().dazed = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<platformerPathfinding>().dazed = false;
+                }
+            }
+        }
         if (gameObject.CompareTag("Player") && Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
         {
             StartCoroutine("parry");
         }
     }
     public void takeDamage(float dmg){
-        currentHealth -= dmg;
-        if(healthBar)
-            healthBar.SetCurrHealth(currentHealth);
-        if (gameObject.CompareTag("Enemy"))
+        if (!parrying)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
-            rigidbody.AddForce(new Vector3(0,200,0));
-            if(animator)
-                animator.SetTrigger("Dazed");
+            currentHealth -= dmg;
+            currentStun += dmg;
+            if (healthBar)
+                healthBar.SetCurrHealth(currentHealth);
+            if (gameObject.CompareTag("Enemy"))
+            {
+                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+                rigidbody.AddForce(new Vector3(0, 200, 0));
+                /**if (animator)
+                    animator.SetTrigger("Dazed");*/
+            }
+            Debug.Log("Took " + dmg + " dmg");
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Player")
+            {
+                EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
+            }
+            else if (gameObject.tag == "Enemy")
+            {
+                EventBus.Publish<IncrementCombo>(new IncrementCombo());
+            }
         }
-        Debug.Log("Took " + dmg + " dmg");
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-        if (gameObject.tag == "Player"){
-            EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
-        }
-        else if (gameObject.tag == "Enemy"){
-            EventBus.Publish<IncrementCombo>(new IncrementCombo());
-        }
+
     }
     IEnumerator parry()
     {
@@ -66,6 +111,7 @@ public class HasHealth : MonoBehaviour
     {
         if (!parrying)
         {
+            currentStun += dmg;
             currentHealth -= dmg;
             if (healthBar)
                 healthBar.SetCurrHealth(currentHealth);
@@ -73,8 +119,8 @@ public class HasHealth : MonoBehaviour
             {
                 rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
                 rigidbody.AddForce(new Vector3(0, knockback, 0));
-                if (animator)
-                    animator.SetTrigger("Dazed");
+                /**if (animator)
+                    animator.SetTrigger("Dazed");*/
             }
             Debug.Log("Took " + dmg + " dmg");
             if (currentHealth <= 0)

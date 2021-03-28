@@ -292,6 +292,7 @@ MonoBehaviour:
   maxHealth: 200
   healthBar: {fileID: 5307924800520873133}
   parrying: 0
+  stunNeeded: 20
 --- !u!114 &6532987490210133823
 MonoBehaviour:
   m_ObjectHideFlags: 0

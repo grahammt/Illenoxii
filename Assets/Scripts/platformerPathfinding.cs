@@ -10,6 +10,7 @@ public class platformerPathfinding : MonoBehaviour
     public float nextWaypointDistance = 2f;
     public float jumpMultiplier = 300f;
     public bool dazed = false;
+    public bool pdazed = false;
 
 
     Rigidbody2D rigidbody;
@@ -49,7 +50,7 @@ public class platformerPathfinding : MonoBehaviour
     }
 
     void Update(){
-        if(dazed){
+        if(dazed || pdazed){
             return;
         }
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);

@@ -36,16 +36,16 @@ public class PrimaryAttack : MonoBehaviour
         playerAnim.SetTrigger("punch");
         onCooldown = true;
         //hitbox.enabled = true;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         //hitbox.enabled = false;
         onCooldown = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(10,0);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(5,0);
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            rigidbody.AddForce(new Vector2(0f, 30f));
+            rigidbody.AddForce(new Vector2(0f, 20f));
         }
         
     }
