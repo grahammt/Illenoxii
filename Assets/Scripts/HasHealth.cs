@@ -31,13 +31,21 @@ public class HasHealth : MonoBehaviour
         {
             if (currentStun > 0)
             {
-                if (currentStun > 10)
+                if (currentStun > 30)
                 {
                     currentStun -= currentStun*0.01f;
                 }
                 else
                 {
-                    currentStun -= 0.1f;
+                    if (currentStun > 20)
+                    {
+                        currentStun -= currentStun * 0.005f;
+                    }
+                    else
+                    {
+                        currentStun -= 0.1f;
+                    }
+                    
                 }
                 
             }
@@ -70,22 +78,21 @@ public class HasHealth : MonoBehaviour
     public void takeDamage(float dmg){
         if (!parrying){
             currentHealth -= dmg;
-        if(healthBar)
-            healthBar.SetCurrHealth(currentHealth);
-        if (gameObject.CompareTag("Enemy"))
-        {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
-            rigidbody.AddForce(new Vector3(0,200,0));
-            
-            if(damageTextPrefab){
-                DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
-                dmgtxt.damage = dmg;
-                dmgtxt.transform.position = transform.position;
+            if (healthBar)
+                healthBar.SetCurrHealth(currentHealth);
+            if (gameObject.CompareTag("Enemy"))
+            {
+                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
+                rigidbody.AddForce(new Vector3(0, 200, 0));
+
+                if (damageTextPrefab)
+                {
+                    DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
+                    dmgtxt.damage = dmg;
+                    dmgtxt.transform.position = transform.position;
+                }
             }
-        }
-        Debug.Log("Took " + dmg + " dmg");
-        if (currentHealth <= 0)
-        {
+            Debug.Log("Took " + dmg + " dmg");
             currentHealth -= dmg;
             currentStun += dmg;
             if (healthBar)
@@ -110,7 +117,9 @@ public class HasHealth : MonoBehaviour
             {
                 EventBus.Publish<IncrementCombo>(new IncrementCombo());
             }
-        }
+
+
+
         }
         
 

@@ -116,7 +116,7 @@ public class SlideAttack : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25);
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25,300);
             
         }
     }

@@ -121,9 +121,13 @@ public class uppercut : MonoBehaviour
     {
         if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25,350);
-            rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
-            rigidbody2.AddForce(new Vector2(0f, 30f));
+            other.gameObject.GetComponent<HasHealth>().takeDamage(25,500);
+            if (rigidbody2.velocity.y <= 0)
+            {
+                rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
+                rigidbody2.AddForce(new Vector2(0f, 30f));
+            }
+            
         }
         else
         {

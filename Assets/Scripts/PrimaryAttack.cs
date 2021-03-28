@@ -44,8 +44,12 @@ public class PrimaryAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {
             other.gameObject.GetComponent<HasHealth>().takeDamage(5,0);
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            rigidbody.AddForce(new Vector2(0f, 20f));
+            if (rigidbody.velocity.y <= 0)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+                rigidbody.AddForce(new Vector2(0f, 20f));
+            }
+            
         }
         
     }
