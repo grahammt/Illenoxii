@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer lowerBodySprite;
 
     // state variables
-    public enum movementState{idle, running, dashing};
+    public enum movementState{idle, running, dashing, grapple};
     movementState state = movementState.idle;
     float direction;
 
@@ -38,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dashDest;
     public int dashComboCost;
 
+    // Variables for grapple
+    public int grappleComboCost = 0;
+    private float grappleCooldown = 5f;
+    private bool onGrappleCooldown = false;
+
     void Start(){
         // caching components
         playerRb = GetComponent<Rigidbody2D>();
@@ -52,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
         dashes[1].anim = dashTrail2.GetComponentInChildren<Animator>();
         dashes[1].tf = dashTrail2.transform;
         dashes[1].idx = 1;
+
+        // Grapple event setup
+        EventBus.Subscribe<GrappleReturnEvent>(_GrappleReturn);
     }
 
     // Update is called once per frame
@@ -168,6 +176,25 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        // check grapple
+        if (Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
+            // set various state variables
+            state = movementState.grapple;
+            Vector3 grappleOffset = getOrientation() ? new Vector3(.5f, 0, 0) : new Vector3(-.5f, 0, 0);
+            // playerSprite.flipX = dashDest.x < dashStart.x;
+
+            // message the animator
+            playerAnim.SetBool("isRunning", false);
+            lowerBodyAnim.SetBool("isRunning", false);
+            // playerAnim.SetTrigger("Dash");
+            lowerBodyAnim.SetBool("isMidair", true);
+
+            // spawn the grappler
+            GameObject grapObj = Resources.Load<GameObject>("Grapple");
+            GameObject grapple = Instantiate(grapObj, transform.position + grappleOffset, Quaternion.identity);
+
+        }
+
         // then check for player jump
         if (Input.GetKeyDown(KeyCode.Space) && onGround()) {
             playerRb.AddForce(new Vector2(0, jump_multiplier));
@@ -199,6 +226,16 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(2.4f);
         dashes[dashIdx].onCooldown = false;
         dashCharges++;
+    }
+
+    IEnumerator GrappleMain() {
+        onGrappleCooldown = true;
+        yield return new WaitForSeconds(grappleCooldown);
+        onGrappleCooldown = false;
+    }
+
+    void _GrappleReturn(GrappleReturnEvent e) {
+        state = movementState.idle;
     }
 
     void MoveToDashDest(float prog){
