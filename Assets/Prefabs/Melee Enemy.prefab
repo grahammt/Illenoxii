@@ -294,6 +294,8 @@ MonoBehaviour:
   parrying: 0
   damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
     type: 3}
+  stunNeeded: 22
+  currentStun: 0
 --- !u!114 &6532987490210133823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +313,7 @@ MonoBehaviour:
   nextWaypointDistance: 2
   jumpMultiplier: 300
   dazed: 0
+  pdazed: 0
 --- !u!212 &9111033549587390556
 SpriteRenderer:
   m_ObjectHideFlags: 0

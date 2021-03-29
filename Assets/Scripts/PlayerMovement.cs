@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator lowerBodyAnim;
     public SpriteRenderer lowerBodySprite;
     public bool stunned = false;
+    bool colorRed = false;
+    bool colorBlue = false;
     // state variables
     public enum movementState{idle, running, dashing, grapple};
     movementState state = movementState.idle;
@@ -65,6 +67,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<HasHealth>().parrying)
+        {
+            colorBlue = true;
+            lowerBodySprite.color = new Color(0.5f, 0.5f, 1, 0.5f);
+        }
+        else
+        {
+            if (colorBlue)
+            {
+                colorBlue = false;
+                lowerBodySprite.color = new Color(1, 1, 1, 1);
+            }
+        }
         switch(state){
             case movementState.idle:
                 checkMovement();
@@ -83,11 +98,17 @@ public class PlayerMovement : MonoBehaviour
             //lowerBodyAnim.SetBool("isMidair", true);
             playerSprite.color = new Color(1, 0.5f*playerSprite.color.g, 0.5f*playerSprite.color.b);
             lowerBodySprite.color = new Color(1, 0.5f * playerSprite.color.g, 0.5f * playerSprite.color.b);
+            colorRed = true;
         }
         else
         {
-            playerSprite.color = new Color(1, 1, 1);
-            lowerBodySprite.color = new Color(1, 1, 1);
+            if (colorRed)
+            {
+                playerSprite.color = new Color(1, 1, 1);
+                lowerBodySprite.color = new Color(1, 1, 1);
+                colorRed = false;
+            }
+            
             /**if (onGround())
             {
                 lowerBodyAnim.SetBool("isMidair", false);
