@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public bool stunned = false;
     bool colorRed = false;
     bool colorBlue = false;
+    bool inMidair = true;
+
     // state variables
     public enum movementState{idle, running, dashing, grapple};
     movementState state = movementState.idle;
@@ -196,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetTrigger("Dash");
             lowerBodyAnim.SetBool("isMidair", true);
             playerAnim.SetBool("inMidair", true);
+            inMidair = true;
 
             // update the dash trail
             // look for an available dash charge
@@ -243,6 +246,7 @@ public class PlayerMovement : MonoBehaviour
             playerRb.AddForce(new Vector2(0, jump_multiplier));
             lowerBodyAnim.SetBool("isMidair", true);
             playerAnim.SetBool("inMidair", true);
+            inMidair = true;
         }
     }
 
@@ -261,6 +265,19 @@ public class PlayerMovement : MonoBehaviour
             if(onGround()){
                 lowerBodyAnim.SetBool("isMidair", false);
                 playerAnim.SetBool("inMidair", false);
+                inMidair = false;
+            }
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D other){
+        if(inMidair){
+            if(other.gameObject.CompareTag("Terrain")){
+                if(onGround()){
+                    lowerBodyAnim.SetBool("isMidair", false);
+                    playerAnim.SetBool("inMidair", false);
+                    inMidair = false;
+                }
             }
         }
     }
