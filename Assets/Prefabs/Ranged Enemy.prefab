@@ -255,6 +255,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 7605556131129372894}
+  parrying: 0
+  damageTextPrefab: {fileID: 0}
+  stunNeeded: 25
+  currentStun: 0
 --- !u!1 &6531560841550720031
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +443,6 @@ GameObject:
   - component: {fileID: 5183951504817226765}
   - component: {fileID: 4664352090626058462}
   - component: {fileID: 3630083133131330765}
-  - component: {fileID: 9156236548047908996}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -503,17 +506,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9156236548047908996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7508687666114601146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1ad1ad4ddf4ff45a72a6c459c3e1eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  fill: {fileID: 0}

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
     public Image fill;
+    public TextMeshProUGUI text;
 
     public void SetMaxHealth(float max_hp)
     {
@@ -17,6 +19,8 @@ public class HealthBar : MonoBehaviour
     public void SetCurrHealth(float curr_hp)
     {
         slider.value = curr_hp;
-        Debug.Log("Health set to " + curr_hp);
+        if(text){
+            text.text = "" + curr_hp + "/" + slider.maxValue;
+        }
     }
 }
