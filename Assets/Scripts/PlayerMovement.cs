@@ -41,11 +41,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dashStart;
     Vector3 dashDest;
     public int dashComboCost;
+    public AudioClip dashSound;
 
     // Variables for grapple
-    public int grappleComboCost = 0;
+    public int grappleComboCost = 1;
     private float grappleCooldown = 3f;
     private bool onGrappleCooldown = false;
+    public AudioClip grappleSound;
 
     void Start(){
         // caching components
@@ -188,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
             dashDest = dashStart + dashVec;
 
             // set various state variables
+            AudioSource.PlayClipAtPoint(dashSound, transform.position);
             state = movementState.dashing;
             playerSprite.flipX = dashDest.x < dashStart.x;
             lowerBodySprite.flipX = dashDest.x < dashStart.x;
@@ -224,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
         // check grapple
         if (!stunned && Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
             // set various state variables
+            AudioSource.PlayClipAtPoint(grappleSound, transform.position);
             state = movementState.grapple;
             Vector3 grappleOffset = getOrientation() ? new Vector3(-.5f, 0, 0) : new Vector3(.5f, 0, 0);
             // playerSprite.flipX = dashDest.x < dashStart.x;
@@ -231,6 +235,7 @@ public class PlayerMovement : MonoBehaviour
             // message the animator
             playerAnim.SetBool("isRunning", false);
             lowerBodyAnim.SetBool("isRunning", false);
+            playerAnim.SetBool("grapple", true);
             // playerAnim.SetTrigger("Dash");
             // lowerBodyAnim.SetBool("isMidair", true);
 
@@ -297,6 +302,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void _GrappleReturn(GrappleReturnEvent e) {
+        playerAnim.SetBool("grapple", false);
         state = movementState.idle;
     }
 

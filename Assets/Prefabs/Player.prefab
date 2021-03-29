@@ -443,7 +443,9 @@ MonoBehaviour:
   dashTrail1: {fileID: 0}
   dashTrail2: {fileID: 0}
   dashComboCost: 0
+  dashSound: {fileID: 8300000, guid: 865df510960aac941b018b678335e9c1, type: 3}
   grappleComboCost: 0
+  grappleSound: {fileID: 8300000, guid: ec8d700a56940e94dbdcdb8d805fbc1d, type: 3}
 --- !u!114 &8701668536146513554
 MonoBehaviour:
   m_ObjectHideFlags: 0

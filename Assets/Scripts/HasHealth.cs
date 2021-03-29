@@ -15,6 +15,8 @@ public class HasHealth : MonoBehaviour
     SpriteRenderer sprite;
     public int stunNeeded = 25;
     public double currentStun = 0;
+    public AudioClip hitSound;
+    public AudioClip deathSound;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -88,6 +90,7 @@ public class HasHealth : MonoBehaviour
         }
     }
     public void takeDamage(float dmg){
+        AudioSource.PlayClipAtPoint(hitSound, transform.position);
         if (!parrying){
             currentHealth -= dmg;
             if (healthBar)
@@ -113,6 +116,7 @@ public class HasHealth : MonoBehaviour
             }
             if (currentHealth <= 0)
             {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Player")
@@ -143,6 +147,7 @@ public class HasHealth : MonoBehaviour
     }
     public void takeDamage(float dmg, float knockback)
     {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position);
         if (!parrying)
         {
             currentStun += dmg;
@@ -169,6 +174,7 @@ public class HasHealth : MonoBehaviour
             Debug.Log("Took " + dmg + " dmg");
             if (currentHealth <= 0)
             {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Player" && !parrying)
