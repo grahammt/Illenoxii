@@ -11,6 +11,7 @@ public class HasHealth : MonoBehaviour
     Animator animator;
     public bool parrying = false;
     public DamageText damageTextPrefab;
+    public GameObject gameLostText;
     bool parrycooldown = false;
     SpriteRenderer sprite;
     public int stunNeeded = 25;
@@ -117,6 +118,10 @@ public class HasHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
+                if(gameObject.CompareTag("Player")){
+                    // game lost
+                    gameLostText.SetActive(true);
+                }
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Player")
@@ -175,6 +180,10 @@ public class HasHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
+                if(gameObject.CompareTag("Player")){
+                    // game lost
+                    gameLostText.SetActive(true);
+                }
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Player" && !parrying)
