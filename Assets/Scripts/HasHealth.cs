@@ -134,10 +134,10 @@ public class HasHealth : MonoBehaviour
     {
         parrying = true;
         parrycooldown = true;
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.5f);
+        sprite.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);
         yield return new WaitForSeconds(1);
         parrying = false;
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
+        sprite.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(3);
         parrycooldown = false;
     }
