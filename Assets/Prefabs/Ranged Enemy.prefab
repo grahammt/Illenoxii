@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 5750957472574239902}
   fill: {fileID: 3630083133131330765}
+  text: {fileID: 0}
 --- !u!1 &5428554873565125714
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,8 +258,11 @@ MonoBehaviour:
   healthBar: {fileID: 7605556131129372894}
   parrying: 0
   damageTextPrefab: {fileID: 0}
+  gameLostText: {fileID: 0}
   stunNeeded: 25
   currentStun: 0
+  hitSound: {fileID: 8300000, guid: 1040397c520073f438b672970cb34080, type: 3}
+  deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!1 &6531560841550720031
 GameObject:
   m_ObjectHideFlags: 0

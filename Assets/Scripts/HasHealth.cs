@@ -64,12 +64,12 @@ public class HasHealth : MonoBehaviour
                 if (currentStun > stunNeeded)
                 {
                     if (animator)
-                        animator.SetTrigger("Dazed");
+                        animator.SetBool("Dazed", true);
                     gameObject.GetComponent<platformerPathfinding>().dazed = true;
                 }
                 else
                 {
-                    gameObject.GetComponent<platformerPathfinding>().dazed = false;
+                    //gameObject.GetComponent<platformerPathfinding>().dazed = false;
                 }
           
             }
@@ -167,9 +167,7 @@ public class HasHealth : MonoBehaviour
             {
                 rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, 0f);
                 rigidbody.AddForce(new Vector3(0, knockback, 0));
-                /**if (animator)
-                    animator.SetTrigger("Dazed");*/
-                
+
                 if(damageTextPrefab){
                     DamageText dmgtxt = GameObject.Instantiate(damageTextPrefab);
                     dmgtxt.damage = dmg;

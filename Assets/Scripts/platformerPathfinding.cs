@@ -11,11 +11,13 @@ public class platformerPathfinding : MonoBehaviour
     public float jumpMultiplier = 300f;
     public bool dazed = false;
     public bool pdazed = false;
+    bool attacking = false;
 
 
     Rigidbody2D rigidbody;
     Animator animator;
-    Path path;
+    [HideInInspector]
+    public Path path;
     Seeker seeker;
     bool reachedEndOfPath = true;
     int currentWaypoint = 0;
@@ -54,8 +56,9 @@ public class platformerPathfinding : MonoBehaviour
             return;
         }
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
-        if(distanceFromTarget < 2f && distanceFromTarget >0.8f){
+        if(!attacking && distanceFromTarget < 2f && distanceFromTarget >0.8f){
             animator.SetTrigger("uppercut");
+            attacking = true;
             return;
         }
         if(path == null){
@@ -84,7 +87,7 @@ public class platformerPathfinding : MonoBehaviour
         }
 
         //jumping = rigidbody.velocity.y > 0.2f;
-
+        if(attacking) return;
         Vector3 dest = path.vectorPath[currentWaypoint];
         if(dest.x < transform.position.x){
             //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
@@ -118,4 +121,25 @@ public class platformerPathfinding : MonoBehaviour
         }*/
 
     }
+
+    // check if currently on the ground
+    bool onGround(){
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.3f, LayerMask.GetMask("Terrain"));
+        Debug.DrawRay(transform.position, Vector3.down * 1.3f);
+        return hit.collider != null;
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Terrain"){
+            if(onGround()){
+                dazed = false;
+                animator.SetBool("Dazed", false);
+            }
+        }
+    }
+
+    public void SetAttackingFalse(){
+        attacking = false;
+    }
+
 }

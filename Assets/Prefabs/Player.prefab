@@ -462,8 +462,11 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   parrying: 0
   damageTextPrefab: {fileID: 0}
+  gameLostText: {fileID: 0}
   stunNeeded: 5
   currentStun: 0
+  hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  deathSound: {fileID: 8300000, guid: b12fadb88a568784b9382b511036ceb3, type: 3}
 --- !u!114 &5209632291105401892
 MonoBehaviour:
   m_ObjectHideFlags: 0
