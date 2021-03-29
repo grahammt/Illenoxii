@@ -11,7 +11,7 @@ public class platformerPathfinding : MonoBehaviour
     public float jumpMultiplier = 300f;
     public bool dazed = false;
     public bool pdazed = false;
-    bool attacking = false;
+    public bool attacking = false;
 
 
     Rigidbody2D rigidbody;
