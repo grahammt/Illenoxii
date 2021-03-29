@@ -620,6 +620,11 @@ PrefabInstance:
       propertyPath: lowerBodySprite
       value: 
       objectReference: {fileID: 1928672828}
+    - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: grappleComboCost
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8701668536146513554, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: healthBar
