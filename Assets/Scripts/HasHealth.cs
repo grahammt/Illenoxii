@@ -69,7 +69,7 @@ public class HasHealth : MonoBehaviour
                 }
                 else
                 {
-                    //gameObject.GetComponent<platformerPathfinding>().dazed = false;
+                    gameObject.GetComponent<platformerPathfinding>().dazed = false;
                 }
           
             }
