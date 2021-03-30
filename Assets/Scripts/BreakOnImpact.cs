@@ -20,8 +20,8 @@ public class BreakOnImpact : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject != sender && sender.CompareTag("Player")){
-            if (other.gameObject.GetComponent<HasHealth>()!=null){
-                other.gameObject.GetComponent<HasHealth>().takeDamage(damage);
+            if (other.gameObject.GetComponent<Enemy>()!=null){
+                other.gameObject.GetComponent<Enemy>().HandleHit(damage, 0);
                 //player.GetComponent<InputToPlayerAttacks>().SecondaryHit();
                 Destroy(gameObject);
             }
@@ -32,14 +32,14 @@ public class BreakOnImpact : MonoBehaviour
         {
             if (other.gameObject.GetComponent<HasHealth>() != null && other.gameObject.CompareTag("Player"))
             {
-                if (other.gameObject.GetComponent<HasHealth>().parrying)
+                if (other.gameObject.GetComponent<PlayerDriver>().parrying)
                 {
                     sender = gameObject;
                     gameObject.GetComponent<Rigidbody2D>().velocity = -gameObject.GetComponent<Rigidbody2D>().velocity;
                 }
                 else
                 {
-                    other.gameObject.GetComponent<HasHealth>().takeDamage(damage);
+                    other.gameObject.GetComponent<PlayerDriver>().HandleHit(damage);
                     Destroy(gameObject);
                 }
                 

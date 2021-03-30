@@ -121,7 +121,7 @@ public class uppercut : MonoBehaviour
     {
         if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<HasHealth>().takeDamage(25,500);
+            other.gameObject.GetComponent<Enemy>().HandleHit(25,500);
             if (rigidbody2.velocity.y <= 0)
             {
                 rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0);
@@ -133,13 +133,13 @@ public class uppercut : MonoBehaviour
         {
             if(player.CompareTag("Enemy") && other.gameObject.tag == "Player")
             {
-                if (other.gameObject.GetComponent<HasHealth>().parrying)
+                if (other.gameObject.GetComponent<PlayerDriver>().parrying)
                 {
                     StartCoroutine("daze");
                 }
                 else
                 {
-                    other.gameObject.GetComponent<HasHealth>().takeDamage(5, 500);
+                    other.gameObject.GetComponent<PlayerDriver>().HandleHit(5);
                 }
                 
             }

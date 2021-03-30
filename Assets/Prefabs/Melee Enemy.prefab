@@ -164,7 +164,10 @@ GameObject:
   - component: {fileID: 6532987490210133823}
   - component: {fileID: 9111033549587390556}
   - component: {fileID: 5734154119961187832}
-  - component: {fileID: 4569407463514672890}
+  - component: {fileID: 881077803759144304}
+  - component: {fileID: 6982261490436626728}
+  - component: {fileID: 5607915322377100340}
+  - component: {fileID: 1457785389364247126}
   m_Layer: 9
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -277,14 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   healthBar: {fileID: 5307924800520873133}
-  parrying: 0
-  damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
-    type: 3}
-  gameLostText: {fileID: 0}
-  stunNeeded: 22
-  currentStun: 0
-  hitSound: {fileID: 8300000, guid: 1040397c520073f438b672970cb34080, type: 3}
-  deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!114 &6532987490210133823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +298,7 @@ MonoBehaviour:
   jumpMultiplier: 300
   dazed: 0
   pdazed: 0
+  attacking: 0
 --- !u!212 &9111033549587390556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -373,7 +369,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4569407463514672890
+--- !u!114 &881077803759144304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,12 +378,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 3477555664116813196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4e036a11dd14f4f8cad38560d15556, type: 3}
+  m_Script: {fileID: 11500000, guid: 08d250fba05b15d46bb07eebddae0e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startVec: {x: 0, y: 0, z: 0}
-  destVec: {x: 0, y: 0, z: 0}
   chargeDistance: 2
+--- !u!114 &6982261490436626728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477555664116813196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95be67c8c24a5b64c8ce5f18deb3e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5607915322377100340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477555664116813196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f0ba3cc2fb4c14391b24828ee38c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunNeeded: 25
+  currentStun: 0
+--- !u!114 &1457785389364247126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477555664116813196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6ee69673635284f8c0cd331d76efc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
+    type: 3}
+  hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!1 &5270585209591000455
 GameObject:
   m_ObjectHideFlags: 0

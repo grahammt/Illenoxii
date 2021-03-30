@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class HasHealth : MonoBehaviour
 {
+
+    public float maxHealth;
+    public HealthBar healthBar;
+    float currentHealth;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        if (healthBar)
+            healthBar.SetMaxHealth(maxHealth);
+    }
+
+    public bool TakeDamage(float dmg){
+        currentHealth -= dmg;
+        if (healthBar)
+            healthBar.SetCurrHealth(currentHealth);
+        return currentHealth <= 0;
+    }
+//*/
+/*
     public float maxHealth;
     public HealthBar healthBar;
     float currentHealth;
@@ -18,6 +38,7 @@ public class HasHealth : MonoBehaviour
     public double currentStun = 0;
     public AudioClip hitSound;
     public AudioClip deathSound;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -28,6 +49,7 @@ public class HasHealth : MonoBehaviour
         if (healthBar)
             healthBar.SetMaxHealth(maxHealth);
     }
+
     IEnumerator stunreset()
     {
         while (true)
@@ -55,6 +77,7 @@ public class HasHealth : MonoBehaviour
             yield return null;
         }
     }
+
     private void Update()
     {
         if(gameObject.CompareTag("Enemy"))
@@ -90,6 +113,7 @@ public class HasHealth : MonoBehaviour
             StartCoroutine("parry");
         }
     }
+
     public void takeDamage(float dmg){
         AudioSource.PlayClipAtPoint(hitSound, transform.position);
         if (!parrying){
@@ -195,4 +219,5 @@ public class HasHealth : MonoBehaviour
         }
         
     }
+//*/
 }

@@ -4,18 +4,60 @@ using UnityEngine;
 
 public class HasArmor : MonoBehaviour
 {
-    public int armorPoints;
-    int ap;
+    public int stunNeeded = 25;
+    public double currentStun = 0;
+    Animator animator;
 
-    void Start(){
-        ap = armorPoints;
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        StartCoroutine("stunreset");
     }
 
-    public void LoseArmor(int points){
-        ap -= points;
+    void Update()
+    {
+        if (currentStun > stunNeeded)
+        {
+            if (animator)
+                animator.SetBool("Dazed", true);
+            gameObject.GetComponent<platformerPathfinding>().dazed = true;
+        }
+        else
+        {
+            gameObject.GetComponent<platformerPathfinding>().dazed = false;
+        }
+        Debug.Log("stun val: " + currentStun);
     }
 
-    public void ResetArmor(){
-        ap = armorPoints;
+    IEnumerator stunreset()
+    {
+        while (true)
+        {
+            if (currentStun > 0)
+            {
+                if (currentStun > 30)
+                {
+                    currentStun -= currentStun*0.01f;
+                }
+                else
+                {
+                    if (currentStun > 20)
+                    {
+                        currentStun -= currentStun * 0.005f;
+                    }
+                    else
+                    {
+                        currentStun -= 0.1f;
+                    }
+                    
+                }
+                
+            }
+            yield return null;
+        }
+    }
+
+    public void AddDamage(float dmg){
+        currentStun += dmg;
     }
 }

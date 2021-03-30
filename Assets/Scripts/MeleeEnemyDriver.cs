@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemyDriver : MonoBehaviour
 {
-    public Vector3 startVec;
-    public Vector3 destVec;
+    Vector3 startVec;
+    Vector3 destVec;
     SpriteRenderer sprite;
     public float chargeDistance;
 
@@ -14,6 +14,7 @@ public class MeleeEnemy : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
+    // interface for animation events
     public void SetChargeVectors(){
         startVec = transform.position;
         destVec = startVec + chargeDistance * (sprite.flipX ? Vector3.left : Vector3.right);

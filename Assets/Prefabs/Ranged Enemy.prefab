@@ -118,6 +118,8 @@ GameObject:
   - component: {fileID: 5428554873565125715}
   - component: {fileID: 5428554873565125704}
   - component: {fileID: 5428554873565125716}
+  - component: {fileID: 4345914125981020095}
+  - component: {fileID: 2040263771854919677}
   m_Layer: 9
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -256,12 +258,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 7605556131129372894}
-  parrying: 0
-  damageTextPrefab: {fileID: 0}
-  gameLostText: {fileID: 0}
-  stunNeeded: 25
-  currentStun: 0
-  hitSound: {fileID: 8300000, guid: 1040397c520073f438b672970cb34080, type: 3}
+--- !u!114 &4345914125981020095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428554873565125714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95be67c8c24a5b64c8ce5f18deb3e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2040263771854919677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428554873565125714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6ee69673635284f8c0cd331d76efc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
+    type: 3}
+  hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
   deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!1 &6531560841550720031
 GameObject:
