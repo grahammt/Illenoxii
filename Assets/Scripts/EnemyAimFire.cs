@@ -10,6 +10,7 @@ public class EnemyAimFire : MonoBehaviour
     private GameObject player;
     private bool inRange;
     private float cooldown;
+    private bool firing;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +23,8 @@ public class EnemyAimFire : MonoBehaviour
         Vector3 diff = (player.transform.position - transform.position);
         inRange = (diff.magnitude < detectionRadius)? true : false;
         if (inRange){
-            if (cooldown>=maxCooldown){
-                Fire(Vector3.Normalize(diff));
-                cooldown = 0;
+            if (cooldown>=maxCooldown && !firing){
+                StartCoroutine(Fire(Vector3.Normalize(diff)));
             }
             else{
                 cooldown+=Time.deltaTime;
@@ -35,12 +35,17 @@ public class EnemyAimFire : MonoBehaviour
         }
     }
 
-    void Fire(Vector3 direction){
+
+    IEnumerator Fire(Vector3 direction){
+        GetComponent<Animator>().SetTrigger("Firing");
+        firing = true;
+        yield return new WaitForSeconds((4.0f/3.0f));
+        firing = false;
+        cooldown = 0;
         GameObject bullet = Instantiate(prefab);
         bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
         bullet.transform.position = transform.position;
         bullet.GetComponent<BreakOnImpact>().sender = gameObject;
         bullet.GetComponent<BreakOnImpact>().damage = 20;
-        Debug.Log("Fire!");
     }
 }
