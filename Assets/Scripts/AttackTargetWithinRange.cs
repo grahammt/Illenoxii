@@ -15,9 +15,11 @@ public class AttackTargetWithinRange : MonoBehaviour
 
     void Update()
     {
-        float distanceFromTarget = Vector3.Distance(transform.position, target.position);
-        if(distanceFromTarget < 1f){
-            animator.SetTrigger("Attack");
+        if(!PausedGameManager.is_paused) { 
+            float distanceFromTarget = Vector3.Distance(transform.position, target.position);
+            if(distanceFromTarget < 1f){
+                animator.SetTrigger("Attack");
+            }
         }
 
     }

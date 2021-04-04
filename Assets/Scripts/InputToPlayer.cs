@@ -28,41 +28,42 @@ public class InputToPlayer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        // This variable will keep track of the previous velocity
-        Vector2 rb_velocity = player_rb.velocity;
-
-        // Go over horizontal player input
-        if (Input.GetKey(KeyCode.D)) {
-            rb_velocity.x = movement_speed;
-            player_sprite.flipX = false;
-            animator.SetBool("isRunning", true);
-        }
-        else if (Input.GetKey(KeyCode.A)) {
-            rb_velocity.x = movement_speed * -1;
-            player_sprite.flipX = true;
-            animator.SetBool("isRunning", true);
-        }
-        else {
-            //rb_velocity.x = 0;
-            animator.SetBool("isRunning", false);
-        }
-
-        // Check for player jump
-        if (Input.GetKeyDown(KeyCode.W) && in_a_collision) {
-            if(DEBUG) {
-                Debug.Log("Player jumping");
+        if(!PausedGameManager.is_paused) {
+            if (Input.GetKeyDown("r"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            player_rb.AddForce(new Vector2(0, jump_multiplier));
-        }
+            // This variable will keep track of the previous velocity
+            Vector2 rb_velocity = player_rb.velocity;
 
-        // Give the player velocity, and set their rotation to up
-        player_rb.velocity = rb_velocity;
-        transform.eulerAngles = Vector3.zero;
-        
+            // Go over horizontal player input
+            if (Input.GetKey(KeyCode.D)) {
+                rb_velocity.x = movement_speed;
+                player_sprite.flipX = false;
+                animator.SetBool("isRunning", true);
+            }
+            else if (Input.GetKey(KeyCode.A)) {
+                rb_velocity.x = movement_speed * -1;
+                player_sprite.flipX = true;
+                animator.SetBool("isRunning", true);
+            }
+            else {
+                //rb_velocity.x = 0;
+                animator.SetBool("isRunning", false);
+            }
+
+            // Check for player jump
+            if (Input.GetKeyDown(KeyCode.W) && in_a_collision) {
+                if(DEBUG) {
+                    Debug.Log("Player jumping");
+                }
+                player_rb.AddForce(new Vector2(0, jump_multiplier));
+            }
+
+            // Give the player velocity, and set their rotation to up
+            player_rb.velocity = rb_velocity;
+            transform.eulerAngles = Vector3.zero;
+        }
     }
 
     public bool getOrientation() {

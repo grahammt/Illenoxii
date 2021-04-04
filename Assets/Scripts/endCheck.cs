@@ -16,14 +16,16 @@ public class endCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        if(!En1 && !En2 && !En3 && !En4 && !En5 && !ending)
-        {
-            ending = true;
-            StartCoroutine(End());
+        if(!PausedGameManager.is_paused) {
+            if (Input.GetKeyDown("r"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            if(!En1 && !En2 && !En3 && !En4 && !En5 && !ending)
+            {
+                ending = true;
+                StartCoroutine(End());
+            }
         }
     }
     IEnumerator End()

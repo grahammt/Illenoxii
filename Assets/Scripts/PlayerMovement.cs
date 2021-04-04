@@ -71,55 +71,57 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<PlayerDriver>().parrying)
-        {
-            colorBlue = true;
-            lowerBodySprite.color = new Color(0.5f, 0.5f, 1, 0.5f);
-        }
-        else
-        {
-            if (colorBlue)
+        if(!PausedGameManager.is_paused) {
+            if (gameObject.GetComponent<PlayerDriver>().parrying)
             {
-                colorBlue = false;
-                lowerBodySprite.color = new Color(1, 1, 1, 1);
+                colorBlue = true;
+                lowerBodySprite.color = new Color(0.5f, 0.5f, 1, 0.5f);
             }
-        }
-        switch(state){
-            case movementState.idle:
-                checkMovement();
-                break;
-            case movementState.running:
-                checkMovement();
-                break;
-            case movementState.dashing:
-                break;
-            default:
-                break;
-        }
-        if (stunned)
-        {
-            playerAnim.SetBool("isRunning", true);
-            //lowerBodyAnim.SetBool("isMidair", true);
-            playerSprite.color = new Color(1, 0.5f*playerSprite.color.g, 0.5f*playerSprite.color.b);
-            lowerBodySprite.color = new Color(1, 0.5f * playerSprite.color.g, 0.5f * playerSprite.color.b);
-            colorRed = true;
-        }
-        else
-        {
-            if (colorRed)
+            else
             {
-                playerSprite.color = new Color(1, 1, 1);
-                lowerBodySprite.color = new Color(1, 1, 1);
-                colorRed = false;
+                if (colorBlue)
+                {
+                    colorBlue = false;
+                    lowerBodySprite.color = new Color(1, 1, 1, 1);
+                }
             }
-            
-            /**if (onGround())
+            switch(state){
+                case movementState.idle:
+                    checkMovement();
+                    break;
+                case movementState.running:
+                    checkMovement();
+                    break;
+                case movementState.dashing:
+                    break;
+                default:
+                    break;
+            }
+            if (stunned)
             {
-                lowerBodyAnim.SetBool("isMidair", false);
-            }*/
-        }
-        {
-            
+                playerAnim.SetBool("isRunning", true);
+                //lowerBodyAnim.SetBool("isMidair", true);
+                playerSprite.color = new Color(1, 0.5f*playerSprite.color.g, 0.5f*playerSprite.color.b);
+                lowerBodySprite.color = new Color(1, 0.5f * playerSprite.color.g, 0.5f * playerSprite.color.b);
+                colorRed = true;
+            }
+            else
+            {
+                if (colorRed)
+                {
+                    playerSprite.color = new Color(1, 1, 1);
+                    lowerBodySprite.color = new Color(1, 1, 1);
+                    colorRed = false;
+                }
+                
+                /**if (onGround())
+                {
+                    lowerBodyAnim.SetBool("isMidair", false);
+                }*/
+            }
+            {
+                
+            }
         }
     }
 

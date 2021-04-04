@@ -16,17 +16,19 @@ public class HasArmor : MonoBehaviour
 
     void Update()
     {
-        if (currentStun > stunNeeded)
-        {
-            if (animator)
-                animator.SetBool("Dazed", true);
-            gameObject.GetComponent<platformerPathfinding>().dazed = true;
+        if(!PausedGameManager.is_paused) {
+            if (currentStun > stunNeeded)
+            {
+                if (animator)
+                    animator.SetBool("Dazed", true);
+                gameObject.GetComponent<platformerPathfinding>().dazed = true;
+            }
+            else
+            {
+                gameObject.GetComponent<platformerPathfinding>().dazed = false;
+            }
+            Debug.Log("stun val: " + currentStun);
         }
-        else
-        {
-            gameObject.GetComponent<platformerPathfinding>().dazed = false;
-        }
-        Debug.Log("stun val: " + currentStun);
     }
 
     IEnumerator stunreset()

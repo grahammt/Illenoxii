@@ -18,7 +18,9 @@ public class DamageText : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        if(!PausedGameManager.is_paused) {
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+        }
     }
 
     IEnumerator DestroyGameObjectAfterDelay(float delay){

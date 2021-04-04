@@ -28,32 +28,34 @@ public class uppercut : MonoBehaviour
 
     void Update()
     {
-        if (playerSprite.flipX)
-        {
-            transform.localPosition = new Vector3(-0.5f, 0.3f, 0);
-            //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position;
-        }
-        else
-        {
-            transform.localPosition = new Vector3(0.5f, 0.3f, 0);
-            //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
-        }
-        if (GetComponentInParent<ComboUI>() != null){
-            if (player.CompareTag("Player") && !player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
+        if(!PausedGameManager.is_paused) {
+            if (playerSprite.flipX)
             {
-                if (playerSprite.flipX)
+                transform.localPosition = new Vector3(-0.5f, 0.3f, 0);
+                //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position;
+            }
+            else
+            {
+                transform.localPosition = new Vector3(0.5f, 0.3f, 0);
+                //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
+            }
+            if (GetComponentInParent<ComboUI>() != null){
+                if (player.CompareTag("Player") && !player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
                 {
-                    //hitbox.enabled = true;
-                    //hitboxSprite.enabled = true;
-                    //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(-10000, 0, 0));
+                    if (playerSprite.flipX)
+                    {
+                        //hitbox.enabled = true;
+                        //hitboxSprite.enabled = true;
+                        //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(-10000, 0, 0));
+                    }
+                    else
+                    {
+                        //hitbox.enabled = true;
+                        //hitboxSprite.enabled = true;
+                        //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(10000, 0, 0));
+                    }
+                    StartCoroutine("DashAttackCooldown");
                 }
-                else
-                {
-                    //hitbox.enabled = true;
-                    //hitboxSprite.enabled = true;
-                    //player.GetComponent<Rigidbody2D>().velocity = (new Vector3(10000, 0, 0));
-                }
-                StartCoroutine("DashAttackCooldown");
             }
         }
         

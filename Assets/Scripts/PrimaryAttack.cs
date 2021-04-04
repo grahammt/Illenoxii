@@ -18,15 +18,17 @@ public class PrimaryAttack : MonoBehaviour
 
     void Update()
     {
-        if(playerSprite.flipX) {
-            transform.localPosition = new Vector3(-0.5f, 0.3f, 0);
-        }
-        else {
-            transform.localPosition = new Vector3(0.5f, 0.3f, 0);
-        }
-        // TODO: Animate the attack
-        if(!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && !Input.GetKey("s")){
-             StartCoroutine("PrimaryAttackCooldown");
+        if(!PausedGameManager.is_paused) {
+            if(playerSprite.flipX) {
+                transform.localPosition = new Vector3(-0.5f, 0.3f, 0);
+            }
+            else {
+                transform.localPosition = new Vector3(0.5f, 0.3f, 0);
+            }
+            // TODO: Animate the attack
+            if(!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && !Input.GetKey("s")){
+                StartCoroutine("PrimaryAttackCooldown");
+            }
         }
     }
 

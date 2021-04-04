@@ -39,24 +39,26 @@ public class ArmGrapple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!onReturn) {
-            transform.position += direction * speedMultiplier * Time.deltaTime;
-            traveledDistance += speedMultiplier * Time.deltaTime;
-            if(traveledDistance > maxRange) {
-                onReturn = true;
-            }
-        } else {
-            transform.position -= direction * speedMultiplier * Time.deltaTime;
-            returnedDistance += speedMultiplier * Time.deltaTime;
-            if(enemy_grabbed != null) {
-                enemy_grabbed.transform.position -= direction * speedMultiplier * Time.deltaTime;
-            }
-            if(returnedDistance > traveledDistance) {
-                if(enemy_grabbed != null) {
-                    enemy_grabbed.GetComponent<Enemy>().HandleHit(5, 0);
+        if(!PausedGameManager.is_paused) {
+            if(!onReturn) {
+                transform.position += direction * speedMultiplier * Time.deltaTime;
+                traveledDistance += speedMultiplier * Time.deltaTime;
+                if(traveledDistance > maxRange) {
+                    onReturn = true;
                 }
-                EventBus.Publish(new GrappleReturnEvent());
-                Destroy(this.gameObject);
+            } else {
+                transform.position -= direction * speedMultiplier * Time.deltaTime;
+                returnedDistance += speedMultiplier * Time.deltaTime;
+                if(enemy_grabbed != null) {
+                    enemy_grabbed.transform.position -= direction * speedMultiplier * Time.deltaTime;
+                }
+                if(returnedDistance > traveledDistance) {
+                    if(enemy_grabbed != null) {
+                        enemy_grabbed.GetComponent<Enemy>().HandleHit(5, 0);
+                    }
+                    EventBus.Publish(new GrappleReturnEvent());
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

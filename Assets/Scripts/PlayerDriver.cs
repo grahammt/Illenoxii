@@ -25,18 +25,20 @@ public class PlayerDriver : MonoBehaviour
 
     void Update()
     {
-        if (currentStun > stunNeeded)
-        {
-            gameObject.GetComponent<PlayerMovement>().stunned = true;
-            
-        }
-        else
-        {
-            gameObject.GetComponent<PlayerMovement>().stunned = false;
-        }
-        if (Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
-        {
-            StartCoroutine("parry");
+        if(!PausedGameManager.is_paused) {
+            if (currentStun > stunNeeded)
+            {
+                gameObject.GetComponent<PlayerMovement>().stunned = true;
+                
+            }
+            else
+            {
+                gameObject.GetComponent<PlayerMovement>().stunned = false;
+            }
+            if (Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
+            {
+                StartCoroutine("parry");
+            }
         }
     }
 

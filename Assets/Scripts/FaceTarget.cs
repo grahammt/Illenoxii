@@ -15,6 +15,8 @@ public class FaceTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sprite.flipX = target.position.x < transform.position.x;
+        if(!PausedGameManager.is_paused) {
+            sprite.flipX = target.position.x < transform.position.x;
+        }
     }
 }

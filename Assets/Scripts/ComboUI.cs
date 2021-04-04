@@ -22,14 +22,16 @@ public class ComboUI : MonoBehaviour
     }
 
     void Update(){
-        if (currentCombo == 0){
-            if (GetComponent<Text>() != null){
-                GetComponent<Text>().text = "";
-            }
-            if (background!= null){
-                SecondBackground.fillAmount = 0;
-                progress = 0;
-                background.fillAmount = 0;
+        if(!PausedGameManager.is_paused) {
+            if (currentCombo == 0){
+                if (GetComponent<Text>() != null){
+                    GetComponent<Text>().text = "";
+                }
+                if (background!= null){
+                    SecondBackground.fillAmount = 0;
+                    progress = 0;
+                    background.fillAmount = 0;
+                }
             }
         }
     }

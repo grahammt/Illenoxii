@@ -13,6 +13,8 @@ public class StickToTarget : MonoBehaviour
 
     void Update()
     {
-        transform.position = target.position + offset;
+        if(!PausedGameManager.is_paused) {
+            transform.position = target.position + offset;
+        }
     }
 }

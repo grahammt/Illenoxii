@@ -20,18 +20,20 @@ public class EnemyAimFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 diff = (player.transform.position - transform.position);
-        inRange = (diff.magnitude < detectionRadius)? true : false;
-        if (inRange){
-            if (cooldown>=maxCooldown && !firing){
-                StartCoroutine(Fire(Vector3.Normalize(diff)));
+        if(!PausedGameManager.is_paused) {
+            Vector3 diff = (player.transform.position - transform.position);
+            inRange = (diff.magnitude < detectionRadius)? true : false;
+            if (inRange){
+                if (cooldown>=maxCooldown && !firing){
+                    StartCoroutine(Fire(Vector3.Normalize(diff)));
+                }
+                else{
+                    cooldown+=Time.deltaTime;
+                }
             }
             else{
-                cooldown+=Time.deltaTime;
+                cooldown = 0;
             }
-        }
-        else{
-            cooldown = 0;
         }
     }
 

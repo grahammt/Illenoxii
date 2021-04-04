@@ -31,37 +31,39 @@ public class InputToPlayerAttacks : MonoBehaviour
 
     void Update()
     {
-        // Update attack cooldowns
-        if(primary_attack_cooldown > 0) {
-            primary_attack_cooldown -= Time.deltaTime;
-        } else {
-            attacking = false;
-            can_primary_attack = true;
-            Destroy(primary_attack_prefab);
-        }
+        if(!PausedGameManager.is_paused) {
+            // Update attack cooldowns
+            if(primary_attack_cooldown > 0) {
+                primary_attack_cooldown -= Time.deltaTime;
+            } else {
+                attacking = false;
+                can_primary_attack = true;
+                Destroy(primary_attack_prefab);
+            }
 
-        if (secondary_cooldown > 0){
-            secondary_cooldown -=Time.deltaTime;
-        }
-        else{
-            can_secondary = true;
-        }
+            if (secondary_cooldown > 0){
+                secondary_cooldown -=Time.deltaTime;
+            }
+            else{
+                can_secondary = true;
+            }
 
-        if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) { 
-            // if (GetComponent<Rigidbody2D>().velocity.y != 0){
-            //     GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
-            // }
-            // PrimaryAttack();
-            //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
-            //rigidbody.AddForce(new Vector2(0f, 30f));
+            if(can_primary_attack && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey("s")) { 
+                // if (GetComponent<Rigidbody2D>().velocity.y != 0){
+                //     GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
+                // }
+                // PrimaryAttack();
+                //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+                //rigidbody.AddForce(new Vector2(0f, 30f));
+            }
+            if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
+                //if (rigidbody.velocity.y != 0){
+                //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
+                //rigidbody.AddForce(new Vector2(0f, 30f));
+                //}
+                SecondaryAttack();
+            }       
         }
-        if (can_secondary && Input.GetKeyDown(KeyCode.Mouse1)){
-            //if (rigidbody.velocity.y != 0){
-            //rigidbody.velocity = new Vector2(rigidbody.velocity.x,0);
-            //rigidbody.AddForce(new Vector2(0f, 30f));
-            //}
-            SecondaryAttack();
-        }       
     }
 
     // // TODO: Make this a Co-routine
