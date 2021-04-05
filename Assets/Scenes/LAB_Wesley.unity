@@ -17314,6 +17314,11 @@ PrefabInstance:
       objectReference: {fileID: 1044983594}
     - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
+      propertyPath: lowerBody
+      value: 
+      objectReference: {fileID: 1902266033}
+    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
@@ -17322,6 +17327,11 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: b12fadb88a568784b9382b511036ceb3, type: 3}
+    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: stunNeeded
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: gameLostText
@@ -17380,7 +17390,7 @@ PrefabInstance:
     - target: {fileID: 8701668536146513564, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8701668536146513564, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
