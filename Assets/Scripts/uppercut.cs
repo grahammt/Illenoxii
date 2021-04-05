@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using System;
 
 public class uppercut : MonoBehaviour
 {
@@ -42,6 +44,10 @@ public class uppercut : MonoBehaviour
             if (GetComponentInParent<ComboUI>() != null){
                 if (player.CompareTag("Player") && !player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
                 {
+                    Analytics.CustomEvent("uppercut", new Dictionary<string, object>
+                    {
+                        {"duhduh", 1}
+                    });
                     if (playerSprite.flipX)
                     {
                         //hitbox.enabled = true;
