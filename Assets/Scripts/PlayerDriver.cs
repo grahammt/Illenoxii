@@ -22,7 +22,20 @@ public class PlayerDriver : MonoBehaviour
     {
         healthScript = GetComponent<HasHealth>();
         StartCoroutine("stunreset");
+        //StartCoroutine("test");
+        Time.timeScale = 1;
     }
+    /**IEnumerator test()
+    {
+        while (true)
+        {
+            lowerBody.color = new Color(0, 1f, 1, 0.5f);
+            yield return new WaitForSeconds(1);
+            
+            lowerBody.color = new Color(1, 0.5f, 0, 0.5f);
+        }
+        
+    }*/
     IEnumerator stunreset()
     {
         while (true)
@@ -38,6 +51,7 @@ public class PlayerDriver : MonoBehaviour
 
     void Update()
     {
+        Time.timeScale = 1;
         if(!PausedGameManager.is_paused) {
             if (currentStun > stunNeeded)
             {

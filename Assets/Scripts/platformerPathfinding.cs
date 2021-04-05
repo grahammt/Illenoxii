@@ -139,7 +139,7 @@ public class platformerPathfinding : MonoBehaviour
     }
 
     // check if currently on the ground
-    bool onGround(){
+    public bool onGround(){
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.3f, LayerMask.GetMask("Terrain"));
         Debug.DrawRay(transform.position, Vector3.down * 1.3f);
         return hit.collider != null;

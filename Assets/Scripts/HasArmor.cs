@@ -37,29 +37,52 @@ public class HasArmor : MonoBehaviour
         {
             if (currentStun > 0)
             {
-                if (currentStun > 30)
+                if (GetComponent<platformerPathfinding>().onGround())
                 {
-                    currentStun -= currentStun*0.01f;
-                }
-                else
-                {
-                    if (currentStun > 20)
+                    if (currentStun > 30)
                     {
-                        currentStun -= currentStun * 0.005f;
+                        currentStun -= currentStun * 0.02f;
                     }
                     else
                     {
-                        currentStun -= 0.1f;
+                        if (currentStun > 20)
+                        {
+                            currentStun -= currentStun * 0.01f;
+                        }
+                        else
+                        {
+                            currentStun -= 0.2f;
+                        }
+
                     }
-                    
                 }
-                
+                else
+                {
+                    if (currentStun > 30)
+                    {
+                        currentStun -= currentStun * 0.01f;
+                    }
+                    else
+                    {
+                        if (currentStun > 20)
+                        {
+                            currentStun -= currentStun * 0.005f;
+                        }
+                        else
+                        {
+                            currentStun -= 0.1f;
+                        }
+
+                    }
+                }
+
             }
-            yield return null;
+                yield return null;
         }
     }
 
-    public void AddDamage(float dmg){
-        currentStun += dmg;
+    public void AddDamage(float dmg)
+    {
+     currentStun += dmg;
     }
 }
