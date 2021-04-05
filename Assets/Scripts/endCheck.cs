@@ -11,6 +11,9 @@ public class endCheck : MonoBehaviour
     public GameObject En3;
     public GameObject En4;
     public GameObject En5;
+    public GameObject En6;
+    public GameObject En7;
+    public GameObject En8;
     public GameObject gameWinText;
     private bool ending = false;
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class endCheck : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            if(!En1 && !En2 && !En3 && !En4 && !En5 && !ending)
+            if(!En1 && !En2 && !En3 && !En4 && !En5 && !En6 && !En7 && !En8 && !ending)
             {
                 ending = true;
                 StartCoroutine(End());

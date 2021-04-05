@@ -13,7 +13,7 @@ public class platformerPathfinding : MonoBehaviour
     public bool pdazed = false;
     public bool attacking = false;
     public bool jumpLevel = false;
-
+    public bool uppercut = false;
     Rigidbody2D rigidbody;
     Animator animator;
     [HideInInspector]
@@ -51,92 +51,187 @@ public class platformerPathfinding : MonoBehaviour
         }
     }
 
-    void Update(){
-        if(!PausedGameManager.is_paused) {
-            if(dazed || pdazed){
+    void Update() {
+        if (!PausedGameManager.is_paused) {
+            if (dazed || pdazed) {
                 return;
             }
             float distanceFromTarget = Vector3.Distance(transform.position, target.position);
-            if(distanceFromTarget < 17)
+            if (distanceFromTarget < 17)
             {
-                if (!attacking && distanceFromTarget < 2f  && distanceFromTarget > 0.8f )
+                if (uppercut)
                 {
-                    animator.SetTrigger("uppercut");
-                    attacking = true;
-                    return;
-                }
-                if (path == null)
-                {
-                    return;
-                }
-
-                reachedEndOfPath = false;
-                float distanceToWaypoint;
-                while (true)
-                {
-                    // If you want maximum performance you can check the squared distance instead to get rid of a
-                    // square root calculation. But that is outside the scope of this tutorial.
-                    distanceToWaypoint = Mathf.Abs(transform.position.x - path.vectorPath[currentWaypoint].x);
-                    if (distanceToWaypoint < nextWaypointDistance)
+                    if (!attacking && distanceFromTarget < 0.8f && distanceFromTarget > 0.3f)
                     {
-                        // Check if there is another waypoint or if we have reached the end of the path
-                        if (currentWaypoint + 1 < path.vectorPath.Count)
+                        if(target.position.x<transform.position.x && spriteR.flipX)
                         {
-                            currentWaypoint++;
+                            animator.SetTrigger("uppercut");
+                            attacking = true;
+                            return;
+                        }
+                        if (target.position.x > transform.position.x && !spriteR.flipX)
+                        {
+                            animator.SetTrigger("uppercut");
+                            attacking = true;
+                            return;
+                        }
+
+                    }
+                    if (path == null)
+                    {
+                        return;
+                    }
+
+                    reachedEndOfPath = false;
+                    float distanceToWaypoint;
+                    while (true)
+                    {
+                        // If you want maximum performance you can check the squared distance instead to get rid of a
+                        // square root calculation. But that is outside the scope of this tutorial.
+                        distanceToWaypoint = Mathf.Abs(transform.position.x - path.vectorPath[currentWaypoint].x);
+                        if (distanceToWaypoint < nextWaypointDistance)
+                        {
+                            // Check if there is another waypoint or if we have reached the end of the path
+                            if (currentWaypoint + 1 < path.vectorPath.Count)
+                            {
+                                currentWaypoint++;
+                            }
+                            else
+                            {
+                                // Set a status variable to indicate that the agent has reached the end of the path.
+                                // You can use this to trigger some special code if your game requires that.
+                                reachedEndOfPath = true;
+                                break;
+                            }
                         }
                         else
                         {
-                            // Set a status variable to indicate that the agent has reached the end of the path.
-                            // You can use this to trigger some special code if your game requires that.
-                            reachedEndOfPath = true;
                             break;
                         }
                     }
-                    else
+
+                    //jumping = rigidbody.velocity.y > 0.2f;
+                    if (attacking) return;
+                    Vector3 dest = path.vectorPath[currentWaypoint];
+                    if (dest.x < transform.position.x)
                     {
-                        break;
+                        //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
+                        spriteR.flipX = true;
+
+                        if (transform.position.x - dest.x < 0.3f)
+                        {
+                            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    else if (dest.x > transform.position.x)
+                    {
+                        //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
+                        spriteR.flipX = false;
+                        if (dest.x - transform.position.x < 0.3f)
+                        {
+                            transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    if (jumpLevel && dest.y > transform.position.y && transform.position.y < -2.6)
+                    {
+                        rigidbody.velocity = (new Vector2(rigidbody.velocity.x, 10));
+                        //jumping = true;
                     }
                 }
-
-                //jumping = rigidbody.velocity.y > 0.2f;
-                if (attacking) return;
-                Vector3 dest = path.vectorPath[currentWaypoint];
-                if (dest.x < transform.position.x)
+                else
                 {
-                    //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
-                    spriteR.flipX = true;
-                    
-                    if (transform.position.x - dest.x < 0.8f)
+                    if (!attacking && distanceFromTarget < 2f && distanceFromTarget > 0.8f)
                     {
-                        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        animator.SetTrigger("uppercut");
+                        attacking = true;
+                        return;
                     }
-                    else
+                    if (path == null)
                     {
-                        transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
-                    }
-
-                }
-                else if (dest.x > transform.position.x)
-                {
-                    //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
-                    spriteR.flipX = false;
-                    if (dest.x - transform.position.x < 0.8f)
-                    {
-                        transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        return;
                     }
 
-                }
-                if(jumpLevel && dest.y > transform.position.y && transform.position.y < -2.6){
-                    rigidbody.velocity = (new Vector2(rigidbody.velocity.x, 10));
-                    //jumping = true;
+                    reachedEndOfPath = false;
+                    float distanceToWaypoint;
+                    while (true)
+                    {
+                        // If you want maximum performance you can check the squared distance instead to get rid of a
+                        // square root calculation. But that is outside the scope of this tutorial.
+                        distanceToWaypoint = Mathf.Abs(transform.position.x - path.vectorPath[currentWaypoint].x);
+                        if (distanceToWaypoint < nextWaypointDistance)
+                        {
+                            // Check if there is another waypoint or if we have reached the end of the path
+                            if (currentWaypoint + 1 < path.vectorPath.Count)
+                            {
+                                currentWaypoint++;
+                            }
+                            else
+                            {
+                                // Set a status variable to indicate that the agent has reached the end of the path.
+                                // You can use this to trigger some special code if your game requires that.
+                                reachedEndOfPath = true;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    //jumping = rigidbody.velocity.y > 0.2f;
+                    if (attacking) return;
+                    Vector3 dest = path.vectorPath[currentWaypoint];
+                    if (dest.x < transform.position.x)
+                    {
+                        //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
+                        spriteR.flipX = true;
+
+                        if (transform.position.x - dest.x < 0.8f)
+                        {
+                            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    else if (dest.x > transform.position.x)
+                    {
+                        //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
+                        spriteR.flipX = false;
+                        if (dest.x - transform.position.x < 0.8f)
+                        {
+                            transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    if (jumpLevel && dest.y > transform.position.y && transform.position.y < -2.6)
+                    {
+                        rigidbody.velocity = (new Vector2(rigidbody.velocity.x, 10));
+                        //jumping = true;
+                    }
                 }
             }
-
+            
         }
+
+        
     }
 
     // check if currently on the ground
