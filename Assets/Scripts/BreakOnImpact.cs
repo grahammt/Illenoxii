@@ -6,6 +6,8 @@ public class BreakOnImpact : MonoBehaviour
 {
     public GameObject sender;
     public float damage;
+    private float destroy_timer_MAX = 10f;
+    private float destroy_timer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,12 @@ public class BreakOnImpact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!PausedGameManager.is_paused) {
+            destroy_timer += Time.deltaTime;
+            if(destroy_timer >= destroy_timer_MAX) {
+                Destroy(gameObject);
+            }
+        }
     }
     
     void OnTriggerEnter2D(Collider2D other){
@@ -28,7 +35,7 @@ public class BreakOnImpact : MonoBehaviour
             
             
         }
-        if (other.gameObject != sender && sender.CompareTag("Enemy"))
+        else if (other.gameObject != sender && sender.CompareTag("Enemy"))
         {
             if (other.gameObject.GetComponent<HasHealth>() != null && other.gameObject.CompareTag("Player"))
             {
@@ -48,6 +55,10 @@ public class BreakOnImpact : MonoBehaviour
 
 
         }
+        else if (other.gameObject != sender) {
+            Destroy(gameObject);
+        }
+        
         
     }
 }
