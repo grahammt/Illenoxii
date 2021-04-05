@@ -307,7 +307,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 4f641d05fed69c44e95a0bcf043cdaaa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement_speed: 5
   dashDistance: 10
-  jump_multiplier: 500
+  jump_multiplier: 600
   lowerBodyAnim: {fileID: 3591953065201243087}
   lowerBodySprite: {fileID: 2063150388919847450}
   stunned: 0
@@ -489,12 +489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32625f089de3c241871330190d3bcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  healthBar: {fileID: 0}
   parrying: 0
-  damageTextPrefab: {fileID: 0}
   gameLostText: {fileID: 0}
-  stunNeeded: 25
+  lowerBody: {fileID: 0}
+  stunNeeded: 2
   currentStun: 0
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}

@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // then check dash command
-        if(!stunned && dashCharges > 0 && Input.GetKeyDown("e") && GetComponent<ComboUI>().currentCombo >= dashComboCost){
+        if(!stunned && dashCharges > 0 && Input.GetKeyDown(KeyCode.LeftShift) && GetComponent<ComboUI>().currentCombo >= dashComboCost){
             // get mouse position, set z component to 0
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             mousePos[2] = 0f;
