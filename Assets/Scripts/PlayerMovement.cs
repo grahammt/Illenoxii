@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(!PausedGameManager.is_paused) {
-            if (gameObject.GetComponent<PlayerDriver>().parrying)
+            if (gameObject.GetComponentInChildren<PlayerDriver>().parrying)
             {
                 colorBlue = true;
                 lowerBodySprite.color = new Color(0.5f, 0.5f, 1, 0.5f);

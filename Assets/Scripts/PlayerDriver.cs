@@ -16,11 +16,13 @@ public class PlayerDriver : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip deathSound;
 
+    public GameObject parent;
+
     HasHealth healthScript;
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInParent<SpriteRenderer>();
         healthScript = GetComponent<HasHealth>();
         StartCoroutine("stunreset");
         //StartCoroutine("test");
@@ -56,7 +58,7 @@ public class PlayerDriver : MonoBehaviour
         if(!PausedGameManager.is_paused) {
             if (currentStun > stunNeeded)
             {
-                gameObject.GetComponent<PlayerMovement>().stunned = true;
+                gameObject.GetComponentInParent<PlayerMovement>().stunned = true;
                 if (currentStun > stunNeeded*2)
                 {
                     currentStun = stunNeeded*2;
@@ -65,7 +67,7 @@ public class PlayerDriver : MonoBehaviour
             }
             else
             {
-                gameObject.GetComponent<PlayerMovement>().stunned = false;
+                gameObject.GetComponentInParent<PlayerMovement>().stunned = false;
             }
             if (Input.GetKey("s") && Input.GetKeyDown(KeyCode.Mouse1) && !parrycooldown)
             {
@@ -85,7 +87,7 @@ public class PlayerDriver : MonoBehaviour
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 // game lost
                 gameLostText.SetActive(true);
-                Destroy(gameObject);
+                Destroy(parent);
             }
             EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
         }

@@ -42,7 +42,7 @@ public class uppercut : MonoBehaviour
                 //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
             }
             if (GetComponentInParent<ComboUI>() != null){
-                if (player.CompareTag("Player") && !player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
+                if (player.CompareTag("Untagged") && !player.GetComponentInChildren<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse1) && !onCooldown && !Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
                 {
                     Analytics.CustomEvent("uppercut", new Dictionary<string, object>
                     {
@@ -127,7 +127,7 @@ public class uppercut : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (player.CompareTag("Player") && other.gameObject.tag == "Enemy")
+        if (player.CompareTag("Untagged") && other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Enemy>().HandleHit(25,500);
             if (rigidbody2.velocity.y <= 0)
