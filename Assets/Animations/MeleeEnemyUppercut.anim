@@ -163,71 +163,71 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.68333334
-    functionName: LerpToDest
+  - time: 0.6666667
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.71666664
-    functionName: LerpToDest
+  - time: 0.7
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.75
-    functionName: LerpToDest
+  - time: 0.73333335
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.78333336
-    functionName: LerpToDest
+  - time: 0.76666665
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.81666666
-    functionName: LerpToDest
+  - time: 0.8
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.85
-    functionName: LerpToDest
+  - time: 0.8333333
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.8833333
-    functionName: LerpToDest
+  - time: 0.8666667
+    functionName: MoveTowardDest
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.1
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
   - time: 0.93333334
-    functionName: LerpToDest
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: LerpToDest
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.1
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.0666667
-    functionName: LerpToDest
+  - time: 0.96666664
+    functionName: MoveTowardDest
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.1
