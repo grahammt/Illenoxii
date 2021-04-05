@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5202256274492070253, guid: eae4bd9863e74f54a81d55b012b9cc28, type: 3}
   maxCooldown: 3
-  detectionRadius: 5
+  detectionRadius: 12
 --- !u!114 &5428554873565125716
 MonoBehaviour:
   m_ObjectHideFlags: 0
