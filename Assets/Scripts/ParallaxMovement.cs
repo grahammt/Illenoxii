@@ -13,7 +13,7 @@ public class ParallaxMovement : MonoBehaviour
         prev_pos = target.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if(!PausedGameManager.is_paused) {
             transform.Translate(new Vector3((target.position.x - prev_pos.x) * scale.x, (target.position.y - prev_pos.y) * scale.y, 0f));
