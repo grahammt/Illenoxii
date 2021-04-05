@@ -20,6 +20,7 @@ public class PlayerDriver : MonoBehaviour
 
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         healthScript = GetComponent<HasHealth>();
         StartCoroutine("stunreset");
         //StartCoroutine("test");
