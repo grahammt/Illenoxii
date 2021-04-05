@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         dmgtxt.transform.position = transform.position;
 
         // add upward force to simulate knock up
-        knockbackScript.knockback(knockback);
+        if(knockbackScript) knockbackScript.knockback(knockback);
 
         // add toward stun counter
         if(armorScript) armorScript.AddDamage(dmg);

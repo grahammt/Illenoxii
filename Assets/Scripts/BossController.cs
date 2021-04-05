@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    private float enemy_spawn_timer_MAX = 15f;
-    private float enemy_spawn_timer = 0.0f;
-    private float projectile_spawn_timer_MAX = 20f;
+    public float enemy_spawn_timer_MAX = 20f;
+    private float enemy_spawn_timer = 10.0f;
+    public float projectile_spawn_timer_MAX = 15f;
     private float projectile_spawn_timer = 0.0f;
     public float enemy_wave_count = 3;
     public float fire_prefab_count = 10;
     public GameObject enemyPrefab;
     public GameObject firePrefab;
     private Transform playerTransform;
-    private float movement_timer_MAX = 3f;
+    public float movement_timer_MAX = 3f;
     private float movement_timer = 0.0f;
-    private float speed = 2;
+    public float speed = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +65,7 @@ public class BossController : MonoBehaviour
     void SpawnFireWall() {
         // Precalculate spawn values
         // GameObject [] fireWall;
-        Vector3 first_spawn_offset = new Vector3 (-10f, -5f, 0);
+        Vector3 first_spawn_offset = new Vector3 (20f, -5f, 0);
         Vector3 vertical_offset = Vector3.up * 1f;
         Vector3 first_spawn = transform.position + first_spawn_offset;
 

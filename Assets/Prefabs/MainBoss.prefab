@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6843410085390892815}
   - component: {fileID: 6843410085390892812}
   m_Layer: 0
-  m_Name: P3_player_jump
+  m_Name: MainBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
