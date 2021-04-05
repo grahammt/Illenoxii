@@ -4,3 +4,7 @@
 public class GrappleReturnEvent {
 
 }
+
+public class EnableAnalyticsEvent {
+    
+}

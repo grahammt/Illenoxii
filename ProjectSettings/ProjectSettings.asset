@@ -632,10 +632,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: f407ec3c-dc0e-4c04-8806-ea67f73c686c
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: BestEffortGamesP3
+  organizationId: mikado98765
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
