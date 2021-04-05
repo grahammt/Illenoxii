@@ -8,9 +8,10 @@ public class PlayerDriver : MonoBehaviour
     Animator animator;
     public bool parrying = false;
     public GameObject gameLostText;
+    public SpriteRenderer lowerBody;
     bool parrycooldown = false;
     SpriteRenderer sprite;
-    public int stunNeeded = 25;
+    public int stunNeeded = 2;
     public double currentStun = 0;
     public AudioClip hitSound;
     public AudioClip deathSound;
@@ -20,7 +21,19 @@ public class PlayerDriver : MonoBehaviour
     void Start()
     {
         healthScript = GetComponent<HasHealth>();
-        
+        StartCoroutine("stunreset");
+    }
+    IEnumerator stunreset()
+    {
+        while (true)
+        {
+            if (currentStun > 0)
+            {
+                currentStun -= 0.02f;
+
+            }
+            yield return null;
+        }
     }
 
     void Update()
@@ -29,6 +42,10 @@ public class PlayerDriver : MonoBehaviour
             if (currentStun > stunNeeded)
             {
                 gameObject.GetComponent<PlayerMovement>().stunned = true;
+                if (currentStun > stunNeeded*2)
+                {
+                    currentStun = stunNeeded*2;
+                }
                 
             }
             else
@@ -64,9 +81,11 @@ public class PlayerDriver : MonoBehaviour
         parrying = true;
         parrycooldown = true;
         sprite.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);
+        lowerBody.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);
         yield return new WaitForSeconds(1);
         parrying = false;
         sprite.color = new Color(1, 1, 1, 1);
+        lowerBody.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(3);
         parrycooldown = false;
     }
