@@ -12,7 +12,7 @@ public class platformerPathfinding : MonoBehaviour
     public bool dazed = false;
     public bool pdazed = false;
     public bool attacking = false;
-
+    public bool jumpLevel = false;
 
     Rigidbody2D rigidbody;
     Animator animator;
@@ -129,10 +129,10 @@ public class platformerPathfinding : MonoBehaviour
                     }
 
                 }
-                /*if(dest.y > transform.position.y && !jumping){
-                    rigidbody.AddForce(new Vector2(0f, jumpMultiplier));
-                    jumping = true;
-                }*/
+                if(jumpLevel && dest.y > transform.position.y && transform.position.y < -2.6){
+                    rigidbody.velocity = (new Vector2(rigidbody.velocity.x, 10));
+                    //jumping = true;
+                }
             }
 
         }
