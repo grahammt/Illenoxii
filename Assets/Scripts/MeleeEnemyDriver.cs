@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MeleeEnemyDriver : MonoBehaviour
 {
-    Vector3 startVec;
-    Vector3 destVec;
+    Vector3 moveVec;
     SpriteRenderer sprite;
     public float chargeDistance;
 
@@ -16,12 +15,20 @@ public class MeleeEnemyDriver : MonoBehaviour
 
     // interface for animation events
     public void SetChargeVectors(){
-        startVec = transform.position;
-        destVec = startVec + chargeDistance * (sprite.flipX ? Vector3.left : Vector3.right);
+        float currChargeDist = chargeDistance;
+        RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                (sprite.flipX ? Vector3.left : Vector3.right),
+                chargeDistance,
+                LayerMask.GetMask("Terrain"));
+        if(hit.collider != null){
+            currChargeDist = hit.distance;
+        }
+        moveVec = currChargeDist * (sprite.flipX ? Vector3.left : Vector3.right);
     }
 
-    public void LerpToDest(float p){
-        transform.position = Vector3.Lerp(startVec, destVec, p);
+    public void MoveTowardDest(float p){
+        transform.Translate(moveVec * p);
     }
 
 }
