@@ -299,7 +299,8 @@ MonoBehaviour:
   dazed: 0
   pdazed: 0
   attacking: 0
-  jumpLevel: 0
+  jumpLevel: 1
+  uppercut: 0
 --- !u!212 &9111033549587390556
 SpriteRenderer:
   m_ObjectHideFlags: 0
