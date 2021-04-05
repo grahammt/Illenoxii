@@ -59,7 +59,7 @@ public class platformerPathfinding : MonoBehaviour
             float distanceFromTarget = Vector3.Distance(transform.position, target.position);
             if(distanceFromTarget < 17)
             {
-                if (!attacking && distanceFromTarget < 2f && distanceFromTarget > 0.8f)
+                if (!attacking && distanceFromTarget < 2f  && distanceFromTarget > 0.8f )
                 {
                     animator.SetTrigger("uppercut");
                     attacking = true;
@@ -105,6 +105,7 @@ public class platformerPathfinding : MonoBehaviour
                 {
                     //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
                     spriteR.flipX = true;
+                    
                     if (transform.position.x - dest.x < 0.8f)
                     {
                         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);

@@ -299,6 +299,7 @@ MonoBehaviour:
   dazed: 0
   pdazed: 0
   attacking: 0
+  jumpLevel: 0
 --- !u!212 &9111033549587390556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f0ba3cc2fb4c14391b24828ee38c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunNeeded: 25
+  stunNeeded: 24
   currentStun: 0
 --- !u!114 &1457785389364247126
 MonoBehaviour:
