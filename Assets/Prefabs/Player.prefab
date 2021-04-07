@@ -357,9 +357,7 @@ GameObject:
   - component: {fileID: 8701668536146513552}
   - component: {fileID: 8701668536146513555}
   - component: {fileID: 8701668536146513553}
-  - component: {fileID: 8701668536146513554}
   - component: {fileID: 5209632291105401892}
-  - component: {fileID: 7557921809519878038}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -541,20 +539,6 @@ MonoBehaviour:
   dashSound: {fileID: 8300000, guid: 865df510960aac941b018b678335e9c1, type: 3}
   grappleComboCost: 0
   grappleSound: {fileID: 8300000, guid: ec8d700a56940e94dbdcdb8d805fbc1d, type: 3}
---- !u!114 &8701668536146513554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8701668536146513565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64dd847fc7239864a851a609804b6d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  healthBar: {fileID: 0}
 --- !u!114 &5209632291105401892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,26 +555,6 @@ MonoBehaviour:
   duration: 3
   background: {fileID: 0}
   SecondBackground: {fileID: 0}
---- !u!114 &7557921809519878038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8701668536146513565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b32625f089de3c241871330190d3bcfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parrying: 0
-  gameLostText: {fileID: 0}
-  lowerBody: {fileID: 0}
-  stunNeeded: 2
-  currentStun: 0
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  parent: {fileID: 0}
 --- !u!1 &8701668536350038016
 GameObject:
   m_ObjectHideFlags: 0

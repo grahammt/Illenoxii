@@ -1593,6 +1593,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1272926675}
     - target: {fileID: 5209632291105401892, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: background
@@ -1603,45 +1608,10 @@ PrefabInstance:
       propertyPath: SecondBackground
       value: 
       objectReference: {fileID: 2027020187}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: hitSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 1272926675}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: lowerBody
-      value: 
-      objectReference: {fileID: 657612795}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8300000, guid: b12fadb88a568784b9382b511036ceb3, type: 3}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: stunNeeded
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557921809519878038, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: gameLostText
-      value: 
-      objectReference: {fileID: 1443177079}
     - target: {fileID: 8701668535620295634, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8701668535620295638, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
@@ -1673,16 +1643,6 @@ PrefabInstance:
       propertyPath: grappleComboCost
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8701668536146513554, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 1272926675}
-    - target: {fileID: 8701668536146513554, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: gameLostText
-      value: 
-      objectReference: {fileID: 1443177079}
     - target: {fileID: 8701668536146513558, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
