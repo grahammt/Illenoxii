@@ -67,7 +67,7 @@ public class ComboUI : MonoBehaviour
         StartCoroutine(SizeChange(1.25f, 0.25f));
 
     }
-    public IEnumerator Timer(){
+    IEnumerator Timer(){
         if (timer != null){
             StopCoroutine(timer);
         }

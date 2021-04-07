@@ -26,7 +26,7 @@ public class BreakOnImpact : MonoBehaviour
     }
     
     void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject != sender && sender.CompareTag("Player")){
+        if (other.gameObject != sender && sender.CompareTag("Player")){ // Player projectile hits enemy
             if (other.gameObject.GetComponent<Enemy>()!=null){
                 other.gameObject.GetComponent<Enemy>().HandleHit(damage, 0);
                 //player.GetComponent<InputToPlayerAttacks>().SecondaryHit();
@@ -35,7 +35,7 @@ public class BreakOnImpact : MonoBehaviour
             
             
         }
-        else if (other.gameObject != sender && sender.CompareTag("Enemy"))
+        else if (other.gameObject != sender && sender.CompareTag("Enemy")) // Enemy projectile hits player
         {
             if (other.gameObject.GetComponent<HasHealth>() != null && other.gameObject.CompareTag("Player"))
             {
@@ -57,8 +57,6 @@ public class BreakOnImpact : MonoBehaviour
         }
         else if (other.gameObject != sender) {
             Destroy(gameObject);
-        }
-        
-        
+        }        
     }
 }

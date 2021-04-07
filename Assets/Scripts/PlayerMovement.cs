@@ -216,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
                     // dashes[0].onCooldown = true;
                     // --dashCharges;
                     // coroutine to handle things past the setup
-                    StartCoroutine("DashAttackMain", 0);
+                    StartCoroutine("DashAttackMain", i);
                     break;
                 }
             }
@@ -286,15 +286,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator DashAttackMain(int dashIdx){
+        float dashCooldown = 2.4f;
         dashCharges--;
+        if (dashCharges==0){
+            EventBus.Publish<MoveUsed>(new MoveUsed(dashCooldown,0));
+        }
         dashes[dashIdx].onCooldown = true;
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(dashCooldown);
         dashes[dashIdx].onCooldown = false;
         dashCharges++;
     }
 
     IEnumerator GrappleMain() {
         onGrappleCooldown = true;
+        EventBus.Publish<MoveUsed>(new MoveUsed(grappleCooldown,1));
         yield return new WaitForSeconds(grappleCooldown);
         onGrappleCooldown = false;
     }
@@ -314,4 +319,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+}
+
+public class MoveUsed{
+    public float cooldown;
+    public int move; // 0 for dash, 1 for grapple
+    public MoveUsed(){}
+    public MoveUsed(float cooldownLength, int moveID){
+        cooldown = cooldownLength;
+        move = moveID;
+    }
 }
