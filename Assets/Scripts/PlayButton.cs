@@ -15,6 +15,6 @@ public class PlayButton : MonoBehaviour
     }
 
     void StartGame(){
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(1);
     }
 }

@@ -1376,7 +1376,7 @@ PrefabInstance:
     - target: {fileID: 1598264969533765904, guid: 038daba6cc81c374d940e94bb59c946f,
         type: 3}
       propertyPath: nextLevelSceneIndex
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038daba6cc81c374d940e94bb59c946f, type: 3}
@@ -16780,7 +16780,7 @@ PrefabInstance:
     - target: {fileID: 5402614926476372330, guid: 699ee64a585eebc4a8939128db2f3c5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5402614926476372373, guid: 699ee64a585eebc4a8939128db2f3c5b,
         type: 3}

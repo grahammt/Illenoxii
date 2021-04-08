@@ -20,10 +20,6 @@ public class endCheck : MonoBehaviour
     void Update()
     {
         if(!PausedGameManager.is_paused) {
-            if (Input.GetKeyDown("r"))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
             if(!En1 && !En2 && !En3 && !En4 && !En5 && !En6 && !En7 && !En8 && !ending)
             {
                 ending = true;
