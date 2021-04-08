@@ -17,4 +17,5 @@ public class ComponentBank : MonoBehaviour
     #endregion
 
     public Animator SceneTransitionAnimator;
+    public Transform playerTransform;
 }
