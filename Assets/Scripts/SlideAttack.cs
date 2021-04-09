@@ -112,7 +112,9 @@ public class SlideAttack : MonoBehaviour
         
         //hitbox.enabled = false;
         //hitboxSprite.enabled = false;
-        yield return new WaitForSeconds(0.4f);
+        float cooldown = 0.4f;
+        EventBus.Publish<MoveUsed>(new MoveUsed(cooldown,3));
+        yield return new WaitForSeconds(cooldown);
         onCooldown = false;
     }
 

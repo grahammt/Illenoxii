@@ -288,9 +288,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator DashAttackMain(int dashIdx){
         float dashCooldown = 2.4f;
         dashCharges--;
-        if (dashCharges==0){
-            EventBus.Publish<MoveUsed>(new MoveUsed(dashCooldown,0));
-        }
+        EventBus.Publish<MoveUsed>(new MoveUsed(dashCooldown,dashIdx));
         dashes[dashIdx].onCooldown = true;
         yield return new WaitForSeconds(dashCooldown);
         dashes[dashIdx].onCooldown = false;
@@ -299,7 +297,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator GrappleMain() {
         onGrappleCooldown = true;
-        EventBus.Publish<MoveUsed>(new MoveUsed(grappleCooldown,1));
+        EventBus.Publish<MoveUsed>(new MoveUsed(grappleCooldown,2));
         yield return new WaitForSeconds(grappleCooldown);
         onGrappleCooldown = false;
     }
@@ -323,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
 
 public class MoveUsed{
     public float cooldown;
-    public int move; // 0 for dash, 1 for grapple
+    public int move; // 0/1 for dash, 2 for grapple, 3 for slide, 4 for uppercut
     public MoveUsed(){}
     public MoveUsed(float cooldownLength, int moveID){
         cooldown = cooldownLength;

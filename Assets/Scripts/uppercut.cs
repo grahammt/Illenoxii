@@ -118,10 +118,12 @@ public class uppercut : MonoBehaviour
             }
         }*/
 
-        yield return new WaitForSeconds(0.4f);
+        float cooldown = 0.4f;
+        EventBus.Publish<MoveUsed>(new MoveUsed(2*cooldown, 4));
+        yield return new WaitForSeconds(cooldown);
         //hitbox.enabled = false;
         //hitboxSprite.enabled = false;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(cooldown);
         onCooldown = false;
     }
 

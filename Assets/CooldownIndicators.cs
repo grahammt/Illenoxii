@@ -7,6 +7,7 @@ public class CooldownIndicators : MonoBehaviour
 {
     Subscription<MoveUsed> move_event_subcription;
     public int moveTrigger;
+    private Coroutine timer;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +15,12 @@ public class CooldownIndicators : MonoBehaviour
         move_event_subcription = EventBus.Subscribe<MoveUsed>(_OnMoveUsed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void _OnMoveUsed(MoveUsed e){
         if (e.move == moveTrigger){
-            StartCoroutine(Timer(e.cooldown));
+            if (timer!=null){
+                StopCoroutine(timer);
+            }
+            timer=StartCoroutine(Timer(e.cooldown));
         }
     }
 

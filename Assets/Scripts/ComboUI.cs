@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class ComboUI : MonoBehaviour
@@ -24,8 +25,8 @@ public class ComboUI : MonoBehaviour
     void Update(){
         if(!PausedGameManager.is_paused) {
             if (currentCombo == 0){
-                if (GetComponent<Text>() != null){
-                    GetComponent<Text>().text = "";
+                if (GetComponent<TextMeshProUGUI>() != null){
+                    GetComponent<TextMeshProUGUI>().text = "";
                 }
                 if (background!= null){
                     SecondBackground.fillAmount = 0;
@@ -40,8 +41,8 @@ public class ComboUI : MonoBehaviour
         if (timer!= null){
             StopCoroutine(timer);
         }
-        if (GetComponent<Text>() != null){
-            GetComponent<Text>().text = "x" + e.new_combo +"!";
+        if (GetComponent<TextMeshProUGUI>() != null){
+            GetComponent<TextMeshProUGUI>().text = "x" + e.new_combo +"!";
         }
         if (background != null){
             SecondBackground.fillAmount = 0;
@@ -56,8 +57,8 @@ public class ComboUI : MonoBehaviour
             StopCoroutine(timer);
         }
         currentCombo += e.inc_amt;
-        if (GetComponent<Text>() != null){
-            GetComponent<Text>().text = "x" + currentCombo  +"!";
+        if (GetComponent<TextMeshProUGUI>() != null){
+            GetComponent<TextMeshProUGUI>().text = "x" + currentCombo  +"!";
         }
         if (background != null){
             SecondBackground.fillAmount = 1;
