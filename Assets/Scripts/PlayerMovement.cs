@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public enum movementState{idle, running, dashing, grapple};
     movementState state = movementState.idle;
     float direction;
+    public AudioSource walkSound;
 
     // imported from DashAttack.cs
     struct dashStruct{
@@ -87,14 +88,19 @@ public class PlayerMovement : MonoBehaviour
             }
             switch(state){
                 case movementState.idle:
+                    StopRunSound();
                     checkMovement();
                     break;
                 case movementState.running:
+                    // Set running sound
+                    EnableRunSound();
                     checkMovement();
                     break;
                 case movementState.dashing:
+                    StopRunSound();
                     break;
                 default:
+                    StopRunSound();
                     break;
             }
             if (stunned)
@@ -316,7 +322,13 @@ public class PlayerMovement : MonoBehaviour
         playerRb.velocity = new Vector2(playerRb.velocity.x, 0f);
     }
 
+    void StopRunSound() {
+        walkSound.enabled = false;
+    }
 
+    void EnableRunSound() {
+        walkSound.enabled = (inMidair) ? false : true;
+    }
 }
 
 public class MoveUsed{

@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sprite;
 
     public DamageText damageTextPrefab;
-    public AudioClip hitSound;
+    public AudioClip [] hitSounds;
     public AudioClip deathSound;
 
     void Start()
@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour
         EventBus.Publish<IncrementCombo>(new IncrementCombo());
 
         // play the hit sound
-        AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        int hit_index = Random.Range(0, hitSounds.Length);
+        AudioSource.PlayClipAtPoint(hitSounds[hit_index], transform.position);
 
         // if dead
         if (dead)

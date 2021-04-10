@@ -424,7 +424,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
     type: 3}
-  hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  - {fileID: 8300000, guid: 1040397c520073f438b672970cb34080, type: 3}
+  - {fileID: 8300000, guid: 12434ac12c268ca478b1577a9f987a3c, type: 3}
   deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!1 &5270585209591000455
 GameObject:
