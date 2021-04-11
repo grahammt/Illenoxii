@@ -22,6 +22,7 @@ public class deleteVideoPlayerWhenFinished : MonoBehaviour
         }
         if(started_playing && !myVidPlayer.isPlaying) {
             canvas.SetActive(true);
+            EventBus.Publish(new IntroVideoOverEvent());
             Destroy(gameObject);
         }
     }

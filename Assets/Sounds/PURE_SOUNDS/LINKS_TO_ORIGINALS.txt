@@ -4,3 +4,4 @@ Metallic_Crash.wav	https://sound-effects.bbcrewind.co.uk/search?q=07022373
 Wind.wav		https://sound-effects.bbcrewind.co.uk/search?q=NHU10217728
 Clock.wav		https://sound-effects.bbcrewind.co.uk/search?q=07022168
 Cymbals.wav		https://sound-effects.bbcrewind.co.uk/search?q=07005054	
+Lasers.wav		https://sound-effects.bbcrewind.co.uk/search?q=07042215
