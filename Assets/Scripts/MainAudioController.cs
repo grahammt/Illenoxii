@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainAudioController : MonoBehaviour
 {
     public AudioSource myAudioSource;
-    static string [] scene_names = {"tutorial1", "tutorial2", "tutorial3"};
+    static string [] scene_names = {"tutorial1", "tutorial2", "tutorial3", "tutorial4"};
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +26,14 @@ public class MainAudioController : MonoBehaviour
     }
     void _SceneCheck(Scene scene, Scene next) {
         Debug.Log("SCENE NAME: " + next.name);
+        bool found = false;
         foreach (string sn in scene_names) {
             if(next.name == sn) {
-                Destroy(this);
+                found = true;
             }
+        }
+        if(!found) {
+            Destroy(gameObject);
         }
     }
 }

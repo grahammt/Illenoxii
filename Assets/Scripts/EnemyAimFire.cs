@@ -11,6 +11,7 @@ public class EnemyAimFire : MonoBehaviour
     private bool inRange;
     private float cooldown;
     private bool firing;
+    public AudioClip firingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,7 @@ public class EnemyAimFire : MonoBehaviour
     IEnumerator Fire(Vector3 direction){
         GetComponent<Animator>().SetTrigger("Firing");
         firing = true;
+        AudioSource.PlayClipAtPoint(firingSound, transform.position);
         yield return new WaitForSeconds((1));
         if (!GetComponent<HasArmor>().isStunned())
         {

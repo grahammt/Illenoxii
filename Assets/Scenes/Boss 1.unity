@@ -15095,6 +15095,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843410085390892815, guid: 1775c56b80b9cbb44bfeda9bc3fb7e1f,
         type: 3}
+      propertyPath: spawn_sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8367a49134f88af438b9080ad31026d5, type: 3}
+    - target: {fileID: 6843410085390892815, guid: 1775c56b80b9cbb44bfeda9bc3fb7e1f,
+        type: 3}
       propertyPath: enemy_spawn_timer_MAX
       value: 25
       objectReference: {fileID: 0}
@@ -16932,7 +16937,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTextPrefab: {fileID: 3608219003319052048, guid: 356088a6f86c2954292de9afcd4ee4e5,
     type: 3}
-  hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
+  - {fileID: 8300000, guid: 1040397c520073f438b672970cb34080, type: 3}
+  - {fileID: 8300000, guid: 12434ac12c268ca478b1577a9f987a3c, type: 3}
   deathSound: {fileID: 8300000, guid: 9080904cdf8141d43bd0881b25d0630e, type: 3}
 --- !u!1 &1376445573
 GameObject:

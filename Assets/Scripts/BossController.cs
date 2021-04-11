@@ -16,6 +16,7 @@ public class BossController : MonoBehaviour
     public float movement_timer_MAX = 3f;
     private float movement_timer = 0.0f;
     public float speed = 2;
+    public AudioClip spawn_sound;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class BossController : MonoBehaviour
         Vector3 spawn_offset = Vector3.left * 0;
         Vector3 enemy_offset = Vector3.left * 3;
 
+        AudioSource.PlayClipAtPoint(spawn_sound, transform.position);
         for(int i = 1; i <= enemy_wave_count; ++i) {
             GameObject temp = Instantiate(enemyPrefab, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
             temp.GetComponent<platformerPathfinding>().target = playerTransform; 
