@@ -21,11 +21,23 @@ public class HasArmor : MonoBehaviour
             {
                 if (animator)
                     animator.SetBool("Dazed", true);
-                gameObject.GetComponent<platformerPathfinding>().dazed = true;
+                if (gameObject.GetComponent<platformerPathfinding>()){
+                    gameObject.GetComponent<platformerPathfinding>().dazed = true;
+                }
+                if (GetComponent<FlyingController>() && !GetComponent<FlyingController>().stunned){
+                    GetComponent<FlyingController>().stunned = true;
+                    GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                }
             }
             else
             {
-                gameObject.GetComponent<platformerPathfinding>().dazed = false;
+                if (animator){
+                    animator.SetBool("Dazed",false);
+                }
+                if (gameObject.GetComponent<platformerPathfinding>()){
+                    gameObject.GetComponent<platformerPathfinding>().dazed = false;
+                }
             }
             Debug.Log("stun val: " + currentStun);
         }
@@ -40,7 +52,7 @@ public class HasArmor : MonoBehaviour
         {
             if (currentStun > 0)
             {
-                if (GetComponent<platformerPathfinding>())
+                if (GetComponent<platformerPathfinding>() && GetComponent<platformerPathfinding>().onGround())
                 {
                     if (GetComponent<platformerPathfinding>().onGround())
                     {
@@ -81,7 +93,6 @@ public class HasArmor : MonoBehaviour
                         }
                     }
                 }
-
                 else
                 {
                     if (currentStun > 30)

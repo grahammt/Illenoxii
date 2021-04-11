@@ -29,7 +29,10 @@ public class EnemyAimFire : MonoBehaviour
                     StartCoroutine(Fire(Vector3.Normalize(diff)));
                 }
                 else{
-                    cooldown+=Time.deltaTime;
+                    if (!GetComponent<HasArmor>().isStunned()){
+                        if (GetComponent<FlyingController>() && !GetComponent<FlyingController>().stunned)
+                            cooldown+=Time.deltaTime;
+                    }
                 }
             }
             else{
@@ -41,25 +44,31 @@ public class EnemyAimFire : MonoBehaviour
 
     IEnumerator Fire(Vector3 direction){
         GetComponent<Animator>().SetTrigger("Firing");
+        if (GetComponent<FlyingController>()!= null){
+            GetComponent<FlyingController>().firing = true;
+        }
         firing = true;
         AudioSource.PlayClipAtPoint(firingSound, transform.position);
         yield return new WaitForSeconds((1));
         if (!GetComponent<HasArmor>().isStunned())
         {
             yield return new WaitForSeconds((1.0f / 3.0f));
-            firing = false;
-            cooldown = 0;
             if (!GetComponent<HasArmor>().isStunned())
             {
+                Debug.Log("firing started");
                 GameObject bullet = Instantiate(prefab);
                 bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
                 bullet.transform.position = transform.position;
                 bullet.GetComponent<BreakOnImpact>().sender = gameObject;
                 bullet.GetComponent<BreakOnImpact>().damage = 20;
+                if (GetComponent<FlyingController>()!= null){
+                    yield return new WaitForSeconds(0.1f);
+                    GetComponent<FlyingController>().firing = false;
+                    Debug.Log("firing = false");
+                }
             }
         }
         firing = false;
         cooldown = 0;
-
     }
 }
