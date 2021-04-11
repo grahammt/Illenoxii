@@ -8,6 +8,7 @@ public class FlyingController : MonoBehaviour
     public bool firing;
     public float speed;
     public float duration = 3.0f;
+    public Animator engineAnimator;
     private float leftPoint;
     private float rightPoint;
     private Rigidbody2D rigidbody;
@@ -18,6 +19,7 @@ public class FlyingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        engineAnimator.SetBool("On",true);
         altitude = transform.position.y;
         rigidbody = GetComponent<Rigidbody2D>();
         leftPoint = transform.position.x - 5;
@@ -35,6 +37,7 @@ public class FlyingController : MonoBehaviour
             left = 0;
         }
         if (stunned){
+            engineAnimator.SetBool("On",false);
             if (onGround()){
                 if (clock<duration){
                     clock+=Time.deltaTime;
@@ -64,6 +67,7 @@ public class FlyingController : MonoBehaviour
         return hit.collider != null;
     }
     IEnumerator FlyBackUp(){
+        engineAnimator.SetBool("On",true);
         rigidbody.bodyType = RigidbodyType2D.Kinematic;
         while (transform.position.y < altitude){
             rigidbody.velocity = new Vector2(0.0f, speed/1.125f);

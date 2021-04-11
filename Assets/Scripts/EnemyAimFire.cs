@@ -55,7 +55,6 @@ public class EnemyAimFire : MonoBehaviour
             yield return new WaitForSeconds((1.0f / 3.0f));
             if (!GetComponent<HasArmor>().isStunned())
             {
-                Debug.Log("firing started");
                 GameObject bullet = Instantiate(prefab);
                 bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
                 bullet.transform.position = transform.position;
@@ -64,7 +63,6 @@ public class EnemyAimFire : MonoBehaviour
                 if (GetComponent<FlyingController>()!= null){
                     yield return new WaitForSeconds(0.1f);
                     GetComponent<FlyingController>().firing = false;
-                    Debug.Log("firing = false");
                 }
             }
         }
