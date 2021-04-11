@@ -8,3 +8,7 @@ public class GrappleReturnEvent {
 public class EnableAnalyticsEvent {
     
 }
+
+public class IntroVideoOverEvent {
+    
+}
