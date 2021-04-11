@@ -23,7 +23,7 @@ public class EnemyAimFire : MonoBehaviour
         if(!PausedGameManager.is_paused) {
             Vector3 diff = (player.transform.position - transform.position);
             inRange = (diff.magnitude < detectionRadius)? true : false;
-            if (inRange){
+            if (inRange && !GetComponent<HasArmor>().isStunned()){
                 if (cooldown>=maxCooldown && !firing){
                     StartCoroutine(Fire(Vector3.Normalize(diff)));
                 }
@@ -41,13 +41,23 @@ public class EnemyAimFire : MonoBehaviour
     IEnumerator Fire(Vector3 direction){
         GetComponent<Animator>().SetTrigger("Firing");
         firing = true;
-        yield return new WaitForSeconds((4.0f/3.0f));
+        yield return new WaitForSeconds((1));
+        if (!GetComponent<HasArmor>().isStunned())
+        {
+            yield return new WaitForSeconds((1.0f / 3.0f));
+            firing = false;
+            cooldown = 0;
+            if (!GetComponent<HasArmor>().isStunned())
+            {
+                GameObject bullet = Instantiate(prefab);
+                bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<BreakOnImpact>().sender = gameObject;
+                bullet.GetComponent<BreakOnImpact>().damage = 20;
+            }
+        }
         firing = false;
         cooldown = 0;
-        GameObject bullet = Instantiate(prefab);
-        bullet.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 5;
-        bullet.transform.position = transform.position;
-        bullet.GetComponent<BreakOnImpact>().sender = gameObject;
-        bullet.GetComponent<BreakOnImpact>().damage = 20;
+
     }
 }

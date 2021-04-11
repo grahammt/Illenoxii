@@ -30,32 +30,58 @@ public class HasArmor : MonoBehaviour
             Debug.Log("stun val: " + currentStun);
         }
     }
-
+    public bool isStunned()
+    {
+        return currentStun >= stunNeeded;
+    }
     IEnumerator stunreset()
     {
         while (true)
         {
             if (currentStun > 0)
             {
-                if (GetComponent<platformerPathfinding>().onGround())
+                if (GetComponent<platformerPathfinding>())
                 {
-                    if (currentStun > 30)
+                    if (GetComponent<platformerPathfinding>().onGround())
                     {
-                        currentStun -= currentStun * 0.02f;
+                        if (currentStun > 30)
+                        {
+                            currentStun -= currentStun * 0.02f;
+                        }
+                        else
+                        {
+                            if (currentStun > 20)
+                            {
+                                currentStun -= currentStun * 0.01f;
+                            }
+                            else
+                            {
+                                currentStun -= 0.2f;
+                            }
+
+                        }
                     }
                     else
                     {
-                        if (currentStun > 20)
+                        if (currentStun > 30)
                         {
                             currentStun -= currentStun * 0.01f;
                         }
                         else
                         {
-                            currentStun -= 0.2f;
-                        }
+                            if (currentStun > 20)
+                            {
+                                currentStun -= currentStun * 0.005f;
+                            }
+                            else
+                            {
+                                currentStun -= 0.1f;
+                            }
 
+                        }
                     }
                 }
+
                 else
                 {
                     if (currentStun > 30)
@@ -67,10 +93,18 @@ public class HasArmor : MonoBehaviour
                         if (currentStun > 20)
                         {
                             currentStun -= currentStun * 0.005f;
+                            if (stunNeeded < 5)
+                            {
+                                currentStun += currentStun*0.0025f;
+                            }
                         }
                         else
                         {
                             currentStun -= 0.1f;
+                            if (stunNeeded < 5)
+                            {
+                                currentStun += 0.05f;
+                            }
                         }
 
                     }
