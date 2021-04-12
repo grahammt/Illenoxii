@@ -58,17 +58,17 @@ public class HasArmor : MonoBehaviour
                     {
                         if (currentStun > 30)
                         {
-                            currentStun -= currentStun * 0.02f;
+                            currentStun -= currentStun * 0.04f;
                         }
                         else
                         {
                             if (currentStun > 20)
                             {
-                                currentStun -= currentStun * 0.01f;
+                                currentStun -= currentStun * 0.02f;
                             }
                             else
                             {
-                                currentStun -= 0.2f;
+                                currentStun -= 0.4f;
                             }
 
                         }
