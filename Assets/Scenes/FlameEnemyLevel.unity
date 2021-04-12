@@ -1103,6 +1103,7 @@ MonoBehaviour:
   En17: {fileID: 1534776826}
   En18: {fileID: 172822861}
   gameWinText: {fileID: 769758385}
+  enemyCount: 14
 --- !u!4 &182242752
 Transform:
   m_ObjectHideFlags: 0
@@ -3626,7 +3627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688111703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5705,12 +5706,12 @@ PrefabInstance:
     - target: {fileID: 4128690025392402067, guid: a60c014d31e657b4891425896e62b4ff,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4128690025392402067, guid: a60c014d31e657b4891425896e62b4ff,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4128690025901391784, guid: a60c014d31e657b4891425896e62b4ff,
         type: 3}
