@@ -40,7 +40,7 @@ public class HasHealth : MonoBehaviour
         {
             float x = Random.Range(-1, 1) * mag;
             float y = Random.Range(-1, 1) * mag;
-            cam.transform.localPosition = new Vector3(x, y,origin.z) + origin;
+            cam.transform.localPosition = new Vector3(x, y,0) + origin;
             i += Time.deltaTime;
             yield return null;
         }
