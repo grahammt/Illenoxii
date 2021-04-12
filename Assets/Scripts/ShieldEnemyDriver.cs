@@ -23,6 +23,7 @@ public class ShieldEnemyDriver : MonoBehaviour
     State state = State.searching;
     public GameObject hitbox;
     public GameObject healthbar;
+    public BoxCollider2D attackHitbox;
 
     float chargeCooldownTimer;
     float chargeDestX;
@@ -45,6 +46,7 @@ public class ShieldEnemyDriver : MonoBehaviour
 
     void Update()
     {
+        attackHitbox.offset = new Vector2(sprite.flipX ? -0.3f : 0.3f, 0.1f);
         switch(state){
         case State.searching:
             // walk and follow the player

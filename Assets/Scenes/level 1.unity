@@ -607,7 +607,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669381}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1921,7 +1921,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669380}
     - target: {fileID: 2506252928553115224, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
       propertyPath: scale.x
@@ -2133,8 +2133,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8108111611350033415, guid: bb25c282b06400e44892d30ee0fd2bf8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1680760631}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25c282b06400e44892d30ee0fd2bf8, type: 3}
+--- !u!4 &967669380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 967669379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &967669381 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033413, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 967669379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984525448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,7 +2608,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669381}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -3272,7 +3289,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669381}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -17500,7 +17517,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669381}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -17801,7 +17818,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 967669381}
     - target: {fileID: 3218320394212783367, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchorMax.x

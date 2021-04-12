@@ -172,6 +172,7 @@ MonoBehaviour:
   aggroRange: 6
   hitbox: {fileID: 7192300987088795431}
   healthbar: {fileID: 7267071746342518707}
+  attackHitbox: {fileID: 7258999655119999387}
 --- !u!1 &3288404593348389599
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +666,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.32174727, y: 0.0977861}
+  m_Offset: {x: -0.3, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

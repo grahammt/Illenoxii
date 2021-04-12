@@ -516,8 +516,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8108111611350033415, guid: bb25c282b06400e44892d30ee0fd2bf8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 657612793}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25c282b06400e44892d30ee0fd2bf8, type: 3}
+--- !u!4 &193595067 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 193595066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &193595068 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033413, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 193595066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205076982
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +641,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 193595067}
     - target: {fileID: 2506252928553115224, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
       propertyPath: scale.x
@@ -1848,7 +1865,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 193595068}
     - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: healthBar
@@ -16906,7 +16923,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 193595068}
     - target: {fileID: -7509032241818042673, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: maxHealth

@@ -623,7 +623,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -1383,7 +1383,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1929,7 +1929,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505252}
     - target: {fileID: 2506252928553115224, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
       propertyPath: scale.x
@@ -2105,7 +2105,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -2709,7 +2709,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -2994,7 +2994,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2556826429788566889, guid: 47fd989818376064b96f45fad177b929,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3610,7 +3610,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4109,7 +4109,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 8450828056278476075, guid: f0ce692e74e95c54cb35bffa0819f670,
         type: 3}
       propertyPath: m_Controller
@@ -5656,7 +5656,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 8450828056278476075, guid: f0ce692e74e95c54cb35bffa0819f670,
         type: 3}
       propertyPath: m_Controller
@@ -5944,7 +5944,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -6291,7 +6291,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -6396,7 +6396,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6856,7 +6856,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2173269180227105568, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7596,7 +7596,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 8450828056278476075, guid: f0ce692e74e95c54cb35bffa0819f670,
         type: 3}
       propertyPath: m_Controller
@@ -7857,8 +7857,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8108111611350033415, guid: bb25c282b06400e44892d30ee0fd2bf8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1763187156}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25c282b06400e44892d30ee0fd2bf8, type: 3}
+--- !u!4 &1511505252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511505251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1511505253 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033413, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511505251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1534776827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3477555664116813197, guid: 6a4bdddd0934aef469808a5621bcef90,
@@ -8536,7 +8553,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: healthBar
@@ -8776,7 +8793,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 2556826429788566889, guid: 47fd989818376064b96f45fad177b929,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8966,7 +8983,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1511505253}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder

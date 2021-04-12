@@ -1,6 +1,2 @@
 Astar algorithm library here: https://arongranberg.com/astar/
 unispace font
-
-
-key button icon
-https://static.thenounproject.com/png/47814-200.png

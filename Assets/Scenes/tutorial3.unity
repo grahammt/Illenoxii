@@ -581,7 +581,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1329163052}
     - target: {fileID: 2506252928553115224, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
       propertyPath: scale.x
@@ -600,7 +600,7 @@ PrefabInstance:
     - target: {fileID: 2506252928553115227, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2506252928553115227, guid: f036b83c0ae931f42bb36b692e6700b6,
         type: 3}
@@ -1519,7 +1519,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 912381183}
     - target: {fileID: 5209632291105401892, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: background
@@ -15477,7 +15477,7 @@ PrefabInstance:
     - target: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
         type: 3}
@@ -15529,8 +15529,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8108111611350033415, guid: bb25c282b06400e44892d30ee0fd2bf8,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 657612793}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25c282b06400e44892d30ee0fd2bf8, type: 3}
+--- !u!20 &912381183 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033413, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 912381182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928553486
 GameObject:
   m_ObjectHideFlags: 0
@@ -16687,6 +16698,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328026304}
   m_CullTransparentMesh: 0
+--- !u!4 &1329163052 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8108111611350033414, guid: bb25c282b06400e44892d30ee0fd2bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 912381182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1348108566
 GameObject:
   m_ObjectHideFlags: 0
@@ -17955,7 +17972,7 @@ Transform:
   - {fileID: 316844577}
   - {fileID: 1810649423}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053599033
 GameObject:
@@ -18294,7 +18311,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 912381183}
     - target: {fileID: 3597796732380127045, guid: ed7c500f86fac2445afa8a8e8531df35,
         type: 3}
       propertyPath: particleEffect
