@@ -14,6 +14,7 @@ public class platformerPathfinding : MonoBehaviour
     public bool attacking = false;
     public bool jumpLevel = false;
     public bool uppercut = false;
+    public bool flameEnemy = false;
     Rigidbody2D rigidbody;
     Animator animator;
     [HideInInspector]
@@ -61,7 +62,7 @@ public class platformerPathfinding : MonoBehaviour
             {
                 if (uppercut)
                 {
-                    if (!attacking && distanceFromTarget < 0.8f && distanceFromTarget > 0.3f)
+                    if (!attacking && distanceFromTarget < 0.8f && distanceFromTarget > 0.3f && !flameEnemy)
                     {
                         if(target.position.x<transform.position.x && spriteR.flipX)
                         {
@@ -150,7 +151,7 @@ public class platformerPathfinding : MonoBehaviour
                 }
                 else
                 {
-                    if (!attacking && distanceFromTarget < 2f && distanceFromTarget > 0.8f)
+                    if (!attacking && distanceFromTarget < 2f && distanceFromTarget > 0.8f && !flameEnemy)
                     {
                         animator.SetTrigger("uppercut");
                         attacking = true;
