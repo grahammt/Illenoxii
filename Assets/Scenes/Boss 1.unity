@@ -15011,6 +15011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843410085390892812, guid: 1775c56b80b9cbb44bfeda9bc3fb7e1f,
         type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1714450181}
+    - target: {fileID: 6843410085390892812, guid: 1775c56b80b9cbb44bfeda9bc3fb7e1f,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 146100264651886126}
@@ -18175,6 +18180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1714450181}
     - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: healthBar

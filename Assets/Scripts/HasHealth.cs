@@ -9,6 +9,7 @@ public class HasHealth : MonoBehaviour
     public HealthBar healthBar;
     float currentHealth;
     public GameObject particleEffect;
+    public Camera cam;
 
     void Start()
     {
@@ -19,6 +20,10 @@ public class HasHealth : MonoBehaviour
 
     public bool TakeDamage(float dmg){
         currentHealth -= dmg;
+        if (CompareTag("Player") || dmg >= 20)
+        {
+            StartCoroutine(screenShake(0.1f, 0.1f));
+        }
         if (particleEffect)
         {
             Instantiate(particleEffect, transform.position, Quaternion.identity);
@@ -26,6 +31,20 @@ public class HasHealth : MonoBehaviour
         if (healthBar)
             healthBar.SetCurrHealth(currentHealth);
         return currentHealth <= 0;
+    }
+    IEnumerator screenShake(float duration, float mag)
+    {
+        Vector3 origin = cam.transform.localPosition;
+        float i = 0;
+        while (i < duration)
+        {
+            float x = Random.Range(-1, 1) * mag;
+            float y = Random.Range(-1, 1) * mag;
+            cam.transform.localPosition = new Vector3(x, y,origin.z) + origin;
+            i += Time.deltaTime;
+            yield return null;
+        }
+        cam.transform.localPosition = origin;
     }
 //*/
 /*

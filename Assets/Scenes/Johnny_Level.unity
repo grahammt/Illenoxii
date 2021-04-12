@@ -623,6 +623,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5209632291105401892, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: background
@@ -1405,6 +1410,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 266290235}
     m_Modifications:
+    - target: {fileID: -7509032241818042673, guid: 6a4bdddd0934aef469808a5621bcef90,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 3218320394212783367, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2724,6 +2734,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2156607255654238135, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5225775309347563915, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
         type: 3}
       propertyPath: speed
@@ -2850,6 +2865,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2156607255654238135, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5225775309347563915, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
         type: 3}
       propertyPath: speed
@@ -3746,6 +3766,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 266290235}
     m_Modifications:
+    - target: {fileID: -7509032241818042673, guid: 6a4bdddd0934aef469808a5621bcef90,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 3218320394212783367, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4042,6 +4067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5428554873565125716, guid: d5c12fd3081c77845a80c38d6f582f42,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder
@@ -4347,6 +4377,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2156607255654238135, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5225775309347563915, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
         type: 3}
       propertyPath: speed
@@ -4589,6 +4624,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2156607255654238135, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5225775309347563915, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
         type: 3}
       propertyPath: speed
@@ -5479,6 +5519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5428554873565125716, guid: d5c12fd3081c77845a80c38d6f582f42,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1125899963}
     - target: {fileID: 5428554873565125719, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
       propertyPath: m_RootOrder

@@ -1515,6 +1515,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1195466911}
     - target: {fileID: 5209632291105401892, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: background
@@ -17917,6 +17922,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4211536214788760521, guid: ed7c500f86fac2445afa8a8e8531df35,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1195466911}
     - target: {fileID: 4211536214788760521, guid: ed7c500f86fac2445afa8a8e8531df35,
         type: 3}
       propertyPath: maxHealth

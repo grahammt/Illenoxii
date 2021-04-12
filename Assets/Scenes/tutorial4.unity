@@ -1387,6 +1387,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1195466911}
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1272926675}

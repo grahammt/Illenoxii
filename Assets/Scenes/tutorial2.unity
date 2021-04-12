@@ -1529,6 +1529,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1195466911}
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1272926675}
@@ -16466,6 +16471,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1036922471}
     m_Modifications:
+    - target: {fileID: -7509032241818042673, guid: 6a4bdddd0934aef469808a5621bcef90,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1195466911}
     - target: {fileID: -7509032241818042673, guid: 6a4bdddd0934aef469808a5621bcef90,
         type: 3}
       propertyPath: maxHealth
