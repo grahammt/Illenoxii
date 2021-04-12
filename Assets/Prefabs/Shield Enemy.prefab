@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   healthBar: {fileID: 7210656978754861483}
+  particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
+    type: 3}
 --- !u!212 &6037088047710158170
 SpriteRenderer:
   m_ObjectHideFlags: 0

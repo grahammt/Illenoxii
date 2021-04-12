@@ -513,6 +513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 4138041660355053563}
+  particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
+    type: 3}
 --- !u!114 &-164184783694441469
 MonoBehaviour:
   m_ObjectHideFlags: 0

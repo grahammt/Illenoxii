@@ -18093,6 +18093,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 15
   healthBar: {fileID: 5307924799951261462}
+  particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
+    type: 3}
 --- !u!1 &1775270899698159218
 GameObject:
   m_ObjectHideFlags: 0
@@ -18705,6 +18707,7 @@ MonoBehaviour:
   attacking: 0
   jumpLevel: 1
   uppercut: 0
+  flameEnemy: 0
 --- !u!114 &6587946555518169749
 MonoBehaviour:
   m_ObjectHideFlags: 0

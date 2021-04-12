@@ -8,6 +8,7 @@ public class HasHealth : MonoBehaviour
     public float maxHealth;
     public HealthBar healthBar;
     float currentHealth;
+    public GameObject particleEffect;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class HasHealth : MonoBehaviour
 
     public bool TakeDamage(float dmg){
         currentHealth -= dmg;
+        if (particleEffect)
+        {
+            Instantiate(particleEffect, transform.position, Quaternion.identity);
+        }
         if (healthBar)
             healthBar.SetCurrHealth(currentHealth);
         return currentHealth <= 0;
