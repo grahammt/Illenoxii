@@ -15890,7 +15890,18 @@ MonoBehaviour:
   En6: {fileID: 0}
   En7: {fileID: 0}
   En8: {fileID: 0}
+  En9: {fileID: 0}
+  En10: {fileID: 0}
+  En11: {fileID: 0}
+  En12: {fileID: 0}
+  En13: {fileID: 0}
+  En14: {fileID: 0}
+  En15: {fileID: 0}
+  En16: {fileID: 0}
+  En17: {fileID: 0}
+  En18: {fileID: 0}
   gameWinText: {fileID: 588812693}
+  enemyCount: 1
 --- !u!4 &1134796924
 Transform:
   m_ObjectHideFlags: 0

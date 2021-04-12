@@ -118,11 +118,17 @@ public class platformerPathfinding : MonoBehaviour
                     if (dest.x < transform.position.x)
                     {
                         //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
-                        spriteR.flipX = true;
-                        if (flameEnemy)
+                        if (!spriteR.flipX)
                         {
-                            GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                            spriteR.flipX = true;
+                            /**if (flameEnemy)
+                            {
+                                GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                                transform.position = transform.position + new Vector3(0.45f * 2, 0,0);
+                            }*/
                         }
+                        
+                        
                         if (transform.position.x - dest.x < 0.3f)
                         {
                             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -136,12 +142,17 @@ public class platformerPathfinding : MonoBehaviour
                     else if (dest.x > transform.position.x)
                     {
                         //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
-                        spriteR.flipX = false;
-
-                        if (flameEnemy)
+                        
+                        if (spriteR.flipX)
                         {
-                            GetComponent<BoxCollider2D>().offset = new Vector2 (-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                            spriteR.flipX = false;
+                            /**if (flameEnemy)
+                            {
+                                GetComponent<BoxCollider2D>().offset = new Vector2(-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                                transform.position = transform.position - new Vector3(0.45f * 2, 0, 0);
+                            }*/
                         }
+                        
                         if (dest.x - transform.position.x < 0.3f)
                         {
                             transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
@@ -205,10 +216,14 @@ public class platformerPathfinding : MonoBehaviour
                     if (dest.x < transform.position.x)
                     {
                         //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
-                        spriteR.flipX = true;
-                        if (flameEnemy)
+                        if (!spriteR.flipX)
                         {
-                            GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                            spriteR.flipX = true;
+                            /**if (flameEnemy)
+                            {
+                                GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                                transform.position = transform.position + new Vector3(0.45f * 2, 0, 0);
+                            }*/
                         }
                         if (transform.position.x - dest.x < 0.8f)
                         {
@@ -223,10 +238,14 @@ public class platformerPathfinding : MonoBehaviour
                     else if (dest.x > transform.position.x)
                     {
                         //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
-                        spriteR.flipX = false;
-                        if (flameEnemy)
+                        if (spriteR.flipX)
                         {
-                            GetComponent<BoxCollider2D>().offset = new Vector2(-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                            spriteR.flipX = false;
+                            /**if (flameEnemy)
+                            {
+                                GetComponent<BoxCollider2D>().offset = new Vector2(-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                                transform.position = transform.position - new Vector3(0.45f * 2, 0, 0);
+                            }*/
                         }
                         if (dest.x - transform.position.x < 0.8f)
                         {
