@@ -6,3 +6,4 @@ Clock.wav		https://sound-effects.bbcrewind.co.uk/search?q=07022168
 Cymbals.wav		https://sound-effects.bbcrewind.co.uk/search?q=07005054	
 Lasers.wav		https://sound-effects.bbcrewind.co.uk/search?q=07042215
 FireCrackle.wav		https://sound-effects.bbcrewind.co.uk/search?q=NHU05002101
+CrowdCheering.wav	https://sound-effects.bbcrewind.co.uk/search?q=00008025

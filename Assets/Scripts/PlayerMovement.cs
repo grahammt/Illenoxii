@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip dashSound;
 
     // Variables for grapple
-    public int grappleComboCost = 1;
+    private int grappleComboCost = 5;
     private float grappleCooldown = 3f;
     private bool onGrappleCooldown = false;
     public AudioClip grappleSound;
@@ -229,11 +229,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // check grapple
-        if (!stunned && Input.GetKeyDown(KeyCode.F) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
+        if (!stunned && Input.GetKeyDown(KeyCode.Q) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
             // set various state variables
             AudioSource.PlayClipAtPoint(grappleSound, transform.position);
             state = movementState.grapple;
-            Vector3 grappleOffset = getOrientation() ? new Vector3(-.5f, 0, 0) : new Vector3(.5f, 0, 0);
+            Vector3 grappleOffset = Vector3.zero;// getOrientation() ? new Vector3(-.5f, 0, 0) : new Vector3(.5f, 0, 0);
             // playerSprite.flipX = dashDest.x < dashStart.x;
 
             // message the animator
@@ -246,6 +246,7 @@ public class PlayerMovement : MonoBehaviour
             // spawn the grappler
             GameObject grapObj = Resources.Load<GameObject>("Grapple");
             GameObject grapple = Instantiate(grapObj, transform.position + grappleOffset, Quaternion.identity);
+            grapple.GetComponent<ArmGrapple>().player_transform = gameObject.transform;
             StartCoroutine("GrappleMain");
 
         }
