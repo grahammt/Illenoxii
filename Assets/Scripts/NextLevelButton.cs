@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class NextLevelButton : MonoBehaviour
 {
     Button nextLevelButton;
-    public int nextLevelSceneIndex;
 
     void Start()
     {
@@ -17,7 +16,7 @@ public class NextLevelButton : MonoBehaviour
 
     void LoadNextLevel(){
         Debug.Log("button clicked");
-        StartCoroutine("LoadSceneAfterDelay", nextLevelSceneIndex);
+        StartCoroutine("LoadSceneAfterDelay", SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     IEnumerator LoadSceneAfterDelay(int sceneIndex){

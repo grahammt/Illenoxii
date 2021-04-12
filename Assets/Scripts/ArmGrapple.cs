@@ -54,7 +54,7 @@ public class ArmGrapple : MonoBehaviour
                 }
                 if(returnedDistance > traveledDistance) {
                     if(enemy_grabbed != null) {
-                        enemy_grabbed.GetComponent<Enemy>().HandleHit(5, 0);
+                        enemy_grabbed.GetComponent<Enemy>().HandleHit(25, 0);
                     }
                     EventBus.Publish(new GrappleReturnEvent());
                     Destroy(this.gameObject);
