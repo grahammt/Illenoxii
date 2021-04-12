@@ -118,7 +118,10 @@ public class platformerPathfinding : MonoBehaviour
                     {
                         //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
                         spriteR.flipX = true;
-
+                        if (flameEnemy)
+                        {
+                            GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                        }
                         if (transform.position.x - dest.x < 0.3f)
                         {
                             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -133,6 +136,11 @@ public class platformerPathfinding : MonoBehaviour
                     {
                         //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
                         spriteR.flipX = false;
+
+                        if (flameEnemy)
+                        {
+                            GetComponent<BoxCollider2D>().offset = new Vector2 (-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                        }
                         if (dest.x - transform.position.x < 0.3f)
                         {
                             transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);
@@ -197,7 +205,10 @@ public class platformerPathfinding : MonoBehaviour
                     {
                         //rigidbody.velocity = new Vector3(-moveSpeed, rigidbody.velocity.y, 0f);
                         spriteR.flipX = true;
-
+                        if (flameEnemy)
+                        {
+                            GetComponent<BoxCollider2D>().offset = new Vector2(0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                        }
                         if (transform.position.x - dest.x < 0.8f)
                         {
                             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -212,6 +223,10 @@ public class platformerPathfinding : MonoBehaviour
                     {
                         //rigidbody.velocity = new Vector3(moveSpeed, rigidbody.velocity.y, 0f);
                         spriteR.flipX = false;
+                        if (flameEnemy)
+                        {
+                            GetComponent<BoxCollider2D>().offset = new Vector2(-0.4407573f, GetComponent<BoxCollider2D>().offset.y);
+                        }
                         if (dest.x - transform.position.x < 0.8f)
                         {
                             transform.Translate(Vector3.right * -moveSpeed * Time.deltaTime);

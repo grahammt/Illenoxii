@@ -32,12 +32,12 @@ public class flameHitbox : MonoBehaviour
         {
             if (playerSprite.flipX)
             {
-                transform.localPosition = new Vector3(-0.3f, 0.3f, 0);
+                transform.localPosition = new Vector3(0.3f, 0.3f, 0);
                 //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position;
             }
             else
             {
-                transform.localPosition = new Vector3(0.3f, 0.3f, 0);
+                transform.localPosition = new Vector3(0.9f, 0.3f, 0);
                 //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
             }
             
