@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f0ba3cc2fb4c14391b24828ee38c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunNeeded: 1
+  stunNeeded: 5
   currentStun: 0
 --- !u!1 &6531560841550720031
 GameObject:

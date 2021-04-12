@@ -32,6 +32,9 @@ public class EnemyAimFire : MonoBehaviour
                     if (!GetComponent<HasArmor>().isStunned()){
                         if (GetComponent<FlyingController>() && !GetComponent<FlyingController>().stunned)
                             cooldown+=Time.deltaTime;
+                        else if (!GetComponent<FlyingController>()){
+                            cooldown += Time.deltaTime;
+                        }
                     }
                 }
             }
