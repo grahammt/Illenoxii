@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32625f089de3c241871330190d3bcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowerbodyAnimator: {fileID: 3591953065201243087}
   parrying: 0
   gameLostText: {fileID: 0}
   lowerBody: {fileID: 2063150388919847450}
@@ -179,6 +180,7 @@ MonoBehaviour:
   currentStun: 0
   hitSound: {fileID: 8300000, guid: 64c30898e0a12eb40af5ce9da458467a, type: 3}
   deathSound: {fileID: 8300000, guid: b12fadb88a568784b9382b511036ceb3, type: 3}
+  componentsToDestroy: []
   parent: {fileID: 8701668536146513565}
 --- !u!114 &869580891100335042
 MonoBehaviour:
@@ -539,7 +541,6 @@ MonoBehaviour:
   dashTrail2: {fileID: 0}
   dashComboCost: 0
   dashSound: {fileID: 8300000, guid: 865df510960aac941b018b678335e9c1, type: 3}
-  grappleComboCost: 0
   grappleSound: {fileID: 8300000, guid: ec8d700a56940e94dbdcdb8d805fbc1d, type: 3}
 --- !u!114 &5209632291105401892
 MonoBehaviour:

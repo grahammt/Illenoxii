@@ -6,6 +6,7 @@ public class PlayerDriver : MonoBehaviour
 {
     Rigidbody2D rigidbody;
     Animator animator;
+    public Animator lowerbodyAnimator;
     public bool parrying = false;
     public GameObject gameLostText;
     public SpriteRenderer lowerBody;
@@ -15,6 +16,7 @@ public class PlayerDriver : MonoBehaviour
     public double currentStun = 0;
     public AudioClip hitSound;
     public AudioClip deathSound;
+    public List<Component> componentsToDestroy;
 
     public GameObject parent;
 
@@ -25,6 +27,12 @@ public class PlayerDriver : MonoBehaviour
         sprite = GetComponentInParent<SpriteRenderer>();
         healthScript = GetComponent<HasHealth>();
         animator = GetComponentInParent<Animator>();
+
+        componentsToDestroy.Add(parent.GetComponent<PlayerMovement>());
+        componentsToDestroy.Add(parent.GetComponentInChildren<SlideAttack>());
+        componentsToDestroy.Add(parent.GetComponentInChildren<PrimaryAttack>());
+        componentsToDestroy.Add(parent.GetComponentInChildren<uppercut>());
+        componentsToDestroy.Add(this);
         StartCoroutine("stunreset");
         //StartCoroutine("test");
         Time.timeScale = 1;
@@ -88,7 +96,7 @@ public class PlayerDriver : MonoBehaviour
                 AudioSource.PlayClipAtPoint(deathSound, transform.position);
                 // game lost
                 gameLostText.SetActive(true);
-                Destroy(parent);
+                Die();
             }
             EventBus.Publish<ResetComboEvent>(new ResetComboEvent(0));
         }
@@ -108,5 +116,13 @@ public class PlayerDriver : MonoBehaviour
         lowerBody.color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(3);
         parrycooldown = false;
+    }
+
+    void Die(){
+        animator.SetTrigger("Die");
+        lowerbodyAnimator.SetTrigger("Die");
+        foreach(Component component in componentsToDestroy){
+            Destroy(component);
+        }
     }
 }
