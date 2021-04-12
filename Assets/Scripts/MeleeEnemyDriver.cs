@@ -8,9 +8,14 @@ public class MeleeEnemyDriver : MonoBehaviour
     SpriteRenderer sprite;
     public float chargeDistance;
 
+    Enemy enemyScript;
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        enemyScript = GetComponentInChildren<Enemy>();
+
+        enemyScript.deathCallBack += DeathHandler;
     }
 
     // interface for animation events
@@ -29,6 +34,10 @@ public class MeleeEnemyDriver : MonoBehaviour
 
     public void MoveTowardDest(float p){
         transform.Translate(moveVec * p);
+    }
+
+    public void DeathHandler(){
+        Destroy(gameObject);
     }
 
 }

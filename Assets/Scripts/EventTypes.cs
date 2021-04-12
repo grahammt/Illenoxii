@@ -12,3 +12,11 @@ public class EnableAnalyticsEvent {
 public class IntroVideoOverEvent {
     
 }
+
+public class EnemySpawnEvent {
+
+}
+
+public class EnemyDieEvent {
+    
+}

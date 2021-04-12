@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashDistance = 5;
     public float jump_multiplier = 200;
 
+    public bool dash_lock = false;
+    public bool grapple_lock = false;
+
     // components to cache
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSprite;
@@ -179,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // then check dash command
-        if(!stunned && dashCharges > 0 && Input.GetKeyDown(KeyCode.LeftShift) && GetComponent<ComboUI>().currentCombo >= dashComboCost){
+        if(!dash_lock && !stunned && dashCharges > 0 && Input.GetKeyDown(KeyCode.LeftShift) && GetComponent<ComboUI>().currentCombo >= dashComboCost){
             // get mouse position, set z component to 0
             Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             mousePos[2] = 0f;
@@ -229,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // check grapple
-        if (!stunned && Input.GetKeyDown(KeyCode.Q) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
+        if (!grapple_lock && !stunned && Input.GetKeyDown(KeyCode.Q) && GetComponent<ComboUI>().currentCombo >= grappleComboCost && !onGrappleCooldown) {
             // set various state variables
             AudioSource.PlayClipAtPoint(grappleSound, transform.position);
             state = movementState.grapple;

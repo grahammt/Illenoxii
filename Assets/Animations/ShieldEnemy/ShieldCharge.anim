@@ -33,7 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: uppercutHitBox
+    path: AttackHitbox
     classID: 61
     script: {fileID: 0}
   m_PPtrCurves:
@@ -65,7 +65,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 928947667
+      path: 2568693789
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -121,7 +121,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: uppercutHitBox
+    path: AttackHitbox
     classID: 61
     script: {fileID: 0}
   m_EulerEditorCurves: []

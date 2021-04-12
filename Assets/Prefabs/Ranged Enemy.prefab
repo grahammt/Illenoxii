@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 2040263771854919677}
   - component: {fileID: 2299282700561282277}
   - component: {fileID: 9048660788539150791}
+  - component: {fileID: 8828128773681513476}
   m_Layer: 9
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -264,6 +265,7 @@ MonoBehaviour:
   healthBar: {fileID: 7605556131129372894}
   particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
     type: 3}
+  cam: {fileID: 0}
 --- !u!114 &4345914125981020095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +330,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunNeeded: 5
   currentStun: 0
+--- !u!114 &8828128773681513476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428554873565125714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b433d364270b240b14ff114c3eaa8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6531560841550720031
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class FirewallBehavior : MonoBehaviour
 
     IEnumerator DieAfterDelay(float delay){
         yield return new WaitForSeconds(delay);
+        EventBus.Publish<EnemyDieEvent>(new EnemyDieEvent());
         Destroy(gameObject);
     }
 }
