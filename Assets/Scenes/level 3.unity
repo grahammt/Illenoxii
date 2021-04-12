@@ -589,7 +589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Q to use
+  m_text: Press Q to use, requires 5 combo!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0870a7b5a0f3e9141b12ef82008762c9, type: 2}
   m_sharedMaterial: {fileID: -38903387063765946, guid: 0870a7b5a0f3e9141b12ef82008762c9,
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.7145939, y: -0.27154517, z: 0, w: -0.20008665}
+  m_margin: {x: 0.1342907, y: -0.27154517, z: 0.742774, w: -0.20008665}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1969,8 +1969,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863675097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: -0.016, z: 0}
-  m_LocalScale: {x: 4.013729, y: 0.824725, z: 1}
+  m_LocalPosition: {x: 0.612, y: -0.005, z: 0}
+  m_LocalScale: {x: 4.8413916, y: 1.1855007, z: 1}
   m_Children: []
   m_Father: {fileID: 310812323}
   m_RootOrder: 0
