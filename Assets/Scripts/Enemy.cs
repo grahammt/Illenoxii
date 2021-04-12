@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public delegate void DeathCallBack();
+    public DeathCallBack deathCallBack;
+
     HasHealth healthScript;
     CanGetKnockedBack knockbackScript;
     HasArmor armorScript;
@@ -20,6 +23,8 @@ public class Enemy : MonoBehaviour
         healthScript = GetComponent<HasHealth>();
         knockbackScript = GetComponent<CanGetKnockedBack>();
         armorScript = GetComponent<HasArmor>();
+
+        deathCallBack += PostDieEvent;
     }
 
     public void HandleHit(float dmg, float knockback){
@@ -48,8 +53,12 @@ public class Enemy : MonoBehaviour
         if (dead)
         {
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
-            Destroy(gameObject);
+            deathCallBack();
         }
+    }
+
+    void PostDieEvent(){
+        EventBus.Publish<EnemyDieEvent>(new EnemyDieEvent());
     }
 
 }

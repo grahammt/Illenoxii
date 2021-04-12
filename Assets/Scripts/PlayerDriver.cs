@@ -105,6 +105,7 @@ public class PlayerDriver : MonoBehaviour
     IEnumerator parry()
     {
         animator.SetBool("Parry", true);
+        EventBus.Publish<MoveUsed>(new MoveUsed(4f, 5));
         parrying = true;
         parrycooldown = true;
         sprite.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);

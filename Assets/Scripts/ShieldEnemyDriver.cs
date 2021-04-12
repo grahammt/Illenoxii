@@ -6,31 +6,39 @@ public class ShieldEnemyDriver : MonoBehaviour
 {
     public float chargeCooldown = 5f;
     public float chargeOvershoot = 5f;
-    public float chargeBuildupTime = 1.5f;
     public float aggroRange = 6f;
 
     public enum State{
         searching,
         buildup,
         charging,
-        cooling
+        cooling,
+        stunned
     };
 
     Transform target;
     SpriteRenderer sprite;
     Animator animator;
-    float chargeBuildupTimer;
-    float chargeCooldownTimer;
+    Enemy enemyScript;
     State state = State.searching;
+
+    float chargeCooldownTimer;
     float chargeDestX;
+
+    StunnedByParry stunScript;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        stunScript = GetComponentInChildren<StunnedByParry>();
+        enemyScript = GetComponentInChildren<Enemy>();
         target = ComponentBank.instance.playerTransform;
+
+        stunScript.stunCallback += GetStunned;
+        enemyScript.deathCallBack += DeathHandler;
+
         chargeCooldownTimer = chargeCooldown;
-        chargeBuildupTimer = chargeBuildupTime;
     }
 
     void Update()
@@ -48,12 +56,11 @@ public class ShieldEnemyDriver : MonoBehaviour
                 // perform raycast to check for walls
                 RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.down * 0.8f, (sprite.flipX) ? Vector2.left : Vector2.right, chargeLength, LayerMask.GetMask("Terrain"));
                 if(hit.collider != null){
-                    chargeLength = hit.distance - 1f;
+                    chargeLength = hit.distance - 1.5f;
                 }
 
                 // set charge destination and next state logic
                 chargeDestX = transform.position.x + (sprite.flipX ? -1 : 1) * chargeLength;
-                chargeBuildupTimer = chargeBuildupTime;
                 state = State.charging;
                 animator.SetTrigger("TargetSet");
             }
@@ -94,5 +101,23 @@ public class ShieldEnemyDriver : MonoBehaviour
 
     public void ResetChargeCD(){
         chargeCooldownTimer = chargeCooldown;
+    }
+
+    public void GetStunned(){
+        StartCoroutine("StunCoroutine");
+    }
+
+    IEnumerator StunCoroutine(){
+        state = State.stunned;
+        animator.SetTrigger("Daze");
+        enemyScript.HandleHit(40, 0);
+        yield return new WaitForSeconds(2f);
+        chargeCooldownTimer = chargeCooldown;
+        state = State.searching;
+        animator.SetTrigger("Recover");
+    }
+
+    public void DeathHandler(){
+        animator.SetTrigger("Die");
     }
 }
