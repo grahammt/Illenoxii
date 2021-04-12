@@ -1599,6 +1599,11 @@ PrefabInstance:
       objectReference: {fileID: 657612794}
     - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
+      propertyPath: dash_lock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
       propertyPath: dashTrail1
       value: 
       objectReference: {fileID: 1793138956}
@@ -1607,6 +1612,11 @@ PrefabInstance:
       propertyPath: dashTrail2
       value: 
       objectReference: {fileID: 1219529840}
+    - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: grapple_lock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: lowerBodyAnim

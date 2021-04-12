@@ -18,6 +18,7 @@ public class BossController : MonoBehaviour
     private float movement_timer = 0.0f;
     public float speed = 2;
     public AudioClip spawn_sound;
+    Enemy enemyScript;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,9 @@ public class BossController : MonoBehaviour
         SpawnFireWallV2();
         playerTransform = GameObject.Find("Player").transform;
         GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
+        enemyScript = GetComponentInChildren<Enemy>();
+
+        enemyScript.deathCallBack += DeathHandler;
     }
 
     // Update is called once per frame
@@ -61,7 +65,8 @@ public class BossController : MonoBehaviour
         AudioSource.PlayClipAtPoint(spawn_sound, transform.position);
         for(int i = 1; i <= enemy_wave_count; ++i) {
             GameObject temp = Instantiate(enemyPrefab, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
-            temp.GetComponent<platformerPathfinding>().target = playerTransform; 
+            temp.GetComponent<platformerPathfinding>().target = playerTransform;
+            EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
         }
     }
 
@@ -108,5 +113,10 @@ public class BossController : MonoBehaviour
         Vector3 firewallSpawn = new Vector3(20f, -1f, 0f);
         GameObject firewall = GameObject.Instantiate(firewallPrefab, firewallSpawn, Quaternion.identity);
         firewall.GetComponent<FirewallBehavior>().speed = -3f;
+        EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+    }
+
+    void DeathHandler(){
+        Destroy(gameObject);
     }
 }

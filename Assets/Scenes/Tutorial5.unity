@@ -1802,6 +1802,11 @@ PrefabInstance:
       objectReference: {fileID: 1275040128}
     - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
+      propertyPath: grapple_lock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
       propertyPath: lowerBodyAnim
       value: 
       objectReference: {fileID: 1117198262}
@@ -2199,11 +2204,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4128690026148897435, guid: a60c014d31e657b4891425896e62b4ff,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4128690026148897435, guid: a60c014d31e657b4891425896e62b4ff,
         type: 3}

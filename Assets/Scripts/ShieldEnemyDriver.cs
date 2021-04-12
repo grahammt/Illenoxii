@@ -21,6 +21,8 @@ public class ShieldEnemyDriver : MonoBehaviour
     Animator animator;
     Enemy enemyScript;
     State state = State.searching;
+    public GameObject hitbox;
+    public GameObject healthbar;
 
     float chargeCooldownTimer;
     float chargeDestX;
@@ -119,5 +121,7 @@ public class ShieldEnemyDriver : MonoBehaviour
 
     public void DeathHandler(){
         animator.SetTrigger("Die");
+        hitbox.SetActive(false);
+        healthbar.SetActive(false);
     }
 }
