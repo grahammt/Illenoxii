@@ -2210,6 +2210,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 896352335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &896352337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7325010762587676998, guid: 982ea6738410d4748a1763c27043f9a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 896352335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901483443
 GameObject:
   m_ObjectHideFlags: 0
@@ -24904,6 +24910,11 @@ PrefabInstance:
       propertyPath: SecondBackground
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8338521144957077447, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: gameLostText
+      value: 
+      objectReference: {fileID: 896352337}
     - target: {fileID: 8701668535620295638, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: lowerBodyAnim
