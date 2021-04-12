@@ -797,6 +797,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAudioSource: {fileID: 1168819262}
+  menu_song: {fileID: 8300000, guid: 8180eb05174c8a34da33a5553135f8e4, type: 3}
+  gameplay_song: {fileID: 8300000, guid: ecea4569875713b47b313e5f1502e3ff, type: 3}
 --- !u!4 &1168819264
 Transform:
   m_ObjectHideFlags: 0

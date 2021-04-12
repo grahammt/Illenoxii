@@ -83,7 +83,7 @@ public class ArmGrapple : MonoBehaviour
         if(!onReturn && !other.gameObject.CompareTag("Player") && other.gameObject.name != "Player") {
             Debug.Log(other.name);
             // If we hit enemy, we bring them back with us
-            if(other.gameObject.CompareTag("Enemy")) {
+            if(other.gameObject.CompareTag("Enemy") && other.gameObject.name != "P3_player_jump") {
                 enemy_grabbed = other.gameObject;
             }
             // We don't need to do detect collisions with walls because
