@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dd847fc7239864a851a609804b6d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 60
   healthBar: {fileID: 7210656978754861483}
 --- !u!212 &6037088047710158170
 SpriteRenderer:
@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660d6b0b50703c8499d4bdc7dd601e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeCooldown: 0
-  chargeOvershoot: 0
+  chargeCooldown: 5
+  chargeOvershoot: 10
+  chargeBuildupTime: 1.5
+  aggroRange: 6
 --- !u!1 &3288404593348389599
 GameObject:
   m_ObjectHideFlags: 0
