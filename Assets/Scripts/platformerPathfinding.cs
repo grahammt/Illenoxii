@@ -15,6 +15,7 @@ public class platformerPathfinding : MonoBehaviour
     public bool jumpLevel = false;
     public bool uppercut = false;
     public bool flameEnemy = false;
+    public float aggroRange = 17;
     Rigidbody2D rigidbody;
     Animator animator;
     [HideInInspector]
@@ -58,7 +59,7 @@ public class platformerPathfinding : MonoBehaviour
                 return;
             }
             float distanceFromTarget = Vector3.Distance(transform.position, target.position);
-            if (distanceFromTarget < 17)
+            if (distanceFromTarget < aggroRange)
             {
                 if (uppercut)
                 {
