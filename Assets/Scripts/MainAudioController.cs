@@ -13,8 +13,8 @@ public class MainAudioController : MonoBehaviour
     public AudioSource myAudioSource;
     public AudioClip menu_song;
     public AudioClip gameplay_song;
-    static string [] tut_scene_names = {"tutorial1", "tutorial2", "tutorial3", "tutorial4"};
-    static string [] gameplay_scene_names = {"level 1", "level 2", "Boss 1"};
+    static string [] tut_scene_names = {"tutorial1", "tutorial2", "tutorial3", "tutorial4", "Tutorial5"};
+    static string [] gameplay_scene_names = {"level 1", "level 2", "level 3", "level 4", "FlameEnemyLevel", "Boss 1"};
     private MusicStates current_music;
     private Subscription<IntroVideoOverEvent> mySub;
     // Start is called before the first frame update
