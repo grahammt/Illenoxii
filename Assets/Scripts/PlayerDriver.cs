@@ -24,6 +24,7 @@ public class PlayerDriver : MonoBehaviour
     {
         sprite = GetComponentInParent<SpriteRenderer>();
         healthScript = GetComponent<HasHealth>();
+        animator = GetComponentInParent<Animator>();
         StartCoroutine("stunreset");
         //StartCoroutine("test");
         Time.timeScale = 1;
@@ -95,11 +96,13 @@ public class PlayerDriver : MonoBehaviour
 
     IEnumerator parry()
     {
+        animator.SetBool("Parry", true);
         parrying = true;
         parrycooldown = true;
         sprite.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);
         lowerBody.color = new Color(0.5f, 0.5f, sprite.color.b, 0.5f);
         yield return new WaitForSeconds(1);
+        animator.SetBool("Parry", false);
         parrying = false;
         sprite.color = new Color(1, 1, 1, 1);
         lowerBody.color = new Color(1, 1, 1, 1);
