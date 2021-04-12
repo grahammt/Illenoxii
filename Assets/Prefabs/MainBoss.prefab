@@ -144,12 +144,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294908eb6ee0f244dae7cabc886beac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_spawn_timer_MAX: 20
+  projectile_spawn_timer_MAX: 15
   enemy_wave_count: 3
   fire_prefab_count: 10
   enemyPrefab: {fileID: 3477555664116813196, guid: 6a4bdddd0934aef469808a5621bcef90,
     type: 3}
   firePrefab: {fileID: 5756092037646712406, guid: 1239d4f13149c844e978577ae10b72e7,
     type: 3}
+  firewallPrefab: {fileID: 4003027888046414769, guid: fea63c5a440893b4399c1b7a37df3b58,
+    type: 3}
+  movement_timer_MAX: 3
+  speed: 2
+  spawn_sound: {fileID: 0}
 --- !u!114 &6843410085390892812
 MonoBehaviour:
   m_ObjectHideFlags: 0

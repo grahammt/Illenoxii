@@ -8,7 +8,7 @@ public class DamagePlayer : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Player"){
-            other.gameObject.SendMessage("takeDamage", damage);
+            other.gameObject.GetComponent<PlayerDriver>().HandleHit(damage);
             /*GameObject player = GameObject.Find("Player");
             if (player!= null){
                 player.GetComponent<InputToPlayerAttacks>().SecondaryHit();

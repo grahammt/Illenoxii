@@ -12,6 +12,7 @@ public class BossController : MonoBehaviour
     public float fire_prefab_count = 10;
     public GameObject enemyPrefab;
     public GameObject firePrefab;
+    public GameObject firewallPrefab;
     private Transform playerTransform;
     public float movement_timer_MAX = 3f;
     private float movement_timer = 0.0f;
@@ -21,7 +22,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnFireWall();
+        SpawnFireWallV2();
         playerTransform = GameObject.Find("Player").transform;
         GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
     }
@@ -41,7 +42,7 @@ public class BossController : MonoBehaviour
             projectile_spawn_timer += Time.deltaTime;
             if (projectile_spawn_timer >= projectile_spawn_timer_MAX) {
                 projectile_spawn_timer = 0;
-                SpawnFireWall();
+                SpawnFireWallV2();
             }
 
             // Adjust movement
@@ -101,5 +102,11 @@ public class BossController : MonoBehaviour
             }
         }
 
+    }
+
+    void SpawnFireWallV2(){
+        Vector3 firewallSpawn = new Vector3(20f, -1f, 0f);
+        GameObject firewall = GameObject.Instantiate(firewallPrefab, firewallSpawn, Quaternion.identity);
+        firewall.GetComponent<FirewallBehavior>().speed = -3f;
     }
 }
