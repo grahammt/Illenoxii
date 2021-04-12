@@ -1162,69 +1162,6 @@ Transform:
   m_Father: {fileID: 446419911}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &182242750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 182242752}
-  - component: {fileID: 182242751}
-  m_Layer: 0
-  m_Name: gameEndCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &182242751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182242750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8362de75d7f3484990877d02fd9f0e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  En1: {fileID: 1330499131}
-  En2: {fileID: 1124203667}
-  En3: {fileID: 1248485185}
-  En4: {fileID: 1424971129}
-  En5: {fileID: 115554244}
-  En6: {fileID: 1442199037}
-  En7: {fileID: 721217629}
-  En8: {fileID: 0}
-  En9: {fileID: 348340101}
-  En10: {fileID: 1778124598}
-  En11: {fileID: 398023885}
-  En12: {fileID: 948736078}
-  En13: {fileID: 1674247065}
-  En14: {fileID: 0}
-  En15: {fileID: 0}
-  En16: {fileID: 134282006}
-  En17: {fileID: 1534776826}
-  En18: {fileID: 172822861}
-  gameWinText: {fileID: 769758385}
-  enemyCount: 14
---- !u!4 &182242752
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182242750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191070616
 GameObject:
   m_ObjectHideFlags: 0
@@ -8680,13 +8617,11 @@ PrefabInstance:
       propertyPath: gameLostText
       value: 
       objectReference: {fileID: 0}
-      objectReference: {fileID: 1597483024}
     - target: {fileID: 8338521144957077447, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: gameLostText
       value: 
       objectReference: {fileID: 269814491}
-      objectReference: {fileID: 1597483024}
     - target: {fileID: 8701668535620295638, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: lowerBodyAnim
