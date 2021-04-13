@@ -49,14 +49,15 @@ public class BreakOnImpact : MonoBehaviour
                     other.gameObject.GetComponent<PlayerDriver>().HandleHit(damage);
                     Destroy(gameObject);
                 }
-                
-                //player.GetComponent<InputToPlayerAttacks>().SecondaryHit();
+            }
+            else{
+                Destroy(gameObject);
             }
 
 
         }
         else if (other.gameObject != sender) {
             Destroy(gameObject);
-        }        
+        }    
     }
 }

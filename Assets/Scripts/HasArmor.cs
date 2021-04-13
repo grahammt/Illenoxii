@@ -39,7 +39,7 @@ public class HasArmor : MonoBehaviour
                     gameObject.GetComponent<platformerPathfinding>().dazed = false;
                 }
             }
-            Debug.Log("stun val: " + currentStun);
+            //Debug.Log("stun val: " + currentStun);
         }
     }
     public bool isStunned()
