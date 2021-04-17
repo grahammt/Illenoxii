@@ -86,6 +86,10 @@ public class ArmGrapple : MonoBehaviour
             if(other.gameObject.CompareTag("Enemy") && other.gameObject.name != "P3_player_jump") {
                 enemy_grabbed = other.gameObject;
             }
+            // Keep going if we didn't hit an enemy
+            if (other.gameObject.name == "P3_player_jump" || other.gameObject.name == "firewall 1"){
+                return;
+            }
             // We don't need to do detect collisions with walls because
             // it will return by default when we set this value
             onReturn = true;
