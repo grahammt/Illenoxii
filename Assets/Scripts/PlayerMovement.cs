@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip dashSound;
 
     // Variables for grapple
-    private int grappleComboCost = 5;
+    public int grappleComboCost = 5;
     private float grappleCooldown = 3f;
     private bool onGrappleCooldown = false;
     public AudioClip grappleSound;
