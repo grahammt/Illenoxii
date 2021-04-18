@@ -15,13 +15,12 @@ public class SlideAttack : MonoBehaviour
     public Animator animator;
     public Animator lowerBodyAnim;
     public int comboCost;
-
+    public bool buttonHover;
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
         hitboxSprite = GetComponent<SpriteRenderer>();
         hitbox = GetComponent<BoxCollider2D>();
-        
     }
 
     void Update()

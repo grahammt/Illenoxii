@@ -12,6 +12,7 @@ public class NextLevelButton : MonoBehaviour
     {
         nextLevelButton = GetComponent<Button>();
         nextLevelButton.onClick.AddListener(LoadNextLevel);
+        PausedGameManager.is_paused=true;
     }
 
     void LoadNextLevel(){

@@ -16086,7 +16086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Interrupt the enmy with your heavy attack!
+  m_text: Interrupt the enemy with your heavy attack!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0870a7b5a0f3e9141b12ef82008762c9, type: 2}
   m_sharedMaterial: {fileID: -38903387063765946, guid: 0870a7b5a0f3e9141b12ef82008762c9,
