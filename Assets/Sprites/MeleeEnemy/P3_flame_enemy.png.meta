@@ -116,7 +116,7 @@ TextureImporter:
         serializedVersion: 2
         x: 91
         y: 308
-        width: 155
+        width: 62
         height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -137,7 +137,7 @@ TextureImporter:
         serializedVersion: 2
         x: 352
         y: 308
-        width: 152
+        width: 57
         height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -158,8 +158,8 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 52
-        width: 153
-        height: 129
+        width: 57
+        height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 1}
@@ -179,8 +179,8 @@ TextureImporter:
         serializedVersion: 2
         x: 352
         y: 52
-        width: 157
-        height: 128
+        width: 57
+        height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,6 +190,90 @@ TextureImporter:
       bones: []
       spriteID: e1f8ebbf3f6f05300800000000000000
       internalID: 238962308011691806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_flame_enemy_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 383
+        width: 114
+        height: 43
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3a2c2b6111188b0800000000000000
+      internalID: -5151817709549083660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_flame_enemy_5
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 123
+        width: 117
+        height: 43
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f612c315c7513b900800000000000000
+      internalID: 698925990855582063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_flame_enemy_6
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 383
+        width: 103
+        height: 43
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e1626b71e66a070800000000000000
+      internalID: 8117296426501152273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_flame_enemy_14
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 123
+        width: 103
+        height: 43
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08eb093f81b811cd0800000000000000
+      internalID: -2589135371479499136
       vertices: []
       indices: 
       edges: []
