@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: P3_wall_tile_2
+  m_Name: P3_gate_fill_tile_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 5768463294412645268, guid: e743d67fb4a2d194fb81ffffb3f7dfd0,
+  m_Sprite: {fileID: 1131695633373591092, guid: 340daa0af52df0640937be00df0c6921,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
