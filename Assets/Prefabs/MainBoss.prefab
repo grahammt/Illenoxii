@@ -148,7 +148,11 @@ MonoBehaviour:
   projectile_spawn_timer_MAX: 15
   enemy_wave_count: 3
   fire_prefab_count: 10
-  enemyPrefab: {fileID: 3477555664116813196, guid: 6a4bdddd0934aef469808a5621bcef90,
+  enemyPrefab1: {fileID: 3477555664116813196, guid: 6a4bdddd0934aef469808a5621bcef90,
+    type: 3}
+  enemyPrefab2: {fileID: 4580349095688179170, guid: 47fd989818376064b96f45fad177b929,
+    type: 3}
+  flyingPrefab: {fileID: 6567452267290127485, guid: 2f7d5a355eccbcc44aa5a14eec67d55e,
     type: 3}
   firePrefab: {fileID: 5756092037646712406, guid: 1239d4f13149c844e978577ae10b72e7,
     type: 3}
@@ -173,3 +177,4 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
     type: 3}
+  cam: {fileID: 0}

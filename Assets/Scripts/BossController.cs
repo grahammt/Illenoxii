@@ -10,7 +10,9 @@ public class BossController : MonoBehaviour
     private float projectile_spawn_timer = 0.0f;
     public float enemy_wave_count = 3;
     public float fire_prefab_count = 10;
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab1;
+    public GameObject enemyPrefab2;
+    public GameObject flyingPrefab;
     public GameObject firePrefab;
     public GameObject firewallPrefab;
     private Transform playerTransform;
@@ -61,13 +63,26 @@ public class BossController : MonoBehaviour
     void SpawnNewEnemies() {
         Vector3 spawn_offset = Vector3.left * 0;
         Vector3 enemy_offset = Vector3.left * 3;
+        Vector3 flying_offset = Vector3.up;
 
+        // Spawn flame enemy
         AudioSource.PlayClipAtPoint(spawn_sound, transform.position);
         for(int i = 1; i <= enemy_wave_count; ++i) {
-            GameObject temp = Instantiate(enemyPrefab, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
-            temp.GetComponent<platformerPathfinding>().target = playerTransform;
-            EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+            if (i == 1) {
+                GameObject temp1 = Instantiate(enemyPrefab2, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
+                temp1.GetComponent<platformerPathfinding>().target = playerTransform;
+                EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+            } else {
+                GameObject temp2 = Instantiate(enemyPrefab1, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
+                temp2.GetComponent<platformerPathfinding>().target = playerTransform;
+                EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+            }
         }
+
+        // Spawn air enemy
+        GameObject temp = Instantiate(flyingPrefab, transform.position + enemy_offset + flying_offset, Quaternion.identity);
+        temp.GetComponent<platformerPathfinding>().target = playerTransform;
+        EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
     }
 
     void SpawnFireWall() {
