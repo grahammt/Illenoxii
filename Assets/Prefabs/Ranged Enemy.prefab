@@ -265,7 +265,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -154271085812128594, guid: 0406d3014f5180a48849f8ea2bd565fb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -328,10 +328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5202256274492070253, guid: eae4bd9863e74f54a81d55b012b9cc28, type: 3}
-  arrow: {fileID: 0}
+  arrow: {fileID: 3153128787584102381}
   maxCooldown: 3
   detectionRadius: 12
   firingSound: {fileID: 8300000, guid: 88828bcdadfcd14429a0bfa9e457a2b3, type: 3}
+  cooldown: 0
 --- !u!114 &5428554873565125716
 MonoBehaviour:
   m_ObjectHideFlags: 0

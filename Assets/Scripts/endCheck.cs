@@ -8,27 +8,9 @@ public class endCheck : MonoBehaviour
     Subscription<EnemySpawnEvent> enemySpawnSubscription;
     Subscription<EnemyDieEvent> enemyDieSubscription;
     // Start is called before the first frame update
-    public GameObject En1;
-    public GameObject En2;
-    public GameObject En3;
-    public GameObject En4;
-    public GameObject En5;
-    public GameObject En6;
-    public GameObject En7;
-    public GameObject En8;
-    public GameObject En9;
-    public GameObject En10;
-    public GameObject En11;
-    public GameObject En12;
-    public GameObject En13;
-    public GameObject En14;
-    public GameObject En15;
-    public GameObject En16;
-    public GameObject En17;
-    public GameObject En18;
     public GameObject gameWinText;
-    private bool ending = false;
-    public int enemyCount = 0;
+    private bool ending = true;
+    private int enemyCount = 0;
 
     void Start()
     {
@@ -66,6 +48,7 @@ public class endCheck : MonoBehaviour
 
     void onEnemySpawn(EnemySpawnEvent e){
         enemyCount += 1;
+        ending = false;
     }
 
     void onEnemyDie(EnemyDieEvent e){

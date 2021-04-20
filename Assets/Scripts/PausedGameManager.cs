@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PausedGameManager : MonoBehaviour
 {
+    public static bool won = false;
     public static bool is_paused = false;
     public GameObject pauseMenu;
 
@@ -15,7 +16,7 @@ public class PausedGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("escape")) {
+        if(Input.GetKeyDown("escape") && !won) {
             is_paused = !is_paused;
             Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
             pauseMenu.SetActive(is_paused);

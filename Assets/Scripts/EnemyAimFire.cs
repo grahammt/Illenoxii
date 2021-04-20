@@ -9,9 +9,10 @@ public class EnemyAimFire : MonoBehaviour
     public float maxCooldown = 5;
     public float detectionRadius = 10;
     public AudioClip firingSound;
+    public Coroutine timer;
     private GameObject player;
     private bool inRange;
-    private float cooldown;
+    public float cooldown;
     private bool firing;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class EnemyAimFire : MonoBehaviour
             inRange = (diff.magnitude < detectionRadius)? true : false;
             if (inRange && !GetComponent<HasArmor>().isStunned()){
                 if (cooldown>=maxCooldown && !firing){
-                    StartCoroutine(Fire(Vector3.Normalize(diff)));
+                    timer = StartCoroutine(Fire(Vector3.Normalize(diff)));
                 }
                 else{
                     if (!GetComponent<HasArmor>().isStunned()){

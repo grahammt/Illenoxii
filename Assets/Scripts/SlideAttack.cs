@@ -15,7 +15,7 @@ public class SlideAttack : MonoBehaviour
     public Animator animator;
     public Animator lowerBodyAnim;
     public int comboCost;
-    public bool buttonHover;
+    float cooldown = 0.4f;
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
@@ -53,6 +53,7 @@ public class SlideAttack : MonoBehaviour
                 }
                 
                 StartCoroutine("DashAttackCooldown");
+                EventBus.Publish<MoveUsed>(new MoveUsed(cooldown,3));
             }
         }
     }
@@ -111,8 +112,6 @@ public class SlideAttack : MonoBehaviour
         
         //hitbox.enabled = false;
         //hitboxSprite.enabled = false;
-        float cooldown = 0.4f;
-        EventBus.Publish<MoveUsed>(new MoveUsed(cooldown,3));
         yield return new WaitForSeconds(cooldown);
         onCooldown = false;
     }

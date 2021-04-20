@@ -6,6 +6,7 @@ public class FirewallBehavior : MonoBehaviour
 {
     public float speed;
     public float lifetime = 10f;
+    private bool spawned = false;
 
     void Start()
     {
@@ -14,6 +15,10 @@ public class FirewallBehavior : MonoBehaviour
 
     void Update()
     {
+        if (!spawned){
+            EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+            spawned = true;
+        }
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 

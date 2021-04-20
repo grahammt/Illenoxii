@@ -17,14 +17,22 @@ public class Enemy : MonoBehaviour
     public AudioClip [] hitSounds;
     public AudioClip deathSound;
 
+    private bool spawned = false;
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         healthScript = GetComponent<HasHealth>();
         knockbackScript = GetComponent<CanGetKnockedBack>();
         armorScript = GetComponent<HasArmor>();
-
         deathCallBack += PostDieEvent;
+    }
+
+    void Update(){
+        if (!spawned){
+            EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
+            spawned = true;
+        }
     }
 
     public void HandleHit(float dmg, float knockback){

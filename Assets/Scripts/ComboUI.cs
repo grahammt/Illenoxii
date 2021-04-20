@@ -13,7 +13,7 @@ public class ComboUI : MonoBehaviour
     public Image background;
     public Image SecondBackground;
     private Coroutine timer;
-    private float progress;
+    private float progress = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +25,6 @@ public class ComboUI : MonoBehaviour
     void Update(){
         if(!PausedGameManager.is_paused) {
             if (currentCombo == 0){
-                if (GetComponent<TextMeshProUGUI>() != null){
-                    GetComponent<TextMeshProUGUI>().text = "";
-                }
                 if (background!= null){
                     SecondBackground.fillAmount = 0;
                     progress = 0;
@@ -42,7 +39,7 @@ public class ComboUI : MonoBehaviour
             StopCoroutine(timer);
         }
         if (GetComponent<TextMeshProUGUI>() != null){
-            GetComponent<TextMeshProUGUI>().text = "x" + e.new_combo +"!";
+            GetComponent<TextMeshProUGUI>().text = "";
         }
         if (background != null){
             SecondBackground.fillAmount = 0;
