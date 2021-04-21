@@ -135,9 +135,9 @@ TextureImporter:
       name: P3_flame_enemy_3
       rect:
         serializedVersion: 2
-        x: 352
+        x: 347
         y: 308
-        width: 57
+        width: 62
         height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -156,9 +156,9 @@ TextureImporter:
       name: P3_flame_enemy_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 52
-        width: 57
+        x: 91
+        y: 48
+        width: 62
         height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -177,9 +177,9 @@ TextureImporter:
       name: P3_flame_enemy_11
       rect:
         serializedVersion: 2
-        x: 352
-        y: 52
-        width: 57
+        x: 347
+        y: 48
+        width: 62
         height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
