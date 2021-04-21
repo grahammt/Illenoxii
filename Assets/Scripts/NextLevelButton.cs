@@ -24,6 +24,7 @@ public class NextLevelButton : MonoBehaviour
     IEnumerator LoadSceneAfterDelay(int sceneIndex){
         ComponentBank.instance.SceneTransitionAnimator.SetTrigger("Fade");
         yield return new WaitForSeconds(1f);
+        PausedGameManager.is_paused=false;
         SceneManager.LoadScene(sceneIndex);
     }
 }
