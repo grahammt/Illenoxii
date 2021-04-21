@@ -25,6 +25,7 @@ public class NextLevelButton : MonoBehaviour
         ComponentBank.instance.SceneTransitionAnimator.SetTrigger("Fade");
         yield return new WaitForSeconds(1f);
         PausedGameManager.is_paused=false;
+        PausedGameManager.won = false;
         SceneManager.LoadScene(sceneIndex);
     }
 }
