@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
                     checkMovement();
                     break;
                 case movementState.running:
+                    playerRb.velocity = new Vector2(direction * movement_speed, playerRb.velocity.y);
                     // Set running sound
                     EnableRunSound();
                     checkMovement();
@@ -139,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
             case movementState.idle:
                 break;
             case movementState.running:
-                playerRb.velocity = new Vector2(direction * movement_speed, playerRb.velocity.y);
+                //playerRb.velocity = new Vector2(direction * movement_speed, playerRb.velocity.y);
                 break;
             case movementState.dashing:
                 break;
@@ -329,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb.velocity = new Vector2(playerRb.velocity.x, 0f);
     }
 
-    void StopRunSound() {
+    public void StopRunSound() {
         walkSound.enabled = false;
     }
 

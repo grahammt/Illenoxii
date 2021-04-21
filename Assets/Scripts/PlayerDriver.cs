@@ -33,6 +33,7 @@ public class PlayerDriver : MonoBehaviour
         componentsToDestroy.Add(parent.GetComponentInChildren<PrimaryAttack>());
         componentsToDestroy.Add(parent.GetComponentInChildren<uppercut>());
         componentsToDestroy.Add(this);
+        rigidbody = parent.GetComponent<Rigidbody2D>();
         StartCoroutine("stunreset");
         //StartCoroutine("test");
         // Time.timeScale = 1;
@@ -122,6 +123,8 @@ public class PlayerDriver : MonoBehaviour
     void Die(){
         animator.SetTrigger("Die");
         lowerbodyAnimator.SetTrigger("Die");
+        rigidbody.velocity = new Vector3(0f, rigidbody.velocity.y, 0f);
+        parent.GetComponent<PlayerMovement>().StopRunSound();
         EventBus.Publish<PlayerDieEvent>(new PlayerDieEvent());
         foreach(Component component in componentsToDestroy){
             Destroy(component);

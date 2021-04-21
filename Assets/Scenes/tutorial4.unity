@@ -15945,6 +15945,11 @@ PrefabInstance:
       propertyPath: gameWinText
       value: 
       objectReference: {fileID: 588812693}
+    - target: {fileID: 375844880763349392, guid: a0c1c4b09d8dc9a40bc2a1cfec39b84f,
+        type: 3}
+      propertyPath: playerLowerAnim
+      value: 
+      objectReference: {fileID: 657612794}
     - target: {fileID: 1581525432524697907, guid: a0c1c4b09d8dc9a40bc2a1cfec39b84f,
         type: 3}
       propertyPath: playerTransform

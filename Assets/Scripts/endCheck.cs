@@ -13,12 +13,20 @@ public class endCheck : MonoBehaviour
     private bool ending = true;
     private int enemyCount = 0;
     private bool lost = false;
+    Transform player;
+    Animator playerAnim;
+    public Animator playerLowerAnim;
+    Rigidbody2D playerRb;
 
     void Start()
     {
         enemySpawnSubscription = EventBus.Subscribe<EnemySpawnEvent>(onEnemySpawn);
         enemyDieSubscription = EventBus.Subscribe<EnemyDieEvent>(onEnemyDie);
         playerDeathSub = EventBus.Subscribe<PlayerDieEvent>(onPlayerDeath);
+        player = ComponentBank.instance.playerTransform;
+        playerRb = player.GetComponent<Rigidbody2D>();
+        playerAnim = player.GetComponent<Animator>();
+        //playerLowerAnim = player.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -40,6 +48,16 @@ public class endCheck : MonoBehaviour
             }*/
         }
     }
+
+    void LateUpdate(){
+        if(ending){
+            playerAnim.SetBool("isRunning", false);
+            playerLowerAnim.SetBool("isRunning", false);
+            playerRb.velocity = new Vector3(0f, playerRb.velocity.y, 0f);
+            player.GetComponent<PlayerMovement>().StopRunSound();
+        }
+    }
+
     IEnumerator End()
     {
 

@@ -1312,6 +1312,16 @@ PrefabInstance:
       propertyPath: gameWinText
       value: 
       objectReference: {fileID: 381999654}
+    - target: {fileID: 375844880763349392, guid: a0c1c4b09d8dc9a40bc2a1cfec39b84f,
+        type: 3}
+      propertyPath: playerLowerAnim
+      value: 
+      objectReference: {fileID: 1680760633}
+    - target: {fileID: 1581525432524697907, guid: a0c1c4b09d8dc9a40bc2a1cfec39b84f,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1680760631}
     - target: {fileID: 1581525432524697907, guid: a0c1c4b09d8dc9a40bc2a1cfec39b84f,
         type: 3}
       propertyPath: SceneTransitionAnimator
@@ -2684,6 +2694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428554873565125714, guid: d5c12fd3081c77845a80c38d6f582f42,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5428554873565125716, guid: d5c12fd3081c77845a80c38d6f582f42,
         type: 3}
