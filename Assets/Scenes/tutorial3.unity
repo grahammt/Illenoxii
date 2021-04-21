@@ -2149,6 +2149,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 912381183}
+    - target: {fileID: 869580891100335042, guid: 2fd862642206dd345b051063511b8dce,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1272926675}
     - target: {fileID: 5209632291105401892, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: background
