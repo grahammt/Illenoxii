@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayButton : MonoBehaviour
 {
     Button playButton;
+    public GameObject fader;
 
     void Start()
     {
@@ -15,6 +16,13 @@ public class PlayButton : MonoBehaviour
     }
 
     void StartGame(){
-        SceneManager.LoadScene(1);
+        StartCoroutine("LoadSceneAfterDelay", SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator LoadSceneAfterDelay(int sceneIndex){
+        fader.SetActive(true);
+        fader.GetComponent<Animator>().SetTrigger("Fade");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndex);
     }
 }
