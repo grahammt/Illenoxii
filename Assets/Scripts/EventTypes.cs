@@ -20,3 +20,7 @@ public class EnemySpawnEvent {
 public class EnemyDieEvent {
     
 }
+
+public class PlayerDieEvent {
+    
+}
