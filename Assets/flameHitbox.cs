@@ -68,6 +68,7 @@ public class flameHitbox : MonoBehaviour
     {
         player.GetComponent<platformerPathfinding>().pdazed = true;
         player.GetComponent<Animator>().SetBool("Dazed", true);
+        
         player.GetComponent<platformerPathfinding>().pdazed = true;
         yield return new WaitForSeconds(1f);
         player.GetComponent<Animator>().SetBool("Dazed", false);
