@@ -36,7 +36,8 @@ public class SlideAttack : MonoBehaviour
                 transform.localPosition = new Vector3(0.7f, -0.3f, 0);
                 //GetComponent<Rigidbody2D>().transform.position = GetComponentInParent<Rigidbody2D>().transform.position ;
             }
-            if (!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost)
+            if (!player.GetComponent<PlayerMovement>().stunned && Input.GetKeyDown(KeyCode.Mouse0) && !onCooldown && Input.GetKey("s") && GetComponentInParent<ComboUI>().currentCombo >= comboCost
+                    && onGround())
             {
 
                 if (playerSprite.flipX)
@@ -61,7 +62,7 @@ public class SlideAttack : MonoBehaviour
     IEnumerator DashAttackCooldown()
     {
         onCooldown = true;
-        animator.SetTrigger("slide");
+        animator.Play("slide");
         lowerBodyAnim.SetTrigger("slide");
         if (playerSprite.flipX)
         {
@@ -124,4 +125,12 @@ public class SlideAttack : MonoBehaviour
             
         }
     }
+
+    // check if player is currently on the ground
+    bool onGround(){
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Terrain"));
+        Debug.DrawRay(transform.position, Vector3.down * 1.1f);
+        return hit.collider != null;
+    }
+
 }
