@@ -20,11 +20,3 @@ public class EnemySpawnEvent {
 public class EnemyDieEvent {
     
 }
-
-public class BossDiedEvent {
-
-}
-
-public class EndingVideoOverEvent {
-    
-}

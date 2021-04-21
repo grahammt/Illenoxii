@@ -71,18 +71,15 @@ public class BossController : MonoBehaviour
             if (i == 1) {
                 GameObject temp1 = Instantiate(enemyPrefab2, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
                 temp1.GetComponent<platformerPathfinding>().target = playerTransform;
-                EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
             } else {
                 GameObject temp2 = Instantiate(enemyPrefab1, transform.position + spawn_offset + enemy_offset * i, Quaternion.identity);
                 temp2.GetComponent<platformerPathfinding>().target = playerTransform;
-                EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
             }
         }
 
         // Spawn air enemy
         GameObject temp = Instantiate(flyingPrefab, transform.position + enemy_offset + flying_offset, Quaternion.identity);
         temp.GetComponent<platformerPathfinding>().target = playerTransform;
-        EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
     }
 
     void SpawnFireWall() {
@@ -128,7 +125,6 @@ public class BossController : MonoBehaviour
         Vector3 firewallSpawn = new Vector3(20f, -1f, 0f);
         GameObject firewall = GameObject.Instantiate(firewallPrefab, firewallSpawn, Quaternion.identity);
         firewall.GetComponent<FirewallBehavior>().speed = -3f;
-        EventBus.Publish<EnemySpawnEvent>(new EnemySpawnEvent());
     }
 
     void DeathHandler(){

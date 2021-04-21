@@ -35,7 +35,7 @@ public class PlayerDriver : MonoBehaviour
         componentsToDestroy.Add(this);
         StartCoroutine("stunreset");
         //StartCoroutine("test");
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
     }
     /**IEnumerator test()
     {
@@ -63,7 +63,7 @@ public class PlayerDriver : MonoBehaviour
 
     void Update()
     {
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
         if(!PausedGameManager.is_paused) {
             if (currentStun > stunNeeded)
             {
