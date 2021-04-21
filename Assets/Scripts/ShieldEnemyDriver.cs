@@ -122,8 +122,9 @@ public class ShieldEnemyDriver : MonoBehaviour
     }
 
     public void DeathHandler(){
-        animator.SetTrigger("Die");
-        hitbox.SetActive(false);
-        healthbar.SetActive(false);
+        //animator.SetTrigger("Die");
+        //hitbox.SetActive(false);
+        //healthbar.SetActive(false);
+        Destroy(gameObject);
     }
 }
