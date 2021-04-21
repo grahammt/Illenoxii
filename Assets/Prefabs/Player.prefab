@@ -198,6 +198,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   particleEffect: {fileID: 3486285957731073005, guid: fd6f4f1b049ac954284169ea752c14df,
     type: 3}
+  cam: {fileID: 0}
 --- !u!1 &8701668535620295634
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +536,8 @@ MonoBehaviour:
   movement_speed: 5
   dashDistance: 10
   jump_multiplier: 650
+  dash_lock: 0
+  grapple_lock: 0
   lowerBodyAnim: {fileID: 3591953065201243087}
   lowerBodySprite: {fileID: 2063150388919847450}
   stunned: 0
@@ -543,6 +546,7 @@ MonoBehaviour:
   dashTrail2: {fileID: 0}
   dashComboCost: 0
   dashSound: {fileID: 8300000, guid: 865df510960aac941b018b678335e9c1, type: 3}
+  grappleComboCost: 3
   grappleSound: {fileID: 8300000, guid: ec8d700a56940e94dbdcdb8d805fbc1d, type: 3}
 --- !u!114 &5209632291105401892
 MonoBehaviour:

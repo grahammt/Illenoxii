@@ -823,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Q to use, requires 5 combo!
+  m_text: Press Q to use, requires 3 combo!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0870a7b5a0f3e9141b12ef82008762c9, type: 2}
   m_sharedMaterial: {fileID: -38903387063765946, guid: 0870a7b5a0f3e9141b12ef82008762c9,
@@ -18338,11 +18338,6 @@ PrefabInstance:
       propertyPath: lowerBodySprite
       value: 
       objectReference: {fileID: 1880235662}
-    - target: {fileID: 8701668536146513553, guid: 2fd862642206dd345b051063511b8dce,
-        type: 3}
-      propertyPath: grappleComboCost
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8701668536146513554, guid: 2fd862642206dd345b051063511b8dce,
         type: 3}
       propertyPath: healthBar
