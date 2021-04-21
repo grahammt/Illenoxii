@@ -7,21 +7,24 @@ public class endCheck : MonoBehaviour
 {
     Subscription<EnemySpawnEvent> enemySpawnSubscription;
     Subscription<EnemyDieEvent> enemyDieSubscription;
+    Subscription<PlayerDieEvent> playerDeathSub;
     // Start is called before the first frame update
     public GameObject gameWinText;
     private bool ending = true;
     private int enemyCount = 0;
+    private bool lost = false;
 
     void Start()
     {
         enemySpawnSubscription = EventBus.Subscribe<EnemySpawnEvent>(onEnemySpawn);
         enemyDieSubscription = EventBus.Subscribe<EnemyDieEvent>(onEnemyDie);
+        playerDeathSub = EventBus.Subscribe<PlayerDieEvent>(onPlayerDeath);
     }
 
     void Update()
     {
         if(!PausedGameManager.is_paused) {
-            if(enemyCount == 0 && !ending){
+            if(enemyCount == 0 && !ending && !lost){
                 ending = true;
                 StartCoroutine(End());
             }
@@ -55,8 +58,13 @@ public class endCheck : MonoBehaviour
         enemyCount -= 1;
     }
 
+    void onPlayerDeath(PlayerDieEvent e){
+        lost = true;
+    }
+
     void OnDestroy(){
         EventBus.Unsubscribe(enemySpawnSubscription);
         EventBus.Unsubscribe(enemyDieSubscription);
+        EventBus.Unsubscribe(playerDeathSub);
     }
 }

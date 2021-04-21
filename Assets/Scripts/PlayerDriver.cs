@@ -122,6 +122,7 @@ public class PlayerDriver : MonoBehaviour
     void Die(){
         animator.SetTrigger("Die");
         lowerbodyAnimator.SetTrigger("Die");
+        EventBus.Publish<PlayerDieEvent>(new PlayerDieEvent());
         foreach(Component component in componentsToDestroy){
             Destroy(component);
         }
