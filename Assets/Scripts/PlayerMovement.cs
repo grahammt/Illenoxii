@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
             // calculate the travel vector
             dashStart = transform.position;
             Vector3 dashVec = Vector3.ClampMagnitude(mousePos - dashStart, dashDistance);
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1, dashVec.normalized, dashVec.magnitude, LayerMask.GetMask("Terrain"));
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.8f, dashVec.normalized, dashVec.magnitude, LayerMask.GetMask("Terrain"));
             
 
             if (hit.collider != null){ // a wall is in the way of the dash
